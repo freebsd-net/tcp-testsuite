@@ -28,7 +28,9 @@
 set packetdrill = /usr/local/bin/packetdrill
 set delay = 1
 set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
-                  snd-syn/snd-syn-with-default-options-ipv6 )
+                  snd-syn/snd-syn-with-default-options-ipv6 \
+                  snd-syn/snd-syn-without-options-ipv4 \
+                  snd-syn/snd-syn-without-options-ipv6 )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0
