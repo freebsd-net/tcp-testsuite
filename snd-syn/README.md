@@ -1,5 +1,22 @@
 # Tests for Sending TCP Segments Having the SYN-bit Set
 
+This set of tests focuses on the sending of SYN-segments moving to state of the TCP connection from `CLOSED` to `SYN-SENT`
+possibly to `CLOSED` again.
+The list of socket options with level `IPPROTO_TCP` affecting this behaviour is:
+* `TCP_KEEPINIT`
+* `TCP_NOOPT`
+* `TCP_MAXSEG`
+
+The list of `sysctl`-variables affecting the sending of SYN-segments is
+* `net.inet.tcp.keepinit`
+* `net.inet.tcp.rexmit_drop_options`
+* `net.inet.tcp.icmp_may_rst`
+* `net.inet.tcp.mssdflt`
+* `net.inet.tcp.v6mssdflt`
+* `net.inet.tcp.sack.enable`
+* `net.inet.tcp.rfc1323`
+* `kern.ipc.maxsockbuf`
+
 The following table shows the status of the tests:
 
 | Name                                                                                                                                                                            | Result FreeBSD 11.0 | Result FreeBSD Head |
