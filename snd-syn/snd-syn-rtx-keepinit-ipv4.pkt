@@ -34,12 +34,12 @@
 // * A backoff factor as hard coded in the array tcp_syn_backoff (tcp_timer.c)
 
 --ip_version=ipv4
---tolerance_usecs=25000
+--tolerance_usecs=50000
 
 // Create a blocking TCP/IPv4 socket
   0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 // Limit the retransmissions of the SYN segment to 15 seconds.
-+ 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [15], [4]) = 0
++ 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [15], 4) = 0
 // Try to establish a TCP connection.
   0.00...15.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
 + 0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
