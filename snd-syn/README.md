@@ -28,6 +28,12 @@ The following table shows the status of the tests:
 |[snd-syn-without-options-ipv6](snd-syn-without-options-ipv6.pkt "Ensure that no options are used when using the TCP_NOOPT socket option")                                        | Unknown             | Passed              |
 |[snd-syn-keepinit-inherited-from-sysctl-ipv4](snd-syn-keepinit-inherited-from-sysctl-ipv4.pkt "Ensure that the keepinit timeout is inherited from the keepinit sysctl variable") | Unknown             | Passed  (Note 1)    |
 |[snd-syn-keepinit-inherited-from-sysctl-ipv6](snd-syn-keepinit-inherited-from-sysctl-ipv6.pkt "Ensure that the keepinit timeout is inherited from the keepinit sysctl variable") | Unknown             | Passed  (Note 1)    |
+|[snd-syn-rtx-keepinit-ipv4](snd-syn-rtx-keepinit-ipv4.pkt "Ensure that the keepinit timer is honored when limiting the retransmissions of SYN-segments")                         | Unknown             | Passed              |
+|[snd-syn-rtx-keepinit-ipv6](snd-syn-rtx-keepinit-ipv6.pkt "Ensure that the keepinit timer is honored when limiting the retransmissions of SYN-segments")                         | Unknown             | Passed              |
+|[snd-syn-rtx-max-number-ipv4](snd-syn-rtx-max-number-ipv4.pkt "Ensure that the maximum number is honored when limiting the retransmissions of SYN-segments")                     | Unknown             | Passed              |
+|[snd-syn-rtx-max-number-ipv6](snd-syn-rtx-max-number-ipv6.pkt "Ensure that the maximum number is honored when limiting the retransmissions of SYN-segments")                     | Unknown             | Passed              |
+|[snd-syn-rtx-drop-options-ipv4](snd-syn-rtx-drop-options-ipv4.pkt "Ensure that the options are dropped when sysctl rexmit_drop_options is enabled")                              | Unknown             | Passed  (Note 2)    |
+|[snd-syn-rtx-drop-options-ipv6](snd-syn-rtx-drop-options-ipv6.pkt "Ensure that the options are dropped when sysctl rexmit_drop_options is enabled")                              | Unknown             | Passed  (Note 2)    |
 
 # Notes
 1. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPINIT`, the value 0 instead of the actual
