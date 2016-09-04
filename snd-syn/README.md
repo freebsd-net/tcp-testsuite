@@ -34,5 +34,5 @@ The following table shows the status of the tests:
    A similar bug exists for using `getsockopt()` with the name `TCP_KEEPIDLE`, `TCP_KEEPINTVL`, and `TCP_KEEPCNT`.
 2. The sysctl variable `net.inet.tcp.rexmit_drop_options` is not described in the `TCP(4)` man page. The description
    of the sysctl variable (when displayed with `sysctl -d net.inet.tcp.rexmit_drop_options` states that no options
-   will be used from the third and later retransmits of the SYN segment. However, the MSS option is not dropped.
+   will be used from the third and later retransmits of the SYN-segment. However, the MSS option is not dropped.
    Either change the code or change the documentation and add an entry to the man page.
