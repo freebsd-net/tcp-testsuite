@@ -1,0 +1,58 @@
+//
+// Copyright (c) 2016 Michael Tuexen
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// 1. Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+// OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+// HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+// LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+// OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+// SUCH DAMAGE.
+//
+
+// Ensure that TCP SYN segments get retransmitted with the following properties:
+// * 12 retransmissions, as hard coded in TCP_MAXRXTSHIFT (tcp_timer.h)
+// * An initial retransmission timeout of 3 seconds as hard coded in
+//   TCPTV_RTOBASE (tcp_timer.h)
+// * A maximum retransmission timer limit as hard coded in
+//   TCPTV_REXMTMAX (tcp_timer.h)
+// * A backoff factor as hard coded in the array tcp_syn_backoff (tcp_timer.c)
+
+--ip_version=ipv4
+--tolerance_usecs=25000
+
+// Create a blocking TCP/IPv4 socket
+   0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
+// Make sure that the time limit for connection setup does not apply
++  0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [363], 4) = 0
+// Try to establish a TCP connection
+   0.00...362.60 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
++  0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++  3.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++  3.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++  3.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++  3.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++  3.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++  6.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++ 12.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++ 24.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++ 48.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++ 64.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++ 64.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++ 64.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
+// Finally cleanup
+ 363.00 close(3) = 0
