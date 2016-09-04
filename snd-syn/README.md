@@ -18,4 +18,4 @@ The following table shows the status of the tests:
 2. The sysctl variable `net.inet.tcp.rexmit_drop_options` is not described in the `TCP(4)` man page. The description
    of the sysctl variable (when displayed with `sysctl -d net.inet.tcp.rexmit_drop_options` states that no options
    will be used from the third and later retransmits of the SYN segment. However, the MSS option is not dropped.
-   Either change the code or change the documentation and add en entry in the man page.
+   Either change the code or change the documentation and add an entry to the man page.
