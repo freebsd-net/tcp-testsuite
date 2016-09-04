@@ -1,7 +1,8 @@
 # Tests for Sending TCP Segments Having the SYN-bit Set
 
 This set of tests focuses on the sending of SYN-segments moving to state of the TCP connection from `CLOSED` to `SYN-SENT`
-possibly to `CLOSED` again.
+and possibly to `CLOSED` again.
+
 The list of socket options with level `IPPROTO_TCP` affecting this behaviour is:
 * `TCP_KEEPINIT`
 * `TCP_NOOPT`
