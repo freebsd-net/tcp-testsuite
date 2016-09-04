@@ -30,7 +30,9 @@ set delay = 1
 set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
                   snd-syn/snd-syn-with-default-options-ipv6 \
                   snd-syn/snd-syn-without-options-ipv4 \
-                  snd-syn/snd-syn-without-options-ipv6 )
+                  snd-syn/snd-syn-without-options-ipv6 \
+                  snd-syn/snd-syn-keepinit-inherited-from-sysctl-ipv4 \
+                  snd-syn/snd-syn-keepinit-inherited-from-sysctl-ipv6 )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0
