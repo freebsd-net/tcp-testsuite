@@ -38,7 +38,14 @@ set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
                   snd-syn/snd-syn-rtx-max-number-ipv4 \
                   snd-syn/snd-syn-rtx-max-number-ipv6 \
                   snd-syn/snd-syn-rtx-drop-options-ipv4 \
-                  snd-syn/snd-syn-rtx-drop-options-ipv6 )
+                  snd-syn/snd-syn-rtx-drop-options-ipv6 \
+                  snd-syn-icmp-hard-error-proto-unreachable-ipv4.pkt \
+                  snd-syn-icmp-hard-error-port-unreachable-ipv4.pkt  \
+                  snd-syn-icmp-hard-error-net-prohibited-ipv4.pkt \
+                  snd-syn-icmp-hard-error-host-prohibited-ipv4.pkt \
+                  snd-syn-icmp-hard-error-comm-prohibited-ipv4.pkt \
+                  snd-syn-icmp-hard-error-ttl-exceeded-ipv4.pkt \
+                  snd-syn-icmp-hard-error-ignored-ipv4.pkt )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0

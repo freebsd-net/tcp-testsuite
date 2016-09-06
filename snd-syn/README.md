@@ -20,20 +20,27 @@ The list of `sysctl`-variables affecting the sending of SYN-segments is
 
 The following table shows the status of the tests:
 
-| Name                                                                                                                                                                            | Result FreeBSD 11.0 | Result FreeBSD Head |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------:|:-------------------:|
-|[snd-syn-with-default-options-ipv4](snd-syn-with-default-options-ipv4.pkt "Ensure that the default options are used")                                                            | Unknown             | Passed              |
-|[snd-syn-with-default-options-ipv6](snd-syn-with-default-options-ipv6.pkt "Ensure that the default options are used")                                                            | Unknown             | Passed              |
-|[snd-syn-without-options-ipv4](snd-syn-without-options-ipv4.pkt "Ensure that no options are used when using the TCP_NOOPT socket option")                                        | Unknown             | Passed              |
-|[snd-syn-without-options-ipv6](snd-syn-without-options-ipv6.pkt "Ensure that no options are used when using the TCP_NOOPT socket option")                                        | Unknown             | Passed              |
-|[snd-syn-keepinit-inherited-from-sysctl-ipv4](snd-syn-keepinit-inherited-from-sysctl-ipv4.pkt "Ensure that the keepinit timeout is inherited from the keepinit sysctl variable") | Unknown             | Passed  (Note 1)    |
-|[snd-syn-keepinit-inherited-from-sysctl-ipv6](snd-syn-keepinit-inherited-from-sysctl-ipv6.pkt "Ensure that the keepinit timeout is inherited from the keepinit sysctl variable") | Unknown             | Passed  (Note 1)    |
-|[snd-syn-rtx-keepinit-ipv4](snd-syn-rtx-keepinit-ipv4.pkt "Ensure that the keepinit timer is honored when limiting the retransmissions of SYN-segments")                         | Unknown             | Passed              |
-|[snd-syn-rtx-keepinit-ipv6](snd-syn-rtx-keepinit-ipv6.pkt "Ensure that the keepinit timer is honored when limiting the retransmissions of SYN-segments")                         | Unknown             | Passed              |
-|[snd-syn-rtx-max-number-ipv4](snd-syn-rtx-max-number-ipv4.pkt "Ensure that the maximum number is honored when limiting the retransmissions of SYN-segments")                     | Unknown             | Passed              |
-|[snd-syn-rtx-max-number-ipv6](snd-syn-rtx-max-number-ipv6.pkt "Ensure that the maximum number is honored when limiting the retransmissions of SYN-segments")                     | Unknown             | Passed              |
-|[snd-syn-rtx-drop-options-ipv4](snd-syn-rtx-drop-options-ipv4.pkt "Ensure that the options are dropped when sysctl rexmit_drop_options is enabled")                              | Unknown             | Passed  (Note 2)    |
-|[snd-syn-rtx-drop-options-ipv6](snd-syn-rtx-drop-options-ipv6.pkt "Ensure that the options are dropped when sysctl rexmit_drop_options is enabled")                              | Unknown             | Passed  (Note 2)    |
+| Name                                                                                                                                                                                                                            | Result FreeBSD 11.0 | Result FreeBSD Head |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------:|:-------------------:|
+|[snd-syn-with-default-options-ipv4](snd-syn-with-default-options-ipv4.pkt "Ensure that the default options are used")                                                                                                            | Unknown             | Passed              |
+|[snd-syn-with-default-options-ipv6](snd-syn-with-default-options-ipv6.pkt "Ensure that the default options are used")                                                                                                            | Unknown             | Passed              |
+|[snd-syn-without-options-ipv4](snd-syn-without-options-ipv4.pkt "Ensure that no options are used when using the TCP_NOOPT socket option")                                                                                        | Unknown             | Passed              |
+|[snd-syn-without-options-ipv6](snd-syn-without-options-ipv6.pkt "Ensure that no options are used when using the TCP_NOOPT socket option")                                                                                        | Unknown             | Passed              |
+|[snd-syn-keepinit-inherited-from-sysctl-ipv4](snd-syn-keepinit-inherited-from-sysctl-ipv4.pkt "Ensure that the keepinit timeout is inherited from the keepinit sysctl variable")                                                 | Unknown             | Passed  (Note 1)    |
+|[snd-syn-keepinit-inherited-from-sysctl-ipv6](snd-syn-keepinit-inherited-from-sysctl-ipv6.pkt "Ensure that the keepinit timeout is inherited from the keepinit sysctl variable")                                                 | Unknown             | Passed  (Note 1)    |
+|[snd-syn-rtx-keepinit-ipv4](snd-syn-rtx-keepinit-ipv4.pkt "Ensure that the keepinit timer is honored when limiting the retransmissions of SYN-segments")                                                                         | Unknown             | Passed              |
+|[snd-syn-rtx-keepinit-ipv6](snd-syn-rtx-keepinit-ipv6.pkt "Ensure that the keepinit timer is honored when limiting the retransmissions of SYN-segments")                                                                         | Unknown             | Passed              |
+|[snd-syn-rtx-max-number-ipv4](snd-syn-rtx-max-number-ipv4.pkt "Ensure that the maximum number is honored when limiting the retransmissions of SYN-segments")                                                                     | Unknown             | Passed              |
+|[snd-syn-rtx-max-number-ipv6](snd-syn-rtx-max-number-ipv6.pkt "Ensure that the maximum number is honored when limiting the retransmissions of SYN-segments")                                                                     | Unknown             | Passed              |
+|[snd-syn-rtx-drop-options-ipv4](snd-syn-rtx-drop-options-ipv4.pkt "Ensure that the options are dropped when the sysctl variable rexmit_drop_options is enabled")                                                                 | Unknown             | Passed  (Note 2)    |
+|[snd-syn-rtx-drop-options-ipv6](snd-syn-rtx-drop-options-ipv6.pkt "Ensure that the options are dropped when the sysctl variable rexmit_drop_options is enabled")                                                                 | Unknown             | Passed  (Note 2)    |
+|[snd-syn-icmp-hard-error-proto-unreachable-ipv4](snd-syn-icmp-hard-error-proto-unreachable-ipv4.pkt "Ensure that reception of ICMP Protocol Unreachable message is a hard error when sysctl variable icmp_may_rst is 1")         | Unknown             | Passed              |
+|[snd-syn-icmp-hard-error-port-unreachable-ipv4](snd-syn-icmp-hard-error-port-unreachable-ipv4.pkt "Ensure that reception of ICMP Port Unreachable message is a hard error when sysctl variable icmp_may_rst is 1")               | Unknown             | Passed              |
+|[snd-syn-icmp-hard-error-net-prohibited-ipv4](snd-syn-icmp-hard-error-net-prohibited-ipv4.pkt "Ensure that reception of ICMP Comm. Dest. Net Adm. Prohibited message is a hard error when sysctl variable icmp_may_rst is 1")    | Unknown             | Passed  (Note 3)    |
+|[snd-syn-icmp-hard-error-host-prohibited-ipv4](snd-syn-icmp-hard-error-host-prohibited-ipv4.pkt "Ensure that reception of ICMP Comm. Dest. Host Adm. Prohibited message is a hard error when sysctl variable icmp_may_rst is 1") | Unknown             | Passed  (Note 3)    |
+|[snd-syn-icmp-hard-error-comm-prohibited-ipv4](snd-syn-icmp-hard-error-comm-prohibited-ipv4.pkt "Ensure that reception of ICMP Comm. Adm. Prohibited message is a hard error when sysctl variable icmp_may_rst is 1")            | Unknown             | Passed  (Note 3)    |
+|[snd-syn-icmp-hard-error-ttl-exceeded-ipv4](snd-syn-icmp-hard-error-ttl-exceeded-ipv4.pkt "Ensure that reception of ICMP TTL Exceeded in Transit message is a hard error when sysctl variable icmp_may_rst is 1")                | Unknown             | Passed  (Note 4)    |
+|[snd-syn-icmp-hard-error-ignored-ipv4](snd-syn-icmp-hard-error-ignored-ipv4.pkt "Ensure that reception of any ICMP message does not result in a hard error when sysctl variable icmp_may_rst is 0")                              | Unknown             | Passed              |
 
 # Notes
 1. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPINIT`, the value 0 instead of the actual
@@ -43,3 +50,7 @@ The following table shows the status of the tests:
    of the sysctl variable (when displayed with `sysctl -d net.inet.tcp.rexmit_drop_options` states that no options
    will be used from the third and later retransmits of the SYN-segment. However, the MSS option is not dropped.
    Either change the code or change the documentation and add an entry to the man page.
+3. The reception is handled by FreeBSD as a hard error, allthough neither specified as a soft or hard error
+   [RFC1122](https://tools.ietf.org/html/rfc1122#section-4.2.3.9).
+4. The recepiton is handled by FreeBSD as a hard error, allthough specified in
+   [RFC1122](https://tools.ietf.org/html/rfc1122#section-4.2.3.9) as a soft error.
