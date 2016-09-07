@@ -50,6 +50,8 @@ The following table shows the status of the tests:
 |[snd-syn-icmp-hard-error-ignored-ipv6](snd-syn-icmp-hard-error-ignored-ipv6.pkt "Ensure that reception of any ICMP message does not result in a hard error when the sysctl variable icmp_may_rst is 0")                              | Unknown             | Passed  (Note 6)    |
 |[snd-syn-without-sack-ipv4](snd-syn-without-sack-ipv4.pkt "Ensure that the option indicating SACK support is not included when the sysctl variable sack.enable is 0")                                                                | Unknown             | Passed              |
 |[snd-syn-without-sack-ipv6](snd-syn-without-sack-ipv6.pkt "Ensure that the option indicating SACK support is not included when the sysctl variable sack.enable is 0")                                                                | Unknown             | Passed              |
+|[snd-syn-without-ws-and-ts-ipv4](snd-syn-without-ws-and-ts-ipv4.pkt "Ensure that the options indicating window scaling and time stamp support is not included when the sysctl variable rfc1323 is 0")                                | Unknown             | Passed              |
+|[snd-syn-without-ws-and-ts-ipv6](snd-syn-without-ws-and-ts-ipv6.pkt "Ensure that the options indicating window scaling and time stamp support is not included when the sysctl variable rfc1323 is 0")                                | Unknown             | Passed              |
 
 # Notes
 1. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPINIT`, the value 0 instead of the actual

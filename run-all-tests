@@ -52,7 +52,9 @@ set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
                   snd-syn/snd-syn-icmp-hard-error-ignored-ipv4 \
                   snd-syn/snd-syn-icmp-hard-error-ignored-ipv6 \
                   snd-syn/snd-syn-without-sack-ipv4.pkt \
-                  snd-syn/snd-syn-without-sack-ipv6.pkt )
+                  snd-syn/snd-syn-without-sack-ipv6.pkt \
+                  snd-syn/snd-syn-without-ws-and-ts-ipv4.pkt \
+                  snd-syn/snd-syn-without-ws-and-ts-ipv6.pkt )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0
