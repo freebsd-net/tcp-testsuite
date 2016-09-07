@@ -25,7 +25,7 @@
 //
 
 // Ensure that TCP SYN segments gets transmitted and retransmitted
-// without the TCP option indicating window scaling and time stamp support.
+// without the TCP options indicating window scaling and time stamp support.
 
 --ip_version=ipv4
 --tolerance_usecs=50000
