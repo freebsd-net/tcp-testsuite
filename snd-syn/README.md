@@ -45,6 +45,7 @@ The following table shows the status of the tests:
 |[snd-syn-icmp-hard-error-ttl-exceeded-ipv4](snd-syn-icmp-hard-error-ttl-exceeded-ipv4.pkt "Ensure that reception of ICMP TTL Exceeded in Transit message is a hard error when sysctl variable icmp_may_rst is 1")                | Unknown             | Passed  (Note 4)    |
 |[snd-syn-icmp-hard-error-ttl-exceeded-ipv6](snd-syn-icmp-hard-error-ttl-exceeded-ipv6.pkt "Ensure that reception of ICMP TTL Exceeded in Transit message is a hard error when sysctl variable icmp_may_rst is 1")                | Unknown             | Failed  (Note 5)    |
 |[snd-syn-icmp-hard-error-ignored-ipv4](snd-syn-icmp-hard-error-ignored-ipv4.pkt "Ensure that reception of any ICMP message does not result in a hard error when sysctl variable icmp_may_rst is 0")                              | Unknown             | Passed              |
+|[snd-syn-icmp-hard-error-ignored-ipv6](snd-syn-icmp-hard-error-ignored-ipv6.pkt "Ensure that reception of any ICMP message does not result in a hard error when sysctl variable icmp_may_rst is 0")                              | Unknown             | Passed              |
 
 # Notes
 1. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPINIT`, the value 0 instead of the actual

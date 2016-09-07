@@ -49,7 +49,8 @@ set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
                   snd-syn/snd-syn-icmp-hard-error-comm-prohibited-ipv6 \
                   snd-syn/snd-syn-icmp-hard-error-ttl-exceeded-ipv4 \
                   snd-syn/snd-syn-icmp-hard-error-ttl-exceeded-ipv6 \
-                  snd-syn/snd-syn-icmp-hard-error-ignored-ipv4 )
+                  snd-syn/snd-syn-icmp-hard-error-ignored-ipv4 \
+                  snd-syn/snd-syn-icmp-hard-error-ignored-ipv6 )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0
