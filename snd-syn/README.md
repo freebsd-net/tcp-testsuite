@@ -46,8 +46,8 @@ The following table shows the status of the tests:
 |[snd-syn-icmp-hard-error-comm-prohibited-ipv6](snd-syn-icmp-hard-error-comm-prohibited-ipv6.pkt "Ensure that reception of ICMP Comm. Adm. Prohibited message is a hard error when sysctl variable icmp_may_rst is 1")            | Unknown             | Failed  (Note 5)    |
 |[snd-syn-icmp-hard-error-ttl-exceeded-ipv4](snd-syn-icmp-hard-error-ttl-exceeded-ipv4.pkt "Ensure that reception of ICMP TTL Exceeded in Transit message is a hard error when sysctl variable icmp_may_rst is 1")                | Unknown             | Passed  (Note 4)    |
 |[snd-syn-icmp-hard-error-ttl-exceeded-ipv6](snd-syn-icmp-hard-error-ttl-exceeded-ipv6.pkt "Ensure that reception of ICMP TTL Exceeded in Transit message is a hard error when sysctl variable icmp_may_rst is 1")                | Unknown             | Failed  (Note 5)    |
-|[snd-syn-icmp-hard-error-ignored-ipv4](snd-syn-icmp-hard-error-ignored-ipv4.pkt "Ensure that reception of any ICMP message does not result in a hard error when sysctl variable icmp_may_rst is 0")                              | Unknown             | Passed              |
-|[snd-syn-icmp-hard-error-ignored-ipv6](snd-syn-icmp-hard-error-ignored-ipv6.pkt "Ensure that reception of any ICMP message does not result in a hard error when sysctl variable icmp_may_rst is 0")                              | Unknown             | Passed              |
+|[snd-syn-icmp-hard-error-ignored-ipv4](snd-syn-icmp-hard-error-ignored-ipv4.pkt "Ensure that reception of any ICMP message does not result in a hard error when sysctl variable icmp_may_rst is 0")                              | Unknown             | Passed  (Note 6)    |
+|[snd-syn-icmp-hard-error-ignored-ipv6](snd-syn-icmp-hard-error-ignored-ipv6.pkt "Ensure that reception of any ICMP message does not result in a hard error when sysctl variable icmp_may_rst is 0")                              | Unknown             | Passed  (Note 6)    |
 
 # Notes
 1. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPINIT`, the value 0 instead of the actual
@@ -62,3 +62,4 @@ The following table shows the status of the tests:
 4. The recepiton is handled by FreeBSD as a hard error, allthough specified in
    [RFC1122](https://tools.ietf.org/html/rfc1122#section-4.2.3.9) as a soft error.
 5. The TCP connection stays alive. This should not be the case since [r303626](https://svnweb.freebsd.org/base?view=revision&revision=303626) ([D7272](https://reviews.freebsd.org/D7272)).
+6. An incoming PTB packet results in an adapted MSS for IPv6, but not for IPv4.
