@@ -17,6 +17,8 @@ The list of `sysctl`-variables affecting the sending of SYN-segments is
 * `net.inet.tcp.sack.enable`
 * `net.inet.tcp.rfc1323`
 * `kern.ipc.maxsockbuf`
+* `net.inet.tcp.ecn.enable`
+* `net.inet.tcp.ecn.maxretries`
 
 The following table shows the status of the tests:
 
