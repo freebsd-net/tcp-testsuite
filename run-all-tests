@@ -39,13 +39,17 @@ set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
                   snd-syn/snd-syn-rtx-max-number-ipv6 \
                   snd-syn/snd-syn-rtx-drop-options-ipv4 \
                   snd-syn/snd-syn-rtx-drop-options-ipv6 \
-                  snd-syn-icmp-hard-error-proto-unreachable-ipv4.pkt \
-                  snd-syn-icmp-hard-error-port-unreachable-ipv4.pkt  \
-                  snd-syn-icmp-hard-error-net-prohibited-ipv4.pkt \
-                  snd-syn-icmp-hard-error-host-prohibited-ipv4.pkt \
-                  snd-syn-icmp-hard-error-comm-prohibited-ipv4.pkt \
-                  snd-syn-icmp-hard-error-ttl-exceeded-ipv4.pkt \
-                  snd-syn-icmp-hard-error-ignored-ipv4.pkt )
+                  snd-syn/snd-syn-icmp-hard-error-proto-unreachable-ipv4 \
+                  snd-syn/snd-syn-icmp-hard-error-proto-unreachable-ipv6 \
+                  snd-syn/snd-syn-icmp-hard-error-port-unreachable-ipv4 \
+                  snd-syn/snd-syn-icmp-hard-error-port-unreachable-ipv6 \
+                  snd-syn/snd-syn-icmp-hard-error-net-prohibited-ipv4 \
+                  snd-syn/snd-syn-icmp-hard-error-host-prohibited-ipv4 \
+                  snd-syn/snd-syn-icmp-hard-error-comm-prohibited-ipv4 \
+                  snd-syn/snd-syn-icmp-hard-error-comm-prohibited-ipv6 \
+                  snd-syn/snd-syn-icmp-hard-error-ttl-exceeded-ipv4 \
+                  snd-syn/snd-syn-icmp-hard-error-ttl-exceeded-ipv6 \
+                  snd-syn/snd-syn-icmp-hard-error-ignored-ipv4 )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0
@@ -54,10 +58,10 @@ set run = 0
 set skipped = 0
 set first = 1
 
-printf "Name                                        Verdict\n"
-printf "===================================================\n"
+printf "Name                                                  Verdict\n"
+printf "=============================================================\n"
 foreach testcase ($testcases)
-  printf "%-40.40s " `/usr/bin/basename $testcase`
+  printf "%-50.50s " `/usr/bin/basename $testcase`
   if ($first == 0) then
     if ($delay != 0) then
       printf "\033[33m%10s\033[0m" "WAITING"
