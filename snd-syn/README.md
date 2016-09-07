@@ -58,4 +58,4 @@ The following table shows the status of the tests:
    [RFC1122](https://tools.ietf.org/html/rfc1122#section-4.2.3.9).
 4. The recepiton is handled by FreeBSD as a hard error, allthough specified in
    [RFC1122](https://tools.ietf.org/html/rfc1122#section-4.2.3.9) as a soft error.
-5. The TCP connection stays alive.
+5. The TCP connection stays alive. This should not be the case since [r303626](https://svnweb.freebsd.org/base?view=revision&revision=303626) ([D7272](https://reviews.freebsd.org/D7272)).
