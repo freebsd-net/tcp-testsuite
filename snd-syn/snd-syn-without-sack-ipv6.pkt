@@ -43,4 +43,5 @@
 + 3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 9500 ecr 0>
 + 3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 12700 ecr 0>
 // Finally cleanup
- 16.00 close(3) = 0
+ 16.00 `sysctl -w net.inet.tcp.sack.enable=1`
++ 0.00 close(3) = 0
