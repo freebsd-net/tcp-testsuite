@@ -1,0 +1,46 @@
+//
+// Copyright (c) 2016 Michael Tuexen
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// 1. Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+// OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+// HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+// LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+// OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+// SUCH DAMAGE.
+//
+
+// Ensure that TCP SYN segments gets transmitted and retransmitted
+// without the TCP option indicating SACK support.
+
+--ip_version=ipv6
+--tolerance_usecs=50000
+
+  0.00 `sysctl -w net.inet.tcp.sack.enable=0`
+// Create a blocking TCP/IPv6 socket
++ 0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
+// Limit the retransmissions of the SYN segment to 15 seconds.
++ 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [15], 4) = 0
+// Try to establish a TCP connection.
+  0.00...15.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
++ 0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 100 ecr 0>
++ 3.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 3100 ecr 0>
++ 3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 6300 ecr 0>
++ 3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 9500 ecr 0>
++ 3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 12700 ecr 0>
+// Finally cleanup
+ 16.00 close(3) = 0
