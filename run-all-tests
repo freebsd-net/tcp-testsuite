@@ -54,7 +54,11 @@ set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
                   snd-syn/snd-syn-without-sack-ipv4.pkt \
                   snd-syn/snd-syn-without-sack-ipv6.pkt \
                   snd-syn/snd-syn-without-ws-and-ts-ipv4.pkt \
-                  snd-syn/snd-syn-without-ws-and-ts-ipv6.pkt )
+                  snd-syn/snd-syn-without-ws-and-ts-ipv6.pkt \
+                  snd-syn/snd-syn-with-ecn-ipv4.pkt \
+                  snd-syn/snd-syn-with-ecn-ipv6.pkt \
+                  snd-syn/snd-syn-with-ecn-alt-maxretries-ipv4.pkt \
+                  snd-syn/snd-syn-with-ecn-alt-maxretries-ipv6.pkt )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0
