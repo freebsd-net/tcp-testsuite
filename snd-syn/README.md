@@ -65,6 +65,7 @@ The following table shows the status of the tests:
 1. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPINIT`, the value 0 instead of the actual
    value used is returned when the default value inherited from the sysctl variable `net.inet.tcp.keepinit` is used.
    A similar bug exists for using `getsockopt()` with the name `TCP_KEEPIDLE`, `TCP_KEEPINTVL`, and `TCP_KEEPCNT`.
+   A fix for this is under review: [D7833](https://reviews.freebsd.org/D7833).
 2. The sysctl variable `net.inet.tcp.rexmit_drop_options` is not described in the `TCP(4)` man page. The description
    of the sysctl variable (when displayed with `sysctl -d net.inet.tcp.rexmit_drop_options` states that no options
    will be used from the third and later retransmits of the SYN-segment. However, the MSS option is not dropped.
