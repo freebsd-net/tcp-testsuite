@@ -6,7 +6,6 @@ and possibly to `CLOSED` again.
 The list of socket options with level `IPPROTO_TCP` affecting this behaviour is:
 * `TCP_KEEPINIT`
 * `TCP_NOOPT`
-* `TCP_MAXSEG`
 
 The list of `sysctl`-variables affecting the sending of SYN-segments is
 * `net.inet.tcp.keepinit`
