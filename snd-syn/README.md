@@ -12,8 +12,6 @@ The list of `sysctl`-variables affecting the sending of SYN-segments is
 * `net.inet.tcp.keepinit`
 * `net.inet.tcp.rexmit_drop_options`
 * `net.inet.tcp.icmp_may_rst`
-* `net.inet.tcp.mssdflt`
-* `net.inet.tcp.v6mssdflt`
 * `net.inet.tcp.sack.enable`
 * `net.inet.tcp.rfc1323`
 * `kern.ipc.maxsockbuf`
