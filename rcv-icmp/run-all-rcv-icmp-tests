@@ -27,18 +27,18 @@
 
 set packetdrill = /usr/local/bin/packetdrill
 set delay = 1
-set testcases = ( rcv-icmp/rcv-syn-icmp-hard-error-proto-unreachable-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-proto-unreachable-ipv6 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-port-unreachable-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-port-unreachable-ipv6 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-net-prohibited-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-host-prohibited-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-comm-prohibited-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-comm-prohibited-ipv6 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-ttl-exceeded-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-ttl-exceeded-ipv6 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-ignored-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-ignored-ipv6 )
+set testcases = ( rcv-icmp-hard-error-proto-unreachable-ipv4 \
+                  rcv-icmp-hard-error-proto-unreachable-ipv6 \
+                  rcv-icmp-hard-error-port-unreachable-ipv4 \
+                  rcv-icmp-hard-error-port-unreachable-ipv6 \
+                  rcv-icmp-hard-error-net-prohibited-ipv4 \
+                  rcv-icmp-hard-error-host-prohibited-ipv4 \
+                  rcv-icmp-hard-error-comm-prohibited-ipv4 \
+                  rcv-icmp-hard-error-comm-prohibited-ipv6 \
+                  rcv-icmp-hard-error-ttl-exceeded-ipv4 \
+                  rcv-icmp-hard-error-ttl-exceeded-ipv6 \
+                  rcv-icmp-hard-error-ignored-ipv4 \
+                  rcv-icmp-hard-error-ignored-ipv6 )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0

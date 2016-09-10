@@ -39,38 +39,38 @@ set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
                   snd-syn/snd-syn-rtx-max-number-ipv6 \
                   snd-syn/snd-syn-rtx-drop-options-ipv4 \
                   snd-syn/snd-syn-rtx-drop-options-ipv6 \
-                  snd-syn/snd-syn-mss-inherited-from-mtu-72-ipv4.pkt \
-                  snd-syn/snd-syn-mss-inherited-from-mtu-9000-ipv4.pkt \
-                  snd-syn/snd-syn-mss-inherited-from-mtu-65535-ipv4.pkt \
-                  snd-syn/snd-syn-mss-inherited-from-mtu-1280-ipv6.pkt \
-                  snd-syn/snd-syn-mss-inherited-from-mtu-9000-ipv6.pkt \
-                  snd-syn/snd-syn-mss-inherited-from-mtu-65535-ipv6.pkt \
-                  snd-syn/snd-syn-without-sack-ipv4.pkt \
-                  snd-syn/snd-syn-without-sack-ipv6.pkt \
-                  snd-syn/snd-syn-without-ws-and-ts-ipv4.pkt \
-                  snd-syn/snd-syn-without-ws-and-ts-ipv6.pkt \
-                  snd-syn/snd-syn-without-sack-and-ws-and-ts-ipv4.pkt \
-                  snd-syn/snd-syn-without-sack-and-ws-and-ts-ipv6.pkt \
-                  snd-syn/snd-syn-with-min-ws-ipv4.pkt \
-                  snd-syn/snd-syn-with-min-ws-ipv6.pkt \
-                  snd-syn/snd-syn-with-max-ws-ipv4.pkt \
-                  snd-syn/snd-syn-with-max-ws-ipv6.pkt \
-                  snd-syn/snd-syn-with-ecn-ipv4.pkt \
-                  snd-syn/snd-syn-with-ecn-ipv6.pkt \
-                  snd-syn/snd-syn-with-ecn-alt-maxretries-ipv4.pkt \
-                  snd-syn/snd-syn-with-ecn-alt-maxretries-ipv6.pkt \
-                  rcv-icmp/rcv-syn-icmp-hard-error-proto-unreachable-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-proto-unreachable-ipv6 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-port-unreachable-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-port-unreachable-ipv6 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-net-prohibited-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-host-prohibited-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-comm-prohibited-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-comm-prohibited-ipv6 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-ttl-exceeded-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-ttl-exceeded-ipv6 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-ignored-ipv4 \
-                  rcv-icmp/rcv-syn-icmp-hard-error-ignored-ipv6 )
+                  snd-syn/snd-syn-mss-inherited-from-mtu-72-ipv4 \
+                  snd-syn/snd-syn-mss-inherited-from-mtu-9000-ipv4 \
+                  snd-syn/snd-syn-mss-inherited-from-mtu-65535-ipv4 \
+                  snd-syn/snd-syn-mss-inherited-from-mtu-1280-ipv6 \
+                  snd-syn/snd-syn-mss-inherited-from-mtu-9000-ipv6 \
+                  snd-syn/snd-syn-mss-inherited-from-mtu-65535-ipv6 \
+                  snd-syn/snd-syn-without-sack-ipv4 \
+                  snd-syn/snd-syn-without-sack-ipv6 \
+                  snd-syn/snd-syn-without-ws-and-ts-ipv4 \
+                  snd-syn/snd-syn-without-ws-and-ts-ipv6 \
+                  snd-syn/snd-syn-without-sack-and-ws-and-ts-ipv4 \
+                  snd-syn/snd-syn-without-sack-and-ws-and-ts-ipv6 \
+                  snd-syn/snd-syn-with-min-ws-ipv4 \
+                  snd-syn/snd-syn-with-min-ws-ipv6 \
+                  snd-syn/snd-syn-with-max-ws-ipv4 \
+                  snd-syn/snd-syn-with-max-ws-ipv6 \
+                  snd-syn/snd-syn-with-ecn-ipv4 \
+                  snd-syn/snd-syn-with-ecn-ipv6 \
+                  snd-syn/snd-syn-with-ecn-alt-maxretries-ipv4 \
+                  snd-syn/snd-syn-with-ecn-alt-maxretries-ipv6 \
+                  rcv-icmp/rcv-icmp-hard-error-proto-unreachable-ipv4 \
+                  rcv-icmp/rcv-icmp-hard-error-proto-unreachable-ipv6 \
+                  rcv-icmp/rcv-icmp-hard-error-port-unreachable-ipv4 \
+                  rcv-icmp/rcv-icmp-hard-error-port-unreachable-ipv6 \
+                  rcv-icmp/rcv-icmp-hard-error-net-prohibited-ipv4 \
+                  rcv-icmp/rcv-icmp-hard-error-host-prohibited-ipv4 \
+                  rcv-icmp/rcv-icmp-hard-error-comm-prohibited-ipv4 \
+                  rcv-icmp/rcv-icmp-hard-error-comm-prohibited-ipv6 \
+                  rcv-icmp/rcv-icmp-hard-error-ttl-exceeded-ipv4 \
+                  rcv-icmp/rcv-icmp-hard-error-ttl-exceeded-ipv6 \
+                  rcv-icmp/rcv-icmp-hard-error-ignored-ipv4 \
+                  rcv-icmp/rcv-icmp-hard-error-ignored-ipv6 )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0
