@@ -19,8 +19,8 @@ The list of socket options with level `IPPROTO_TCP` being tested are:
 |[socket-api-getsockopt-keepinit-inherited-from-sysctl-ipv6](socket-api-getsockopt-keepinit-inherited-from-sysctl-ipv6.pkt "Ensure that the keepinit timeout is inherited from the sysctl variable keepinit")                           | Unknown             | Failed  (Note 3)    |
 |[socket-api-getsockopt-keepintvl-inherited-from-sysctl-ipv4](socket-api-getsockopt-keepintvl-inherited-from-sysctl-ipv4.pkt "Ensure that the keepintvl timeout is inherited from the sysctl variable keepintvl")                       | Unknown             | Failed  (Note 4)    |
 |[socket-api-getsockopt-keepintvl-inherited-from-sysctl-ipv6](socket-api-getsockopt-keepintvl-inherited-from-sysctl-ipv6.pkt "Ensure that the keepintvl timeout is inherited from the sysctl variable keepintvl")                       | Unknown             | Failed  (Note 4)    |
-|[socket-api-getsockopt-tcpinfo-ipv4](socket-api-getsockopt-tcpinfo-ipv4.pkt "Ensure that TCPINFO can be used to get the tcpi_options")                                                                                                 | Unknown             | Passed  (Note 5)    |
-|[socket-api-getsockopt-tcpinfo-ipv6](socket-api-getsockopt-tcpinfo-ipv6.pkt "Ensure that TCPINFO can be used to get the tcpi_options")                                                                                                 | Unknown             | Passed  (Note 5)    |
+|[socket-api-getsockopt-tcpinfo-ipv4](socket-api-getsockopt-tcpinfo-ipv4.pkt "Ensure that TCPINFO can be used to get the tcpi_options")                                                                                                 | Unknown             | Failed  (Note 5)    |
+|[socket-api-getsockopt-tcpinfo-ipv6](socket-api-getsockopt-tcpinfo-ipv6.pkt "Ensure that TCPINFO can be used to get the tcpi_options")                                                                                                 | Unknown             | Failed  (Note 5)    |
 
 ## Notes
 1. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPCNT`, the value 0 instead of the actual
