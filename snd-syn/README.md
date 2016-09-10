@@ -10,7 +10,6 @@ The list of socket options with level `IPPROTO_TCP` affecting this behaviour is:
 The list of `sysctl`-variables affecting the sending of SYN-segments is
 * `net.inet.tcp.keepinit`
 * `net.inet.tcp.rexmit_drop_options`
-* `net.inet.tcp.icmp_may_rst`
 * `net.inet.tcp.sack.enable`
 * `net.inet.tcp.rfc1323`
 * `kern.ipc.maxsockbuf`
@@ -33,24 +32,12 @@ The following table shows the status of the tests:
 |[snd-syn-rtx-max-number-ipv6](snd-syn-rtx-max-number-ipv6.pkt "Ensure that the maximum number is honored when limiting the retransmissions of SYN-segments")                                                                           | Unknown             | Passed              |
 |[snd-syn-rtx-drop-options-ipv4](snd-syn-rtx-drop-options-ipv4.pkt "Ensure that the options are dropped when the sysctl variable rexmit_drop_options is 1")                                                                             | Unknown             | Passed  (Note 2)    |
 |[snd-syn-rtx-drop-options-ipv6](snd-syn-rtx-drop-options-ipv6.pkt "Ensure that the options are dropped when the sysctl variable rexmit_drop_options is 1")                                                                             | Unknown             | Passed  (Note 2)    |
-|[snd-syn-icmp-hard-error-proto-unreachable-ipv4](snd-syn-icmp-hard-error-proto-unreachable-ipv4.pkt "Ensure that reception of ICMP Protocol Unreachable message is a hard error when the sysctl variable icmp_may_rst is 1")           | Unknown             | Passed              |
-|[snd-syn-icmp-hard-error-proto-unreachable-ipv6](snd-syn-icmp-hard-error-proto-unreachable-ipv6.pkt "Ensure that reception of ICMP Protocol Unreachable message is a hard error when the sysctl variable icmp_may_rst is 1")           | Unknown             | Failed  (Note 5)    |
-|[snd-syn-icmp-hard-error-port-unreachable-ipv4](snd-syn-icmp-hard-error-port-unreachable-ipv4.pkt "Ensure that reception of ICMP Port Unreachable message is a hard error when the sysctl variable icmp_may_rst is 1")                 | Unknown             | Passed              |
-|[snd-syn-icmp-hard-error-port-unreachable-ipv6](snd-syn-icmp-hard-error-port-unreachable-ipv6.pkt "Ensure that reception of ICMP Port Unreachable message is a hard error when the sysctl variable icmp_may_rst is 1")                 | Unknown             | Passed              |
-|[snd-syn-icmp-hard-error-net-prohibited-ipv4](snd-syn-icmp-hard-error-net-prohibited-ipv4.pkt "Ensure that reception of ICMP Comm. Dest. Net Adm. Prohibited message is a hard error when the sysctl variable icmp_may_rst is 1")      | Unknown             | Passed  (Note 3)    |
-|[snd-syn-icmp-hard-error-host-prohibited-ipv4](snd-syn-icmp-hard-error-host-prohibited-ipv4.pkt "Ensure that reception of ICMP Comm. Dest. Host Adm. Prohibited message is a hard error when the sysctl variable icmp_may_rst is 1")   | Unknown             | Passed  (Note 3)    |
-|[snd-syn-icmp-hard-error-comm-prohibited-ipv4](snd-syn-icmp-hard-error-comm-prohibited-ipv4.pkt "Ensure that reception of ICMP Comm. Adm. Prohibited message is a hard error when the sysctl variable icmp_may_rst is 1")              | Unknown             | Passed  (Note 3)    |
-|[snd-syn-icmp-hard-error-comm-prohibited-ipv6](snd-syn-icmp-hard-error-comm-prohibited-ipv6.pkt "Ensure that reception of ICMP Comm. Adm. Prohibited message is a hard error when the sysctl variable icmp_may_rst is 1")              | Unknown             | Failed  (Note 5)    |
-|[snd-syn-icmp-hard-error-ttl-exceeded-ipv4](snd-syn-icmp-hard-error-ttl-exceeded-ipv4.pkt "Ensure that reception of ICMP TTL Exceeded in Transit message is a hard error when the sysctl variable icmp_may_rst is 1")                  | Unknown             | Passed  (Note 4)    |
-|[snd-syn-icmp-hard-error-ttl-exceeded-ipv6](snd-syn-icmp-hard-error-ttl-exceeded-ipv6.pkt "Ensure that reception of ICMP TTL Exceeded in Transit message is a hard error when the sysctl variable icmp_may_rst is 1")                  | Unknown             | Failed  (Note 5)    |
-|[snd-syn-icmp-hard-error-ignored-ipv4](snd-syn-icmp-hard-error-ignored-ipv4.pkt "Ensure that reception of any ICMP message does not result in a hard error when the sysctl variable icmp_may_rst is 0")                                | Unknown             | Passed  (Note 6)    |
-|[snd-syn-icmp-hard-error-ignored-ipv6](snd-syn-icmp-hard-error-ignored-ipv6.pkt "Ensure that reception of any ICMP message does not result in a hard error when the sysctl variable icmp_may_rst is 0")                                | Unknown             | Passed  (Note 6)    |
 |[snd-syn-mss-inherited-from-mtu-72-ipv4](snd-syn-mss-inherited-from-mtu-72-ipv4.pkt "Ensure that the MSS option inherits the appropriate value from an interface MTU of 72 bytes")                                                     | Unknown             | Passed              |
 |[snd-syn-mss-inherited-from-mtu-9000-ipv4](snd-syn-mss-inherited-from-mtu-9000-ipv4.pkt "Ensure that the MSS option inherits the appropriate value from an interface MTU of 9000 bytes")                                               | Unknown             | Passed              |
 |[snd-syn-mss-inherited-from-mtu-65535-ipv4](snd-syn-mss-inherited-from-mtu-65535-ipv4.pkt "Ensure that the MSS option inherits the appropriate value from an interface MTU of 65535 bytes")                                            | Unknown             | Passed              |
 |[snd-syn-mss-inherited-from-mtu-72-ipv6](snd-syn-mss-inherited-from-mtu-72-ipv6.pkt "Ensure that the MSS option inherits the appropriate value from an interface MTU of 72 bytes")                                                     | Unknown             | Passed              |
 |[snd-syn-mss-inherited-from-mtu-9000-ipv6](snd-syn-mss-inherited-from-mtu-9000-ipv6.pkt "Ensure that the MSS option inherits the appropriate value from an interface MTU of 9000 bytes")                                               | Unknown             | Passed              |
-|[snd-syn-mss-inherited-from-mtu-65535-ipv6](snd-syn-mss-inherited-from-mtu-65535-ipv6.pkt "Ensure that the MSS option inherits the appropriate value from an interface MTU of 65535 bytes")                                            | Unknown             | Failed  (Note 7)    |
+|[snd-syn-mss-inherited-from-mtu-65535-ipv6](snd-syn-mss-inherited-from-mtu-65535-ipv6.pkt "Ensure that the MSS option inherits the appropriate value from an interface MTU of 65535 bytes")                                            | Unknown             | Failed  (Note 3)    |
 |[snd-syn-without-sack-ipv4](snd-syn-without-sack-ipv4.pkt "Ensure that the option indicating SACK support is not included when the sysctl variable sack.enable is 0")                                                                  | Unknown             | Passed              |
 |[snd-syn-without-sack-ipv6](snd-syn-without-sack-ipv6.pkt "Ensure that the option indicating SACK support is not included when the sysctl variable sack.enable is 0")                                                                  | Unknown             | Passed              |
 |[snd-syn-without-ws-and-ts-ipv4](snd-syn-without-ws-and-ts-ipv4.pkt "Ensure that the options indicating window scaling and time stamp support are not included when the sysctl variable rfc1323 is 0")                                 | Unknown             | Passed              |
@@ -75,10 +62,4 @@ The following table shows the status of the tests:
    of the sysctl variable (when displayed with `sysctl -d net.inet.tcp.rexmit_drop_options` states that no options
    will be used from the third and later retransmits of the SYN-segment. However, the MSS option is not dropped.
    Either change the code or change the documentation and add an entry to the man page.
-3. The reception is handled by FreeBSD as a hard error, allthough neither specified as a soft or hard error
-   [RFC1122](https://tools.ietf.org/html/rfc1122#section-4.2.3.9).
-4. The reception is handled by FreeBSD as a hard error, allthough specified in
-   [RFC1122](https://tools.ietf.org/html/rfc1122#section-4.2.3.9) as a soft error.
-5. The TCP connection stays alive. This should not be the case since [r303626](https://svnweb.freebsd.org/base?view=revision&revision=303626) ([D7272](https://reviews.freebsd.org/D7272)).
-6. An incoming PTB packet results in an adapted MSS for IPv6, but not for IPv4.
-7. The MSS is based on an MTU of 9000 bytes.
+3. The MSS is based on an MTU of 9000 bytes.
