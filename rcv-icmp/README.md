@@ -1,11 +1,13 @@
 # Tests for handling ICMP Messages
 
+##Description
+
 This set of tests focuses on the handling of ICMP messages in the `SYN-SENT` state.
 
 The list of `sysctl`-variables affecting the sending of SYN-segments is
 * `net.inet.tcp.icmp_may_rst`
 
-The following table shows the status of the tests:
+## Status
 
 | Name                                                                                                                                                                                                                                  | Result FreeBSD 11.0 | Result FreeBSD Head |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------:|:-------------------:|
@@ -22,6 +24,7 @@ The following table shows the status of the tests:
 |[rcv-icmp-hard-error-ignored-ipv4](rcv-icmp-hard-error-ignored-ipv4.pkt "Ensure that reception of any ICMP message does not result in a hard error when the sysctl variable icmp_may_rst is 0")                                | Unknown             | Passed  (Note 4)    |
 |[rcv-icmp-hard-error-ignored-ipv6](rcv-icmp-hard-error-ignored-ipv6.pkt "Ensure that reception of any ICMP message does not result in a hard error when the sysctl variable icmp_may_rst is 0")                                | Unknown             | Passed  (Note 4)    |
 
+## Notes
 1. The reception is handled by FreeBSD as a hard error, allthough neither specified as a soft or hard error
    [RFC1122](https://tools.ietf.org/html/rfc1122#section-4.2.3.9).
 2. The reception is handled by FreeBSD as a hard error, allthough specified in
