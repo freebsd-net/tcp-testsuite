@@ -1,5 +1,6 @@
 # Tests for Sending TCP Segments Having the SYN-bit Set
 
+## Description
 This set of tests focuses on the sending of SYN-segments moving to state of the TCP connection from `CLOSED` to `SYN-SENT`
 and possibly to `CLOSED` again.
 
@@ -16,7 +17,7 @@ The list of `sysctl`-variables affecting the sending of SYN-segments is
 * `net.inet.tcp.ecn.enable`
 * `net.inet.tcp.ecn.maxretries`
 
-The following table shows the status of the tests:
+## Status
 
 | Name                                                                                                                                                                                                                                  | Result FreeBSD 11.0 | Result FreeBSD Head |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------:|:-------------------:|
@@ -51,7 +52,7 @@ The following table shows the status of the tests:
 |[snd-syn-with-ecn-alt-maxretries-ipv4](snd-syn-with-ecn-alt-maxretries-ipv4.pkt "Ensure that ECN support is signalled when the sysctl variable ecn.enable is 2 and ecn.maxretries is honored")                                         | Unknown             | Passed              |
 |[snd-syn-with-ecn-alt-maxretries-ipv6](snd-syn-with-ecn-alt-maxretries-ipv6.pkt "Ensure that ECN support is signalled when the sysctl variable ecn.enable is 2 and ecn.maxretries is honored")                                         | Unknown             | Passed              |
 
-# Notes
+## Notes
 1. The sysctl variable `net.inet.tcp.rexmit_drop_options` is not described in the `TCP(4)` man page. The description
    of the sysctl variable (when displayed with `sysctl -d net.inet.tcp.rexmit_drop_options` states that no options
    will be used from the third and later retransmits of the SYN-segment. However, the MSS option is not dropped.
