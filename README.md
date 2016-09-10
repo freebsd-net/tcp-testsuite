@@ -12,11 +12,11 @@ and overcomes this limitation and adds support for SCTP and UDPLite.
 To run all test scripts, execute the `tcsh` script `run-all-tests` with root priviledges.
 
 ## Structure of the Testsuite
-| Test Group                                                                     | Number of Test Scripts |
-|:-------------------------------------------------------------------------------|:----------------------:|
-| [Sending of SYN-Segments](snd-syn/README.md)                                   | 32                     |
-| [Handling of ICMP Messages](rcv-icmp/README.md)                                | 12                     |
-| [Socket API](socket-api/README.md)                                             | 2                      |
+| Test Group                                                                     | Number of Test Scripts | Status
+|:-------------------------------------------------------------------------------|:----------------------:|:-----------:|
+| [Sending of SYN-Segments](snd-syn/README.md)                                   | 32                     | Done        |
+| [Handling of ICMP Messages](rcv-icmp/README.md)                                | 12                     | In Progress |
+| [Socket API](socket-api/README.md)                                             | 2                      | In Progress |
 
 ## FreeBSD Fixes
 * [D7833](https://reviews.freebsd.org/D7833).
@@ -33,4 +33,3 @@ This work is sponsored by Netflix, Inc.
 * [RFC 5461: *TCP's Reaction to Soft Errors*](https://tools.ietf.org/html/rfc5461)
 * [RFC 5927: *ICMP Attacks against TCP*](https://tools.ietf.org/html/rfc5927)
 * [RFC 6429: *TCP Sender Clarification for Persist Condition*](https://tools.ietf.org/html/rfc6429)
-
