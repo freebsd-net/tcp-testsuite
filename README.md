@@ -9,6 +9,7 @@ However, this version does not really run on FreeBSD.
 An extended version is available from [NPLab's respository](https://github.com/nplab/packetdrill)
 and overcomes this limitation and adds support for SCTP and UDPLite.
 
+## Usage
 To run all test scripts, execute the `tcsh` script `run-all-tests` with root priviledges.
 
 ## Structure of the Testsuite
