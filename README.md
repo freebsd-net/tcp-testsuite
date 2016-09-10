@@ -18,6 +18,12 @@ To run all test scripts, execute the `tcsh` script `run-all-tests` with root pri
 | [Handling of ICMP Messages](rcv-icmp/README.md)                                | 12                     |
 | [Socket API](socket-api/README.md)                                             | 2                      |
 
+## FreeBSD Fixes
+* [D7833](https://reviews.freebsd.org/D7833).
+
+## Acknowledgement
+This work is sponsored by Netflix, Inc.
+
 ## References
 * [RFC 0793: *Transmission Control Protocol*](https://tools.ietf.org/html/rfc0793)
 * [RFC 1122: *Requirements for Internet Hosts -- Communication Layers*](https://tools.ietf.org/html/rfc1122)
@@ -28,5 +34,3 @@ To run all test scripts, execute the `tcsh` script `run-all-tests` with root pri
 * [RFC 5927: *ICMP Attacks against TCP*](https://tools.ietf.org/html/rfc5927)
 * [RFC 6429: *TCP Sender Clarification for Persist Condition*](https://tools.ietf.org/html/rfc6429)
 
-## Acknowledgement
-This work is sponsored by Netflix, Inc.
