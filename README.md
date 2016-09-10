@@ -14,9 +14,9 @@ To run all test scripts, execute the `tcsh` script `run-all-tests` with root pri
 ## Structure of the Testsuite
 | Test Group                                                                     | Number of Test Scripts | Status
 |:-------------------------------------------------------------------------------|:----------------------:|:-----------:|
-| [Sending of SYN-Segments](snd-syn/README.md)                                   | 32                     | Done        |
+| [Sending of SYN-Segments](snd-syn/README.md)                                   | 30                     | Done        |
 | [Handling of ICMP Messages](rcv-icmp/README.md)                                | 12                     | In Progress |
-| [Socket API](socket-api/README.md)                                             | 2                      | In Progress |
+| [Socket API](socket-api/README.md)                                             | 10                     | In Progress |
 
 ## FreeBSD Fixes
 * [D7833](https://reviews.freebsd.org/D7833).
