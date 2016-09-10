@@ -61,6 +61,8 @@ set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
                   snd-syn/snd-syn-without-sack-ipv6.pkt \
                   snd-syn/snd-syn-without-ws-and-ts-ipv4.pkt \
                   snd-syn/snd-syn-without-ws-and-ts-ipv6.pkt \
+                  snd-syn/snd-syn-without-sack-and-ws-and-ts-ipv4.pkt \
+                  snd-syn/snd-syn-without-sack-and-ws-and-ts-ipv6.pkt \
                   snd-syn/snd-syn-with-min-ws-ipv4.pkt \
                   snd-syn/snd-syn-with-min-ws-ipv6.pkt \
                   snd-syn/snd-syn-with-max-ws-ipv4.pkt \
