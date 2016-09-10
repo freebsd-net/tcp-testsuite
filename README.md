@@ -11,11 +11,11 @@ and overcomes this limitation and adds support for SCTP and UDPLite.
 
 To run all test scripts, execute the `tcsh` script `run-all-tests` with root priviledges.
 
-## Strucuture of the Testsuite
+## Structure of the Testsuite
 | Test Group                                                                     | Number of Test Scripts |
 |:-------------------------------------------------------------------------------|:----------------------:|
 | [Sending of SYN-Segments](snd-syn/README.md)                                   | 32                     |
-| [Handling of ICMP Meassages](rcv-icmp/README.md)                               | 12                     |
+| [Handling of ICMP Messages](rcv-icmp/README.md)                                | 12                     |
 | [Socket API](socket-api/README.md)                                             | 2                      |
 
 ## References
