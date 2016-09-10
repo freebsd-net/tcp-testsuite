@@ -39,7 +39,7 @@
 + 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [15], 4) = 0
 // Try to establish a TCP connection.
   0.00...15.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
-+ 0.00 > S  0:0(0) win 65535 <mss 1460ß>
++ 0.00 > S  0:0(0) win 65535 <mss 1460>
 + 3.00 > S  0:0(0) win 65535 <mss 1460>
 + 3.20 > S  0:0(0) win 65535 <mss 1460>
 + 3.20 > S  0:0(0) win 65535 <mss 1460>
