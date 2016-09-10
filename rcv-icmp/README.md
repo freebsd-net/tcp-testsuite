@@ -1,4 +1,4 @@
-# Tests for handling ICMP Messages
+# Tests for Handling ICMP Messages
 
 ##Description
 
