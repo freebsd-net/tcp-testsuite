@@ -1,1 +1,1 @@
-# Handling the Recpetion of TCP Segments with the SYN-bit Set
+# Handling the Reception of TCP Segments with the SYN-bit Set
