@@ -16,7 +16,7 @@ To run all test scripts, execute the `tcsh` script `run-all-tests` with root pri
 | Test Group                                                                     | Number of Test Scripts | Status
 |:-------------------------------------------------------------------------------|:----------------------:|:-----------:|
 | [Sending of SYN-Segments](snd-syn/README.md)                                   | 30                     | Done        |
-| [Handling of SYN-Segments](rcv-syn/README.md                                   | 0                      | In Progress |
+| [Handling of SYN-Segments](rcv-syn/README.md)                                  | 0                      | In Progress |
 | [Handling of ICMP Messages](rcv-icmp/README.md)                                | 12                     | In Progress |
 | [Socket API](socket-api/README.md)                                             | 10                     | In Progress |
 
