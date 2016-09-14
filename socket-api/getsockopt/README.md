@@ -1,7 +1,7 @@
 # Tests for getsockopt()
 
 ## Description
-The list of socket options with level `IPPROTO_TCP` being tested are:
+The list of socket options with level `IPPROTO_TCP` being tested is:
 * `TCP_KEEPCNT`
 * `TCP_KEEPIDLE`
 * `TCP_KEEPINIT`
