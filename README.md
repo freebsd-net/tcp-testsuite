@@ -21,7 +21,7 @@ To run all test scripts, execute the `tcsh` script `run-all-tests` with root pri
 | [Socket API](socket-api/README.md)                                             | 10                     | In Progress |
 
 ## FreeBSD Fixes
-* [D7833](https://reviews.freebsd.org/D7833).
+* [r305810](https://svnweb.freebsd.org/changeset/base/305810) ([D7833](https://reviews.freebsd.org/D7833)).
 
 ## Acknowledgement
 This work is sponsored by Netflix, Inc.
