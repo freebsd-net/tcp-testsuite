@@ -1,7 +1,7 @@
 # Tests for Sending TCP Segments Having the SYN-bit Set
 
 ## Description
-This set of tests focuses on the sending of SYN-segments moving to state of the TCP connection from `CLOSED` to `SYN-SENT`
+This set of tests focuses on the sending of SYN-segments moving the state of the TCP connection from `CLOSED` to `SYN-SENT`
 and possibly to `CLOSED` again.
 
 The list of socket options with level `IPPROTO_TCP` affecting this behaviour is:
