@@ -33,6 +33,8 @@ This work is sponsored by Netflix, Inc.
 * [RFC 1323: *TCP Extensions for High Performance*](https://tools.ietf.org/html/rfc1323)
 * [RFC 2018: *TCP Selective Acknowledgment Options*](https://tools.ietf.org/html/rfc2018)
 * [RFC 2883: *An Extension to the Selective Acknowledgement (SACK) Option for TCP*](https://tools.ietf.org/html/rfc2883)
+* [RFC 4953: *Defending TCP Against Spoofing Attacks*](https://tools.ietf.org/html/rfc4953)
 * [RFC 5461: *TCP's Reaction to Soft Errors*](https://tools.ietf.org/html/rfc5461)
 * [RFC 5927: *ICMP Attacks against TCP*](https://tools.ietf.org/html/rfc5927)
+* [RFC 5961: *Improving TCP's Robustness to Blind In-Window Attacks*](https://tools.ietf.org/html/rfc5961)
 * [RFC 6429: *TCP Sender Clarification for Persist Condition*](https://tools.ietf.org/html/rfc6429)
