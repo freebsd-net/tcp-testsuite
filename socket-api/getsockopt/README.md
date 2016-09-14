@@ -25,15 +25,15 @@ The list of socket options with level `IPPROTO_TCP` being tested is:
 ## Notes
 1. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPCNT`, the value 0 instead of the actual
    value used is returned when the default value inherited from the sysctl variable `net.inet.tcp.keepcnt` is used.
-   A fix for this is under review: [D7833](https://reviews.freebsd.org/D7833).
+   This was fixed in [r305810](305810) ([D7833](https://reviews.freebsd.org/D7833)).
 2. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPIDLE`, the value 0 instead of the actual
    value used is returned when the default value inherited from the sysctl variable `net.inet.tcp.keepidle` is used.
-   A fix for this is under review: [D7833](https://reviews.freebsd.org/D7833).
+   This was fixed in [r305810](305810) ([D7833](https://reviews.freebsd.org/D7833)).
 3. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPINIT`, the value 0 instead of the actual
    value used is returned when the default value inherited from the sysctl variable `net.inet.tcp.keepinit` is used.
-   A fix for this is under review: [D7833](https://reviews.freebsd.org/D7833).
+   This was fixed in [r305810](305810) ([D7833](https://reviews.freebsd.org/D7833)).
 4. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_KEEPINTVL`, the value 0 instead of the actual
    value used is returned when the default value inherited from the sysctl variable `net.inet.tcp.keepintvl` is used.
-   A fix for this is under review: [D7833](https://reviews.freebsd.org/D7833).
+   This was fixed in [r305810](305810) ([D7833](https://reviews.freebsd.org/D7833)).
 5. When using `getsockopt()` with the level `IPPROTO_TCP` and name `TCP_INFO`, `TCPI_OPT_ECN` is not set in `tcpi_options`.
-   A fix for this is under review: [D7833](https://reviews.freebsd.org/D7833).
+   This was fixed in [r305810](305810) ([D7833](https://reviews.freebsd.org/D7833)).
