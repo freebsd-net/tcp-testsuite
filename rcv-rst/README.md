@@ -6,6 +6,7 @@ either to `CLOSED` or leaves it untouched.
 The behavior is described in [RFC 0793](https://tools.ietf.org/html/rfc0793) or
 [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3) and selected by the
 `sysctl`-variable `net.inet.tcp.insecure_rst`.
+The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3).
 
 ## Status
 
