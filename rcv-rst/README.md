@@ -16,3 +16,4 @@ The list of `sysctl`-variables affecting the handling of RST-segments is
 |[rcv-rst-closed-ipv4](rcv-rst-closed.pkt "Test the handling in CLOSED state")                                                                                                                                                          | Unknown             | Unknown             |
 
 ## Notes
+1. A description of the `systcl`-variable `net.inet.tcp.insecure_rst` is missing in `man 4 tcp`.
