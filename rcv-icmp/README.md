@@ -25,7 +25,7 @@ The list of `sysctl`-variables affecting the sending of SYN-segments is
 |[rcv-icmp-hard-error-ignored-ipv6](rcv-icmp-hard-error-ignored-ipv6.pkt "Ensure that reception of any ICMP message does not result in a hard error when the sysctl variable icmp_may_rst is 0")                                | Unknown             | Passed  (Note 4)    |
 
 ## Notes
-1. The TCP connection stays alive. This should not be the case since [r303626](https://svnweb.freebsd.org/base?view=revision&revision=303626) ([D7272](https://reviews.freebsd.org/D7272)).
+1. The TCP connection stays alive. This should not be the case since [r303626](https://svnweb.freebsd.org/base?view=revision&revision=303626) ([D7272](https://reviews.freebsd.org/D7272)). Fix under review: [D7904](https://reviews.freebsd.org/D7904).
 2. The reception is handled by FreeBSD as a hard error, allthough neither specified as a soft or hard error
    [RFC1122](https://tools.ietf.org/html/rfc1122#section-4.2.3.9).
 3. The reception is handled by FreeBSD as a hard error, allthough specified in
