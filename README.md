@@ -23,6 +23,7 @@ To run all test scripts, execute the `tcsh` script `run-all-tests` with root pri
 
 ## FreeBSD Fixes
 * [r305810](https://svnweb.freebsd.org/changeset/base/305810) ([D7833](https://reviews.freebsd.org/D7833)).
+* Under review: [D7904](https://reviews.freebsd.org/D7904).
 
 ## Acknowledgement
 This work is sponsored by Netflix, Inc.
