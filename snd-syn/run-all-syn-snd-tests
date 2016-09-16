@@ -103,7 +103,7 @@ foreach testcase ($testcases)
     @ skipped++
   endif
 end
-printf "===================================================\n"
+printf "=============================================================\n"
 printf "Summary: Number of tests run:     %3u\n" $run
 printf "         Number of tests passed:  %3u\n" $passed
 printf "         Number of tests failed:  %3u\n" $failed
