@@ -31,8 +31,6 @@ set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
                   snd-syn/snd-syn-with-default-options-ipv6 \
                   snd-syn/snd-syn-without-options-ipv4 \
                   snd-syn/snd-syn-without-options-ipv6 \
-                  snd-syn/snd-syn-keepinit-inherited-from-sysctl-ipv4 \
-                  snd-syn/snd-syn-keepinit-inherited-from-sysctl-ipv6 \
                   snd-syn/snd-syn-rtx-keepinit-ipv4 \
                   snd-syn/snd-syn-rtx-keepinit-ipv6 \
                   snd-syn/snd-syn-rtx-max-number-ipv4 \
