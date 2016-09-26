@@ -152,5 +152,7 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
 ## Notes
 1. The `systcl`-variable `net.inet.tcp.insecure_rst` is not described in `man 4 tcp`.
 2. The text in [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3.2) specifying
-   outside the window should read `(SEG.SEQ < RCV.NXT || SEG.SEQ >= RCV.NXT + RCV.WND)`
-   instead of `(SEG.SEQ <= RCV.NXT || SEG.SEQ > RCV.NXT + RCV.WND)`.
+   `outside the current receive window` should read
+   `(SEG.SEQ < RCV.NXT || SEG.SEQ >= RCV.NXT + RCV.WND)`
+   instead of
+   `(SEG.SEQ <= RCV.NXT || SEG.SEQ > RCV.NXT + RCV.WND)`.
