@@ -15,7 +15,11 @@ You can get the testsuite by running
 git clone https://github.com/tuexen/tcp-testsuite.git
 ```
 ## Usage
-To run all test scripts, execute the `tcsh` script `tcp-testsuite/run-all-tests` with root priviledges.
+To run all test scripts, execute
+```
+sudo tcp-testsuite/run-all-tests
+```
+which runs the `tcsh` script `tcp-testsuite/run-all-tests` with root priviledges.
 
 ## Structure of the Testsuite
 | Test Group                                                                     | Number of Test Scripts | Status
