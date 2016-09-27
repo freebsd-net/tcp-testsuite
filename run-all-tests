@@ -141,16 +141,16 @@ set testcases = ( snd-syn/snd-syn-with-default-options-ipv4 \
                   rcv-rst/rcv-rst-closed-insecure-ipv6 \
                   rcv-rst/rcv-rst-listen-insecure-ipv4 \
                   rcv-rst/rcv-rst-listen-insecure-ipv6 \
-                  rcv-rst/rcv-rst-established-outside-left-insecure-ipv4 \
-                  rcv-rst/rcv-rst-established-outside-left-insecure-ipv6 \
+                  rcv-rst/rcv-rst-syn-sent-outside-left-insecure-ipv4 \
+                  rcv-rst/rcv-rst-syn-sent-outside-left-insecure-ipv6 \
                   rcv-rst/rcv-rst-syn-sent-left-edge-insecure-ipv4 \
                   rcv-rst/rcv-rst-syn-sent-left-edge-insecure-ipv6 \
                   rcv-rst/rcv-rst-syn-sent-right-edge-insecure-ipv4 \
                   rcv-rst/rcv-rst-syn-sent-right-edge-insecure-ipv6 \
                   rcv-rst/rcv-rst-syn-sent-outside-right-insecure-ipv4 \
                   rcv-rst/rcv-rst-syn-sent-outside-right-insecure-ipv6 \
-                  rcv-rst/rcv-rst-established-outside-left-insecure-ipv4 \
-                  rcv-rst/rcv-rst-established-outside-left-insecure-ipv6 \
+                  rcv-rst/rcv-rst-syn-received-outside-left-insecure-ipv4 \
+                  rcv-rst/rcv-rst-syn-received-outside-left-insecure-ipv6 \
                   rcv-rst/rcv-rst-syn-received-left-edge-insecure-ipv4 \
                   rcv-rst/rcv-rst-syn-received-left-edge-insecure-ipv6 \
                   rcv-rst/rcv-rst-syn-received-right-edge-insecure-ipv4 \
