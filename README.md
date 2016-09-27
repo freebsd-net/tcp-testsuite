@@ -9,8 +9,17 @@ However, this version does not really run on FreeBSD.
 An extended version is available from [NPLab's respository](https://github.com/nplab/packetdrill)
 and overcomes this limitation and adds support for SCTP and UDPLite.
 
+## Installation
+You can get the testsuite by running
+```
+git clone https://github.com/tuexen/tcp-testsuite.git
+```
 ## Usage
-To run all test scripts, execute the `tcsh` script `run-all-tests` with root priviledges.
+To run all test scripts, execute
+```
+sudo tcp-testsuite/run-all-tests
+```
+which runs the `tcsh` script `tcp-testsuite/run-all-tests` with root priviledges.
 
 ## Structure of the Testsuite
 | Test Group                                                                     | Number of Test Scripts | Status
