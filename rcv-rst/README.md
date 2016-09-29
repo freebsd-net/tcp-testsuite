@@ -156,4 +156,5 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
    `(SEG.SEQ < RCV.NXT || SEG.SEQ >= RCV.NXT + RCV.WND)`
    instead of
    `(SEG.SEQ <= RCV.NXT || SEG.SEQ > RCV.NXT + RCV.WND)`.
-3. In `CLOSING` after receipt of an acceptable RST-segment the `SO_ERROR` socket options returns 0 instead of `ECONNRESET`. 
+3. In `CLOSING` or `LAST-ACK` after receipt of an acceptable RST-segment the `SO_ERROR` socket options returns 0 instead of
+   `ECONNRESET` (the same works in `CLOSE-WAIT`). 
