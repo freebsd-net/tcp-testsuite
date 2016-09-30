@@ -41,6 +41,7 @@ This work is sponsored by Netflix, Inc.
 * [RFC 0793: *Transmission Control Protocol*](https://tools.ietf.org/html/rfc0793)
 * [RFC 1122: *Requirements for Internet Hosts -- Communication Layers*](https://tools.ietf.org/html/rfc1122)
 * [RFC 1323: *TCP Extensions for High Performance*](https://tools.ietf.org/html/rfc1323)
+* [RFC 1337: *TIME-WAIT Assassination Hazards in TCP*](https://tools.ietf.org/html/rfc1337)
 * [RFC 2018: *TCP Selective Acknowledgment Options*](https://tools.ietf.org/html/rfc2018)
 * [RFC 2883: *An Extension to the Selective Acknowledgement (SACK) Option for TCP*](https://tools.ietf.org/html/rfc2883)
 * [RFC 4953: *Defending TCP Against Spoofing Attacks*](https://tools.ietf.org/html/rfc4953)
