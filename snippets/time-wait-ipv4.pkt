@@ -49,5 +49,4 @@
 +0.00 %{ assert tcpi_state == TCPI_TIME_WAIT }%
 // Now it is in the TIME-WAIT state.
 // Tear it down.
-+0.00 `sleep 60`
 +0.00 close(3) = 0
