@@ -49,8 +49,12 @@ set testcases = ( closed-ipv4 \
                   fin-wait-2-ipv6 \
                   closing-ipv4 \
                   closing-ipv6 \
-                  time-wait-ipv4 \
-                  time-wait-ipv6 )
+                  time-wait-via-fin-wait-1-ipv4 \
+                  time-wait-via-fin-wait-1-ipv6 \
+                  time-wait-via-fin-wait-2-ipv4 \
+                  time-wait-via-fin-wait-2-ipv6 \
+                  time-wait-via-closing-ipv4 \
+                  time-wait-via-closing-ipv6 )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0
