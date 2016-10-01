@@ -43,9 +43,8 @@
 +0.00 > F. 1:1(0) ack 1 win 65535
 // Verify that there are no errors pending at the socket layer.
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-// Verify the endpoint state.
-+0.00 %{ assert tcpi_state == TCPI_FIN_WAIT_1 }%
 // Now it is in the FIN-WAIT-1 state.
++0.00 %{ assert tcpi_state == TCPI_FIN_WAIT_1 }%
 // Tear it down.
 +0.10 < F. 1:1(0) ack 2 win 32767
 +0.00 >  . 2:2(0) ack 2 win 65534

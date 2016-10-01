@@ -27,7 +27,7 @@
 --ip_version=ipv6
 --tolerance_usecs=50000
 
-// Create a TCP endpoint in the LISTEN state.
+// Create a TCP endpoint in the SYN-RCVD state.
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 bind(3, ..., ...) = 0
 +0.00 listen(3, 1) = 0
@@ -35,6 +35,6 @@
 +0.00 > S. 0:0(0) ack 1 win 65535 <mss 1440>
 // Verify that there are no errors pending at the socket layer.
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-// Now it is in the LISTEN state.
+// Now it is in the SYS-RCVD state.
 // Tear it down.
 +0.00 close(3) = 0

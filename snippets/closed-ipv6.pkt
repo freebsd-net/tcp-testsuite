@@ -34,8 +34,7 @@
 +0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], [4]) = 0
 // Verify that there are no errors pending at the socket layer.
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-// Verify the endpoint state.
-+0.00 %{ assert tcpi_state == TCPI_CLOSED }%
 // Now it is in the CLOSED state.
++0.00 %{ assert tcpi_state == TCPI_CLOSED }%
 // Tear it down.
 +0.00 close(3) = 0

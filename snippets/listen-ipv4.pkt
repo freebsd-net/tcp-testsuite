@@ -33,8 +33,7 @@
 +0.00 listen(3, 1) = 0
 // Verify that there are no errors pending at the socket layer.
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-// Verify the endpoint state.
-+0.00 %{ assert tcpi_state == TCPI_LISTEN }%
 // Now it is in the LISTEN state.
++0.00 %{ assert tcpi_state == TCPI_LISTEN }%
 // Tear it down.
 +0.00 close(3) = 0
