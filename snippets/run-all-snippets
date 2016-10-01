@@ -33,8 +33,10 @@ set testcases = ( closed-ipv4 \
                   listen-ipv6 \
                   syn-sent-ipv4 \
                   syn-sent-ipv6 \
-                  syn-rcvd-ipv4 \
-                  syn-rcvd-ipv6 \
+                  syn-rcvd-via-listen-ipv4 \
+                  syn-rcvd-via-listen-ipv6 \
+                  syn-rcvd-via-syn-sent-ipv4 \
+                  syn-rcvd-via-syn-sent-ipv6 \
                   established-ipv4 \
                   established-ipv6 \
                   close-wait-ipv4 \
