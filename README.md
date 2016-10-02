@@ -50,4 +50,3 @@ This work is sponsored by Netflix, Inc.
 * [RFC 5961: *Improving TCP's Robustness to Blind In-Window Attacks*](https://tools.ietf.org/html/rfc5961)
 * [RFC 6429: *TCP Sender Clarification for Persist Condition*](https://tools.ietf.org/html/rfc6429)
 * [RFC 6691: *TCP Options and Maximum Segment Size (MSS)*](https://tools.ietf.org/html/rfc6691)
-
