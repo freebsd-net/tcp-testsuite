@@ -39,6 +39,6 @@ This directory contains files with useful script fragments
 |[time-wait-via-closing-ipv6](time-wait-via-closing-ipv6.pkt "Move to TIME-WAIT state via CLOSING")          | Unknown             | Passed (Note 2, 3)  |
 
 ## Notes
-1. The SACK_OK option is dropped,  but not the others. This is inconsistent and seems to be a bug.
+1. The SACK_OK option is dropped,  but not the others. This is inconsistent and seems to be a bug (see [tcp_input.c](http://fxr.watson.org/fxr/source/netinet/tcp_input.c#L1664)).
 2. A FIN-segment without the ACK bit being set is dropped. This seems to be normal behaviour, although not specified.
 3. TCP-level options can't be used for end points in the final CLOSED state or the TIME-WAIT state.
