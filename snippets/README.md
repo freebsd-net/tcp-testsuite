@@ -40,5 +40,5 @@ This directory contains files with useful script fragments
 
 ## Notes
 1. The SACK_OK option is dropped,  but not the others. This is inconsistent and seems to be a bug.
-2. A FIN-segment without the ACK bit being set is not processed. This might be a bug.
+2. A FIN-segment without the ACK bit being set is dropped. This seems to be normal behaviour, although not specified.
 3. TCP-level options can't be used for end points in the final CLOSED state or the TIME-WAIT state.
