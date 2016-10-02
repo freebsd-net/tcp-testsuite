@@ -27,8 +27,8 @@
 
 set packetdrill = /usr/local/bin/packetdrill
 set delay = 1
-set testcases = ( closed-ipv4 \
-                  closed-ipv6 \
+set testcases = ( closed-initially-ipv4 \
+                  closed-initially-ipv6 \
                   listen-ipv4 \
                   listen-ipv6 \
                   syn-sent-ipv4 \
@@ -43,6 +43,8 @@ set testcases = ( closed-ipv4 \
                   close-wait-ipv6 \
                   last-ack-ipv4 \
                   last-ack-ipv6 \
+                  closed-via-last-ack-ipv4 \
+                  closed-via-last-ack-ipv6 \
                   fin-wait-1-ipv4 \
                   fin-wait-1-ipv6 \
                   fin-wait-2-ipv4 \

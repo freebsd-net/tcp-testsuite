@@ -7,8 +7,8 @@ This directory contains files with useful script fragments
 
 | Name                                                                                                       | Result FreeBSD 11.0 | Result FreeBSD Head |
 |:-----------------------------------------------------------------------------------------------------------|:-------------------:|:-------------------:|
-|[closed-ipv4](closed-ipv4.pkt "Move to initial CLOSED state")                                               | Unknown             | Passed              |
-|[closed-ipv6](closed-ipv6.pkt "Move to initial CLOSED state")                                               | Unknown             | Passed              |
+|[closed-initially-ipv4](closed-initially-ipv4.pkt "Move to initial CLOSED state")                           | Unknown             | Passed              |
+|[closed-initially-ipv6](closed-initially-ipv6.pkt "Move to initial CLOSED state")                           | Unknown             | Passed              |
 |[listen-ipv4](listen-ipv4.pkt "Move to LISTEN state")                                                       | Unknown             | Passed              |
 |[listen-ipv6](listen-ipv6.pkt "Move to LISTEN state")                                                       | Unknown             | Passed              |
 |[syn-sent-ipv4](syn-sent-ipv4.pkt "Move to SYN-SENT state")                                                 | Unknown             | Passed              |
@@ -23,6 +23,8 @@ This directory contains files with useful script fragments
 |[close-wait-ipv6](close-wait-ipv6.pkt "Move to CLOSE-WAIT state")                                           | Unknown             | Passed (Note 2)     |
 |[last-ack-ipv4](last-ack-ipv4.pkt "Move to LAST-ACK state")                                                 | Unknown             | Passed              |
 |[last-ack-ipv6](last-ack-ipv6.pkt "Move to LAST-ACK state")                                                 | Unknown             | Passed              |
+|[closed-via-last-ack-ipv4](closed-via-last-ack-ipv4.pkt "Move to CLOSED state via LAST-ACK")                | Unknown             | Passed (Note 3)     |
+|[closed-via-last-ack-ipv6](closed-via-last-ack-ipv6.pkt "Move to CLOSED state via LAST-ACK")                | Unknown             | Passed (Note 3)     |
 |[fin-wait-1-ipv4](fin-wait-1-ipv4.pkt "Move to FIN-WAIT-1 state")                                           | Unknown             | Passed              |
 |[fin-wait-1-ipv6](fin-wait-1-ipv6.pkt "Move to FIN-WAIT-1 state")                                           | Unknown             | Passed              |
 |[fin-wait-2-ipv4](fin-wait-2-ipv4.pkt "Move to FIN-WAIT-2 state")                                           | Unknown             | Passed              |
