@@ -48,5 +48,6 @@
 // Now it is in the TIME-WAIT state.
 // On FreeBSD, TCP level socket options can't be used in TIME-WAIT
 //+0.00 %{ assert tcpi_state == TCPI_TIME_WAIT }%
++0.10 `sockstat -4 -P tcp -s | grep packetdril | grep -c TIME_WAIT | grep 1`
 // Tear it down.
 +0.00 close(3) = 0

@@ -24,31 +24,29 @@
 // SUCH DAMAGE.
 //
 
---ip_version=ipv4
+--ip_version=ipv6
 --tolerance_usecs=50000
 
-// Create a TCP endpoint in the TIME-WAIT state.
+// Create a TCP endpoint in the final CLOSED state.
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 fcntl(3, F_GETFL) = 0x02 (flags O_RDWR)
 +0.00 fcntl(3, F_SETFL, O_RDWR | O_NONBLOCK) = 0
 +0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], [4]) = 0
 +0.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
-+0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 0>
 +0.10 < S. 0:0(0) ack 1 win 32767 <mss 1460>
 +0.00 >  . 1:1(0) ack 1 win 65535
-// Verify that the recv buffer is 65770, since it is rounded up to a multiple
+// Verify that the recv buffer is 66240, since it is rounded up to a multiple
 // of the MSS.
-+0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65700], [4]) = 0
-+0.10 shutdown(3, SHUT_WR) = 0
-+0.00 > F. 1:1(0) ack 1 win 65535
++0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [66240], [4]) = 0
 +0.10 < F. 1:1(0) ack 1 win 32767
-+0.00 > F. 1:1(0) ack 2 win 65535
-+0.10 < F. 1:1(0) ack 2 win 32767
++0.00 >  . 1:1(0) ack 2 win 65535
++0.00 shutdown(3, SHUT_WR) = 0
++0.00 > F. 1:1(0) ack 2
++0.10 <  . 1:1(0) ack 2 win 32767
 // Verify that there are no errors pending at the socket layer.
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-// Now it is in the TIME-WAIT state.
-// On FreeBSD, TCP level socket options can't be used in TIME-WAIT
-//+0.00 %{ assert tcpi_state == TCPI_TIME_WAIT }%
-+0.10 `sockstat -4 -P tcp -s | grep packetdril | grep -c TIME_WAIT | grep 1`
+// On FreeBSD, TCP level socket options can't be used in final CLOSED
+//+0.00 %{ assert tcpi_state == TCPI_CLOSED }%
 // Tear it down.
 +0.00 close(3) = 0
