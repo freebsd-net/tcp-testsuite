@@ -87,6 +87,14 @@ set testcases = ( rcv-rst-closed-secure-ipv4 \
                   rcv-rst-closing-right-edge-secure-ipv6 \
                   rcv-rst-closing-outside-right-secure-ipv4 \
                   rcv-rst-closing-outside-right-secure-ipv6 \
+                  rcv-rst-time-wait-outside-left-secure-ipv4 \
+                  rcv-rst-time-wait-outside-left-secure-ipv6 \
+                  rcv-rst-time-wait-left-edge-secure-ipv4 \
+                  rcv-rst-time-wait-left-edge-secure-ipv6 \
+                  rcv-rst-time-wait-right-edge-secure-ipv4 \
+                  rcv-rst-time-wait-right-edge-secure-ipv6 \
+                  rcv-rst-time-wait-outside-right-secure-ipv4 \
+                  rcv-rst-time-wait-outside-right-secure-ipv6 \
                   rcv-rst-last-ack-outside-left-secure-ipv4 \
                   rcv-rst-last-ack-outside-left-secure-ipv6 \
                   rcv-rst-last-ack-left-edge-secure-ipv4 \
@@ -155,6 +163,14 @@ set testcases = ( rcv-rst-closed-secure-ipv4 \
                   rcv-rst-closing-right-edge-insecure-ipv6 \
                   rcv-rst-closing-outside-right-insecure-ipv4 \
                   rcv-rst-closing-outside-right-insecure-ipv6 \
+                  rcv-rst-time-wait-outside-left-insecure-ipv4 \
+                  rcv-rst-time-wait-outside-left-insecure-ipv6 \
+                  rcv-rst-time-wait-left-edge-insecure-ipv4 \
+                  rcv-rst-time-wait-left-edge-insecure-ipv6 \
+                  rcv-rst-time-wait-right-edge-insecure-ipv4 \
+                  rcv-rst-time-wait-right-edge-insecure-ipv6 \
+                  rcv-rst-time-wait-outside-right-insecure-ipv4 \
+                  rcv-rst-time-wait-outside-right-insecure-ipv6 \
                   rcv-rst-last-ack-outside-left-insecure-ipv4 \
                   rcv-rst-last-ack-outside-left-insecure-ipv6 \
                   rcv-rst-last-ack-left-edge-insecure-ipv4 \
