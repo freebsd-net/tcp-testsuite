@@ -31,14 +31,12 @@ set testcases = ( rcv-rst-closed-secure-ipv4 \
                   rcv-rst-closed-secure-ipv6 \
                   rcv-rst-listen-secure-ipv4 \
                   rcv-rst-listen-secure-ipv6 \
-                  rcv-rst-syn-sent-outside-left-secure-ipv4 \
-                  rcv-rst-syn-sent-outside-left-secure-ipv6 \
-                  rcv-rst-syn-sent-left-edge-secure-ipv4 \
-                  rcv-rst-syn-sent-left-edge-secure-ipv6 \
-                  rcv-rst-syn-sent-right-edge-secure-ipv4 \
-                  rcv-rst-syn-sent-right-edge-secure-ipv6 \
-                  rcv-rst-syn-sent-outside-right-secure-ipv4 \
-                  rcv-rst-syn-sent-outside-right-secure-ipv6 \
+                  rcv-rst-syn-sent-outside-left-ipv4 \
+                  rcv-rst-syn-sent-outside-left-ipv6 \
+                  rcv-rst-syn-sent-left-edge-ipv4 \
+                  rcv-rst-syn-sent-left-edge-ipv6 \
+                  rcv-rst-syn-sent-outside-right-ipv4 \
+                  rcv-rst-syn-sent-outside-right-ipv6 \
                   rcv-rst-syn-received-outside-left-secure-ipv4 \
                   rcv-rst-syn-received-outside-left-secure-ipv6 \
                   rcv-rst-syn-received-left-edge-secure-ipv4 \
@@ -107,14 +105,6 @@ set testcases = ( rcv-rst-closed-secure-ipv4 \
                   rcv-rst-closed-insecure-ipv6 \
                   rcv-rst-listen-insecure-ipv4 \
                   rcv-rst-listen-insecure-ipv6 \
-                  rcv-rst-syn-sent-outside-left-insecure-ipv4 \
-                  rcv-rst-syn-sent-outside-left-insecure-ipv6 \
-                  rcv-rst-syn-sent-left-edge-insecure-ipv4 \
-                  rcv-rst-syn-sent-left-edge-insecure-ipv6 \
-                  rcv-rst-syn-sent-right-edge-insecure-ipv4 \
-                  rcv-rst-syn-sent-right-edge-insecure-ipv6 \
-                  rcv-rst-syn-sent-outside-right-insecure-ipv4 \
-                  rcv-rst-syn-sent-outside-right-insecure-ipv6 \
                   rcv-rst-syn-received-outside-left-insecure-ipv4 \
                   rcv-rst-syn-received-outside-left-insecure-ipv6 \
                   rcv-rst-syn-received-left-edge-insecure-ipv4 \
