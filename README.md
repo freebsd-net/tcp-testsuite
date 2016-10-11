@@ -26,7 +26,8 @@ which runs the `tcsh` script `tcp-testsuite/run-all-tests` with root priviledges
 |:-------------------------------------------------------------------------------|:----------------------:|:-----------:|
 | [Sending of SYN-Segments](snd-syn/README.md)                                   | 30                     | Done        |
 | [Handling of SYN-Segments](rcv-syn/README.md)                                  | 0                      | In Progress |
-| [Handling of RST-Segments](rcv-rst/README.md)                                  | 136                    | In Progress |
+| [Handling of RST-Segments](rcv-rst/README.md)                                  | 142                    | Done        |
+| [Handling of RST-ACK-Segments](rcv-rst-ack/README.md)                          | 0                      | In Progress |
 | [Handling of ICMP Messages](rcv-icmp/README.md)                                | 12                     | In Progress |
 | [Socket API](socket-api/README.md)                                             | 10                     | In Progress |
 
