@@ -159,7 +159,10 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
 1. `setsockopt(..., IPPROTO_TCP, TCPINFO, ..., ...)` fails
 2. No challenge ACK is sent.
 3. In `CLOSING` or `LAST-ACK` after receipt of an acceptable RST-segment the `SO_ERROR` socket options returns 0 instead of
-   `ECONNRESET` (the same works in `CLOSE-WAIT`). See [tcp_input.c](https://svnweb.freebsd.org/base/head/sys/netinet/tcp_input.c?revision=306458&view=markup#l2162).
+   `ECONNRESET` (the same works in `CLOSE-WAIT`).
+   See [tcp_input.c](https://svnweb.freebsd.org/base/head/sys/netinet/tcp_input.c?revision=306458&view=markup#l2162).
+   TCP/IP Illustrated, page 964, states that no error is signalled to the processs, "since the process has closed the socket".
+   This argument covers `CLOSING`, `LAST-ACK`, and `TIME-WAIT`.
 4. The `systcl`-variable `net.inet.tcp.insecure_rst` is not described in `man 4 tcp`.
 5. The condition in [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3.2) defining
    `outside the current receive window` should read
