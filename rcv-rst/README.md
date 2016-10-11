@@ -156,7 +156,7 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
 |[rcv-rst-last-ack-outside-right-insecure-ipv6](rcv-rst-last-ack-outside-right-insecure-ipv6 "Ensure that the reception of a TCP RST with SEG.SEQ=RCV.NXT+RCV.WND in the LAST-ACK state does not affect the TCP connection")               | Unknown             | Passed              |
 
 ## Notes
-1. `setsockopt(..., IPPROTO_TCP, TCPINFO, ..., ...)` fails
+1. `setsockopt(..., IPPROTO_TCP, TCPINFO, ..., ...)` fails after the reception of the RST-segment.
 2. No challenge ACK is sent.
 3. In `CLOSING` or `LAST-ACK` after receipt of an acceptable RST-segment the `SO_ERROR` socket options returns 0 instead of
    `ECONNRESET` (the same works in `CLOSE-WAIT`).
