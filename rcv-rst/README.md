@@ -164,6 +164,7 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
    TCP/IP Illustrated, page 964, states that no error is signalled to the processs, "since the process has closed the socket".
    This argument covers `CLOSING`, `LAST-ACK`, and `TIME-WAIT`.
 4. The `systcl`-variable `net.inet.tcp.insecure_rst` is not described in `man 4 tcp`.
+   Fixed in [r307727](https://svnweb.freebsd.org/changeset/base/307727).
 5. The condition in [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3.2) defining
    `outside the current receive window` should read
    `(SEG.SEQ < RCV.NXT || SEG.SEQ >= RCV.NXT + RCV.WND)`
