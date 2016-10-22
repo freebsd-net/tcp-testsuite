@@ -1,4 +1,11 @@
 
+# Testing the State-Event-Engine of TCP
+
+## Description
+The following diagram from  [RFC 793, Section 3.2](https://tools.ietf.org/html/rfc793#section-3.2)
+with corrections from [RFC 1122, Section 4.2.2.8](https://tools.ietf.org/html/rfc1122#section-4.2.2.8)
+shows the TCP state-event-engine.
+
 ```
                                        +---------+ ---------\      active OPEN
                                        |  CLOSED |            \    -----------
@@ -48,9 +55,7 @@ rcv ACK of FIN ||                           |  -------                    |  CLO
                                                      ------------
                                                       delete TCB 
 ```
-
-
-
+## Status
 
 |                 |  SYN     | SYN-ACK  | SYN-FIN  | ACK      | FIN      | FIN-ACK  | RST      | RST-ACK  |
 |:----------------|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
