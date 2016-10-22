@@ -74,7 +74,7 @@ in the TIME-WAIT state.
 |**TIME-WAIT**    |          |          |          |          |          |          |          |          |
 
 ## References
-* [RFC 0793: *Transmission Control Protocol*](https://tools.ietf.org/html/rfc0793)
+* [RFC 793: *Transmission Control Protocol*](https://tools.ietf.org/html/rfc0793)
 * [RFC 1122: *Requirements for Internet Hosts -- Communication Layers*](https://tools.ietf.org/html/rfc1122)
 * [RFC 1337: *TIME-WAIT Assassination Hazards in TCP*](https://tools.ietf.org/html/rfc1337)
 * [RFC 5961: *Improving TCP's Robustness to Blind In-Window Attacks*](https://tools.ietf.org/html/rfc5961)
