@@ -1,4 +1,4 @@
-# Handling the Reception of TCP Segments with the RST-bit Set in the LISTEN State
+# Handling of TCP Segments with the RST-bit Set in the LISTEN State
 
 ## Description
 This set of tests focuses on the handling of RST-segments moving the state of the TCP connection
