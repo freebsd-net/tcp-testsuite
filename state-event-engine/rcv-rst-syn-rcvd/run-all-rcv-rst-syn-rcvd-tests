@@ -1,0 +1,94 @@
+#!/usr/bin/env tcsh
+#
+# Copyright (c) 2016 Michael Tuexen
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+
+set packetdrill = /usr/local/bin/packetdrill
+set delay = 1
+set testcases = ( rcv-rst-syn-rcvd-outside-left-secure-ipv4 \
+                  rcv-rst-syn-rcvd-outside-left-secure-ipv6 \
+                  rcv-rst-syn-rcvd-left-edge-secure-ipv4 \
+                  rcv-rst-syn-rcvd-left-edge-secure-ipv6 \
+                  rcv-rst-syn-rcvd-right-edge-secure-ipv4 \
+                  rcv-rst-syn-rcvd-right-edge-secure-ipv6 \
+                  rcv-rst-syn-rcvd-outside-right-secure-ipv4 \
+                  rcv-rst-syn-rcvd-outside-right-secure-ipv6 \
+                  rcv-rst-syn-rcvd-outside-left-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-outside-left-insecure-ipv6 \
+                  rcv-rst-syn-rcvd-left-edge-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-left-edge-insecure-ipv6 \
+                  rcv-rst-syn-rcvd-right-edge-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-right-edge-insecure-ipv6 \
+                  rcv-rst-syn-rcvd-outside-right-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-outside-right-insecure-ipv6 )
+
+set rootdir = `/usr/bin/dirname $0`
+set passed = 0
+set failed = 0
+set run = 0
+set skipped = 0
+set first = 1
+
+printf "Name                                                  Verdict\n"
+printf "=============================================================\n"
+foreach testcase ($testcases)
+  printf "%-50.50s " `/usr/bin/basename $testcase`
+  if ($first == 0) then
+    if ($delay != 0) then
+      printf "\033[33m%10s\033[0m" "WAITING"
+      sleep $delay
+      printf "\b\b\b\b\b\b\b\b\b\b"
+    endif
+  else
+    set first = 0
+  endif
+  printf "\033[33m%10s\033[0m" "RUNNING"
+  if (-f ${rootdir}/${testcase}.pkt) then
+    $packetdrill ${rootdir}/${testcase}.pkt >& /dev/null
+    set result = $status
+    set found = 1
+  else
+    set found = 0
+  endif
+  printf "\b\b\b\b\b\b\b\b\b\b"
+  if ($found == 1) then
+    if ($result == 0) then
+      @ passed++
+      printf "\033[32m%10s\033[0m\n" "PASSED"
+    else
+      @ failed++
+      printf "\033[31m%10s\033[0m\n" "FAILED"
+    endif
+    @ run++
+  else
+    printf "\033[34m%10s\033[0m\n" "SKIPPED"
+    @ skipped++
+  endif
+end
+printf "=============================================================\n"
+printf "Summary: Number of tests run:     %3u\n" $run
+printf "         Number of tests passed:  %3u\n" $passed
+printf "         Number of tests failed:  %3u\n" $failed
+printf "         Number of tests skipped: %3u\n" $skipped
