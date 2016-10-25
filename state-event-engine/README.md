@@ -74,6 +74,15 @@ in the TIME-WAIT state.
 |**CLOSING**      | [x](rcv-syn-closing/README.md)     | [x](rcv-syn-ack-closing/README.md)     | [x](rcv-syn-fin-closing/README.md)     | [x](rcv-ack-closing/README.md)     | [x](rcv-fin-closing/README.md)     | [x](rcv-fin-ack-closing/README.md)     | [x](rcv-rst-closing/README.md)     | [x](rcv-rst-ack-closing/README.md)     |
 |**TIME-WAIT**    | [x](rcv-syn-time-wait/README.md)   | [x](rcv-syn-ack-time-wait/README.md)   | [x](rcv-syn-fin-time-wait/README.md)   | [x](rcv-ack-time-wait/README.md)   | [x](rcv-fin-time-wait/README.md)   | [x](rcv-fin-ack-time-wait/README.md)   | [x](rcv-rst-time-wait/README.md)   | [x](rcv-rst-ack-time-wait/README.md)   |
 
+## Notes
+1. The condition in [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3.2) defining
+   `outside the current receive window` should read
+   `(SEG.SEQ < RCV.NXT || SEG.SEQ >= RCV.NXT + RCV.WND)`
+   instead of
+   `(SEG.SEQ <= RCV.NXT || SEG.SEQ > RCV.NXT + RCV.WND)`.
+
+## Fixes
+
 ## References
 * [RFC 793: *Transmission Control Protocol*](https://tools.ietf.org/html/rfc0793)
 * [RFC 1122: *Requirements for Internet Hosts -- Communication Layers*](https://tools.ietf.org/html/rfc1122)
