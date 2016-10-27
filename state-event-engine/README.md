@@ -60,6 +60,8 @@ in the TIME-WAIT state.
 
 ## Status
 
+The following table shows the number of tests for handlig TCP segments in the various states.
+
 |                 | SYN                                | SYN-ACK                                | SYN-FIN                                | ACK                                | FIN                                | FIN-ACK                                | RST                                | RST-ACK                                |
 |:----------------|:----------------------------------:|:--------------------------------------:|:--------------------------------------:|:----------------------------------:|:----------------------------------:|:--------------------------------------:|:----------------------------------:|:--------------------------------------:|
 |**CLOSED**       | [x](rcv-syn-closed/README.md)      | [x](rcv-syn-ack-closed/README.md)      | [x](rcv-syn-fin-closed/README.md)      | [x](rcv-ack-closed/README.md)      | [x](rcv-fin-closed/README.md)      | [x](rcv-fin-ack-closed/README.md)      | [4](rcv-rst-closed/README.md)      | [x](rcv-rst-ack-closed/README.md)      |
@@ -80,6 +82,7 @@ in the TIME-WAIT state.
    `(SEG.SEQ < RCV.NXT || SEG.SEQ >= RCV.NXT + RCV.WND)`
    instead of
    `(SEG.SEQ <= RCV.NXT || SEG.SEQ > RCV.NXT + RCV.WND)`.
+   This has been reported as an errata.
 
 ## Fixes
 * [r307727](https://svnweb.freebsd.org/changeset/base/307727) and [307746](https://svnweb.freebsd.org/changeset/base/307746).
