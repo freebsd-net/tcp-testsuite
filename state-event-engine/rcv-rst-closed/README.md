@@ -8,7 +8,7 @@ The required behavior is described in [RFC 0793](https://tools.ietf.org/html/rfc
 `sysctl`-variable `net.inet.tcp.insecure_rst`.
 The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3).
 
-## Status
+## Results
 
 | Name                                                                                                                                                                   | Result FreeBSD 11.0 | Result FreeBSD Head |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------:|:-------------------:|
