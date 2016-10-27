@@ -82,6 +82,7 @@ in the TIME-WAIT state.
    `(SEG.SEQ <= RCV.NXT || SEG.SEQ > RCV.NXT + RCV.WND)`.
 
 ## Fixes
+* [r307727](https://svnweb.freebsd.org/changeset/base/307727) and [307746](https://svnweb.freebsd.org/changeset/base/307746).
 
 ## References
 * [RFC 793: *Transmission Control Protocol*](https://tools.ietf.org/html/rfc0793)
