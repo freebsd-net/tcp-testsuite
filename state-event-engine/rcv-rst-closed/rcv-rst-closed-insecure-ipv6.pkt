@@ -24,8 +24,8 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of the ICMP messages does not result in a
-// termination of the TCP connection, even if the TCP sequence number matches.
+// Ensure that the reception of a TCP segments with the RST-bit set in the
+// CLOSED state does not result in a state change.
 
 --ip_version=ipv6
 --tolerance_usecs=50000
