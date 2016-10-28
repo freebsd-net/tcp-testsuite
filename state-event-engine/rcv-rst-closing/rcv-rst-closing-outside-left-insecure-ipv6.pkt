@@ -24,8 +24,8 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of a TCP RST with SEG.SEQ=RCV.NXT-1 in the
-// CLOSING  state does not affect the TCP connection.
+// Ensure that the reception of a TCP RST with SEG.SEQ = RCV.NXT - 1
+// in the CLOSING state does not affect the TCP connection.
 
 --ip_version=ipv6
 --tolerance_usecs=50000

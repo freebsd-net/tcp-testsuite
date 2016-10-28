@@ -24,8 +24,8 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of a TCP RST with SEG.SEQ=RCV.NXT+RCV.WND-1 in the
-// CLOSING state triggers the sending of a challenge ACK.
+// Ensure that the reception of a TCP RST with SEG.SEQ = RCV.NXT + RCV.WND - 1
+// in the CLOSING state triggers the sending of a challenge ACK.
 
 --ip_version=ipv6
 --tolerance_usecs=50000
