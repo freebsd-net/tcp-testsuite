@@ -25,7 +25,7 @@
 //
 
 // Ensure that the reception of a TCP RST with SEG.SEQ = RCV.NXT + RCV.WND - 1
-//in the CLOSING state destroys the TCP connection.
+// in the CLOSING state destroys the TCP connection.
 
 --ip_version=ipv4
 --tolerance_usecs=50000
