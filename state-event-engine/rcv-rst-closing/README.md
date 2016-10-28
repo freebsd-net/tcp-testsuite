@@ -1,11 +1,18 @@
 # Handling of TCP Segments with the RST-bit Set in the CLOSING State
 
 ## Description
-This set of tests focuses on the handling of RST-segments moving the state of the TCP connection
-either to `CLOSED` or leaving it untouched.
-The behavior is described in [RFC 0793](https://tools.ietf.org/html/rfc0793) or
-[RFC 5961](https://tools.ietf.org/html/rfc5961#section-3) and selected by the
-`sysctl`-variable `net.inet.tcp.insecure_rst`.
+This set of tests focuses on the handling of RST-segments in the `CLOSING` state.
+
+[RFC 0793](https://tools.ietf.org/html/rfc0793) requires RST-segments to be accepted if and only if
+`RCV.NXT <= SEG.SEQ < RCV.NXT+RCV.WND` holds.
+
+For mitigating blind attacks, [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3)
+requires the RST-segments only to be accepted if and only if `RCV.NXT = SEG.SEQ` holds.
+In case of `RCV.NXT < SEG.SEQ < RCV.NXT+RCV.WND`, a challenge ACK has to be sent.
+
+In FreeBSD, the `sysctl`-variable `net.inet.tcp.insecure_rst` can be used to
+select if procedures described in [RFC 0793](https://tools.ietf.org/html/rfc0793) or
+[RFC 5961](https://tools.ietf.org/html/rfc5961#section-3) are followed.
 The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3).
 
 ## Status
@@ -30,8 +37,9 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
 |[rcv-rst-closing-outside-right-insecure-ipv6](rcv-rst-closing-outside-right-insecure-ipv6.pkt "Ensure that the reception of a TCP RST with SEG.SEQ=RCV.NXT+RCV.WND in the CLOSING state does not affect the TCP connection")                  | Unknown             | Passed              |
 
 ## Notes
-1. In `CLOSING` or `LAST-ACK` after receipt of an acceptable RST-segment the `SO_ERROR` socket options returns 0 instead of
+1. In `CLOSING` or `LAST-ACK` state after receipt of an acceptable RST-segment the `SO_ERROR` socket options returns 0 instead of
    `ECONNRESET` (the same works in `CLOSE-WAIT`).
-   See [tcp_input.c](https://svnweb.freebsd.org/base/head/sys/netinet/tcp_input.c?revision=306458&view=markup#l2162).
-   TCP/IP Illustrated, page 964, states that no error is signalled to the processs, "since the process has closed the socket".
-   This argument covers `CLOSING`, `LAST-ACK`, and `TIME-WAIT`.
+   TCP/IP Illustrated, page 964, states that no error is signalled to the process, "since the process has closed the socket".
+   This argument covers `CLOSING`, `LAST-ACK`, and `TIME-WAIT`. However, the state can be reached by calling `shutdown(..., SHUT_WR)`
+   and therefore the appication can still be notified in `CLOSING` and `LAST-ACK` state.
+   A fix is under review in [D8371](https://reviews.freebsd.org/D8371).
