@@ -25,7 +25,7 @@
 //
 
 // Ensure that the reception of a TCP RST with SEG.SEQ=RCV.NXT-1 in the
-// CLOSING  state does not affect the TCP connection
+// CLOSING  state does not affect the TCP connection.
 
 --ip_version=ipv4
 --tolerance_usecs=50000
