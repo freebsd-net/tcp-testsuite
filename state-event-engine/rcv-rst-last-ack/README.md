@@ -7,7 +7,7 @@ This set of tests focuses on the handling of RST-segments in the `LAST-ACK` stat
 `RCV.NXT <= SEG.SEQ < RCV.NXT+RCV.WND` holds.
 
 For mitigating blind attacks, [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3)
-requires the RST-segments only to be accepted if and only if `RCV.NXT == SEG.SEQ` holds.
+requires the RST-segments only to be accepted if and only if `RCV.NXT = SEG.SEQ` holds.
 In case of `RCV.NXT < SEG.SEQ < RCV.NXT+RCV.WND`, a challenge ACK has to be sent.
 
 In FreeBSD, the `sysctl`-variable `net.inet.tcp.insecure_rst` can be used to
