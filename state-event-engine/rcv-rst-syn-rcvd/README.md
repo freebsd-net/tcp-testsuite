@@ -1,7 +1,7 @@
 # Handling of TCP Segments with the RST-bit Set in the SYN-RCVD State
 
 ## Description
-This set of tests focuses on the handling of RST-segments in the `CLOSING` state.
+This set of tests focuses on the handling of RST-segments in the `SYN-RCVD` state.
 
 [RFC 0793](https://tools.ietf.org/html/rfc0793) requires RST-segments to be accepted if and only if
 `RCV.NXT <= SEG.SEQ < RCV.NXT+RCV.WND` holds.
