@@ -35,5 +35,3 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
 |[rcv-rst-close-wait-right-edge-insecure-ipv6](rcv-rst-close-wait-right-edge-insecure-ipv6.pkt "Ensure that the reception of a TCP RST with SEG.SEQ=RCV.NXT+RCV.WND-1 in the CLOSE-WAIT state destroys the TCP connection")            | Unknown             | Passed              |
 |[rcv-rst-close-wait-outside-right-insecure-ipv4](rcv-rst-close-wait-outside-right-insecure-ipv4.pkt "Ensure that the reception of a TCP RST with SEG.SEQ=RCV.NXT+RCV.WND in the CLOSE-WAIT state does not affect the TCP connection") | Unknown             | Passed              |
 |[rcv-rst-close-wait-outside-right-insecure-ipv6](rcv-rst-close-wait-outside-right-insecure-ipv6.pkt "Ensure that the reception of a TCP RST with SEG.SEQ=RCV.NXT+RCV.WND in the CLOSE-WAIT state does not affect the TCP connection") | Unknown             | Passed              |
-
-## Notes
