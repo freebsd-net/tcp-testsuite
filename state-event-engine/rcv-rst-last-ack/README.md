@@ -1,7 +1,7 @@
 # Handling of TCP Segments with the RST-bit Set in the LAST-ACK State
 
 ## Description
-This set of tests focuses on the handling of RST-segments in the LAST-ACK state.
+This set of tests focuses on the handling of RST-segments in the `LAST-ACK` state.
 
 [RFC 0793](https://tools.ietf.org/html/rfc0793) requires RST-segments to be accepted if and only if
 `RCV.NXT <= SEG.SEQ < RCV.NXT+RCV.WND` holds.
@@ -39,7 +39,7 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
 ## Notes
 1. In `CLOSING` or `LAST-ACK` state after receipt of an acceptable RST-segment the `SO_ERROR` socket options returns 0 instead of
    `ECONNRESET` (the same works in `CLOSE-WAIT`).
-   TCP/IP Illustrated, page 964, states that no error is signalled to the processs, "since the process has closed the socket".
-   This argument covers `CLOSING`, `LAST-ACK`, and `TIME-WAIT`. However, the state can be reached by `shutdown(..., SHUT_WR)`
+   TCP/IP Illustrated, page 964, states that no error is signalled to the process, "since the process has closed the socket".
+   This argument covers `CLOSING`, `LAST-ACK`, and `TIME-WAIT`. However, the state can be reached by calling `shutdown(..., SHUT_WR)`
    and therefore the appication can still be notified in `CLOSING` and `LAST-ACK` state.
    A fix is under review in [D8371](https://reviews.freebsd.org/D8371).
