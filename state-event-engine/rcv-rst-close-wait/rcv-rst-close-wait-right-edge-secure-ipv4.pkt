@@ -24,8 +24,8 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of the ICMP messages does not result in a
-// termination of the TCP connection, even if the TCP sequence number matches.
+// Ensure that the reception of a TCP RST with SEG.SEQ = RCV.NXT + RCV.WND - 1
+// in the CLOSE-WAIT state triggers the sending of a challenge ACK.
 
 --ip_version=ipv4
 --tolerance_usecs=50000
