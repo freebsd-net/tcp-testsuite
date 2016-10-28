@@ -24,8 +24,8 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of the ICMP messages does not result in a
-// termination of the TCP connection, even if the TCP sequence number matches.
+// Ensure that the reception of a TCP RST with SEG.SEQ=RCV.NXT+RCV.WND in the
+// CLOSING state does not affect the TCP connection.
 
 --ip_version=ipv6
 --tolerance_usecs=50000
