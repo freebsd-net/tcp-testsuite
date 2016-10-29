@@ -6,7 +6,6 @@ This set of tests focuses on the handling of RST-segments in the `TIME-WAIT` sta
 [RFC1337](https://tools.ietf.org/html/rfc1337) discusses the handling of
 RST-segments in the `TIME-WAIT` state in addition to
 [RFC 0793](https://tools.ietf.org/html/rfc0793).
-
  One of the possible handlings, F1, is to ignore RST-segments in the
  `TIME-WAIT` state.
 
