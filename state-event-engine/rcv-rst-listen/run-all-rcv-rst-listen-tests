@@ -27,6 +27,7 @@
 
 set packetdrill = /usr/local/bin/packetdrill
 set delay = 1
+set limit = 5
 set testcases = ( rcv-rst-listen-secure-ipv4 \
                   rcv-rst-listen-secure-ipv6 \
                   rcv-rst-listen-insecure-ipv4 \
@@ -37,6 +38,7 @@ set passed = 0
 set failed = 0
 set run = 0
 set skipped = 0
+set timedout = 0
 set first = 1
 
 printf "Name                                                  Verdict\n"
@@ -54,7 +56,7 @@ foreach testcase ($testcases)
   endif
   printf "\033[33m%10s\033[0m" "RUNNING"
   if (-f ${rootdir}/${testcase}.pkt) then
-    $packetdrill ${rootdir}/${testcase}.pkt >& /dev/null
+    timeout $limit $packetdrill ${rootdir}/${testcase}.pkt >& /dev/null
     set result = $status
     set found = 1
   else
@@ -65,9 +67,12 @@ foreach testcase ($testcases)
     if ($result == 0) then
       @ passed++
       printf "\033[32m%10s\033[0m\n" "PASSED"
-    else
+    else if ($result == 1) then
       @ failed++
       printf "\033[31m%10s\033[0m\n" "FAILED"
+    else
+      @ timedout++
+      printf "\033[35m%10s\033[0m\n" "TIMEDOUT"
     endif
     @ run++
   else
@@ -76,7 +81,8 @@ foreach testcase ($testcases)
   endif
 end
 printf "=============================================================\n"
-printf "Summary: Number of tests run:     %3u\n" $run
-printf "         Number of tests passed:  %3u\n" $passed
-printf "         Number of tests failed:  %3u\n" $failed
-printf "         Number of tests skipped: %3u\n" $skipped
+printf "Summary: Number of tests run:       %3u\n" $run
+printf "         Number of tests passed:    %3u\n" $passed
+printf "         Number of tests failed:    %3u\n" $failed
+printf "         Number of tests timed out: %3u\n" $timedout
+printf "         Number of tests skipped:   %3u\n" $skipped
