@@ -24,8 +24,8 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of the ICMP messages does not result in a
-// termination of the TCP connection, even if the TCP sequence number matches.
+// Ensure that the reception of a TCP segments with the RST-bit set in the
+// LISTEN state does not result in a state change.
 
 --ip_version=ipv4
 --tolerance_usecs=50000
@@ -38,5 +38,7 @@
 +0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], [4]) = 0
 // Now it is in the LISTEN state.
 +0.10 < R  0:0(0) win 32767
-+0.10 %{ assert tcpi_state == TCPI_LISTEN }%
++0.10 `sockstat -4 -P tcp -s -l | grep packetdril | grep -c LISTEN | grep 2`
+// Can't use the python stuff on listening sockets.
+//+0.10 %{ assert tcpi_state == TCPI_LISTEN }%
 +0.00 close(3) = 0
