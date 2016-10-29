@@ -1,4 +1,4 @@
-# Handling of TCP Segments with the RST-bit Set in the SYN-SENT State
+# Handling of TCP Segments with the RST-ACK-bits Set in the SYN-SENT State
 
 ## Description
 This set of tests focuses on the handling of RST-segments moving the state of the TCP connection
@@ -10,13 +10,11 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
 
 ## Status
 
-| Name                                                                                                                                                                                                                                         | Result FreeBSD 11.0 | Result FreeBSD Head |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------:|:-------------------:|
-|[rcv-rst-ack-syn-sent-outside-left-ipv4](rcv-rst-ack-syn-sent-outside-left-ipv4.pkt "Ensure that the reception of a TCP RST with SEG.ACK=SND.NXT-1 in the SYN-SENT state does not affect the TCP connection")                                         | Unknown             | Passed              |
-|[rcv-rst-ack-syn-sent-outside-left-ipv6](rcv-rst-ack-syn-sent-outside-left-ipv6.pkt "Ensure that the reception of a TCP RST with SEG.ACK=SND.NXT-1 in the SYN-SENT state does not affect the TCP connection")                                         | Unknown             | Passed              |
-|[rcv-rst-ack-syn-sent-left-edge-ipv4](rcv-rst-syn-ack-sent-left-edge-ipv4.pkt "Ensure that the reception of a TCP RST with SEG.ACK=SND.NXT in the SYN-SENT state destroys the TCP connection")                                                        | Unknown             | Passed              |
-|[rcv-rst-ack-syn-sent-left-edge-ipv6](rcv-rst-syn-ack-sent-left-edge-ipv6.pkt "Ensure that the reception of a TCP RST with SEG.ACK=SND.NXT in the SYN-SENT state destroys the TCP connection")                                                        | Unknown             | Passed              |
-|[rcv-rst-ack-syn-sent-outside-right-ipv4](rcv-rst-ack-syn-sent-outside-right-ipv4.pkt "Ensure that the reception of a TCP RST with SEG.ACK=SND.NXT+1 in the SYN-SENT state does not affect the TCP connection")                                       | Unknown             | Passed              |
-|[rcv-rst-ack-syn-sent-outside-right-ipv6](rcv-rst-ack-syn-sent-outside-right-ipv6.pkt "Ensure that the reception of a TCP RST with SEG.ACK=RCV.NXT+1 in the SYN-SENT state does not affect the TCP connection")                                       | Unknown             | Passed              |
-
-## Notes
+| Name                                                                                                                                                                                                               | Result FreeBSD 11.0 | Result FreeBSD Head |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------:|:-------------------:|
+|[rcv-rst-ack-syn-sent-outside-left-ipv4](rcv-rst-ack-syn-sent-outside-left-ipv4.pkt "Ensure that the reception of a TCP RST-ACK with SEG.ACK=SND.NXT-1 in the SYN-SENT state does not affect the TCP connection")   | Unknown             | Passed              |
+|[rcv-rst-ack-syn-sent-outside-left-ipv6](rcv-rst-ack-syn-sent-outside-left-ipv6.pkt "Ensure that the reception of a TCP RST-ACK with SEG.ACK=SND.NXT-1 in the SYN-SENT state does not affect the TCP connection")   | Unknown             | Passed              |
+|[rcv-rst-ack-syn-sent-left-edge-ipv4](rcv-rst-syn-ack-sent-left-edge-ipv4.pkt "Ensure that the reception of a TCP RST-ACK with SEG.ACK=SND.NXT in the SYN-SENT state destroys the TCP connection")                  | Unknown             | Passed              |
+|[rcv-rst-ack-syn-sent-left-edge-ipv6](rcv-rst-syn-ack-sent-left-edge-ipv6.pkt "Ensure that the reception of a TCP RST-ACK with SEG.ACK=SND.NXT in the SYN-SENT state destroys the TCP connection")                  | Unknown             | Passed              |
+|[rcv-rst-ack-syn-sent-outside-right-ipv4](rcv-rst-ack-syn-sent-outside-right-ipv4.pkt "Ensure that the reception of a TCP RST-ACK with SEG.ACK=SND.NXT+1 in the SYN-SENT state does not affect the TCP connection") | Unknown             | Passed              |
+|[rcv-rst-ack-syn-sent-outside-right-ipv6](rcv-rst-ack-syn-sent-outside-right-ipv6.pkt "Ensure that the reception of a TCP RST-ACK with SEG.ACK=RCV.NXT+1 in the SYN-SENT state does not affect the TCP connection") | Unknown             | Passed              |
