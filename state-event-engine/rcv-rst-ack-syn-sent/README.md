@@ -1,12 +1,11 @@
 # Handling of TCP Segments with the RST-ACK-bits Set in the SYN-SENT State
 
 ## Description
-This set of tests focuses on the handling of RST-segments moving the state of the TCP connection
-either to `CLOSED` or leaving it untouched.
-The behavior is described in [RFC 0793](https://tools.ietf.org/html/rfc0793) or
-[RFC 5961](https://tools.ietf.org/html/rfc5961#section-3) and selected by the
-`sysctl`-variable `net.inet.tcp.insecure_rst`.
-The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3).
+This set of tests focuses on the handling of TCP-segments with the
+RST and ACK bit set in the `SYN-SENT` state.
+
+[RFC 0793](https://tools.ietf.org/html/rfc0793) requires RST-ACK-segments to
+be accepted if and only if `SEG.ACK = SND.NXT` holds.
 
 ## Status
 
