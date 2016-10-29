@@ -39,6 +39,7 @@ tcp:::state-change
 	       "-",
 	       args[1]->cs_cid,
 	       tcp_state_string[args[5]->tcps_state],
-	       tcp_state_string[args[3]->tcps_state], timestamp);
+	       tcp_state_string[args[3]->tcps_state],
+	       timestamp);
 	last[args[1]->cs_cid] = timestamp;
 }
