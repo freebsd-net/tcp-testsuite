@@ -43,10 +43,10 @@ set skipped = 0
 set timedout = 0
 set first = 1
 
-printf "Name                                                  Verdict\n"
-printf "=============================================================\n"
+printf "Name                                                                    Verdict\n"
+printf "===============================================================================\n"
 foreach testcase ($testcases)
-  printf "%-50.50s " `/usr/bin/basename $testcase`
+  printf "%-68.68s " `/usr/bin/basename $testcase`
   if ($first == 0) then
     if ($delay != 0) then
       printf "\033[33m%10s\033[0m" "WAITING"
@@ -82,7 +82,7 @@ foreach testcase ($testcases)
     @ skipped++
   endif
 end
-printf "=============================================================\n"
+printf "===============================================================================\n"
 printf "Summary: Number of tests run:       %3u\n" $run
 printf "         Number of tests passed:    %3u\n" $passed
 printf "         Number of tests failed:    %3u\n" $failed
