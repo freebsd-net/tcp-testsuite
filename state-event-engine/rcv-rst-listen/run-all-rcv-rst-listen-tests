@@ -27,7 +27,7 @@
 
 set packetdrill = /usr/local/bin/packetdrill
 set delay = 1
-set limit = 5
+set limit = 10
 set testcases = ( rcv-rst-listen-secure-ipv4 \
                   rcv-rst-listen-secure-ipv6 \
                   rcv-rst-listen-insecure-ipv4 \
