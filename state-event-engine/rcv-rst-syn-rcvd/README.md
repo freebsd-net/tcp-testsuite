@@ -56,4 +56,6 @@ the prior state, have two sets of tests.
 |[rcv-rst-syn-rcvd-via-syn-sent-outside-right-insecure-ipv6](rcv-rst-syn-rcvd-via-syn-sent-outside-right-insecure-ipv6.pkt "Ensure that the reception of a TCP RST with SEG.SEQ=RCV.NXT+RCV.WND in the SYN-RCVD via the SYN-SENT state does not affect the TCP connection") | Unknown             | Passed              |
 
 ## Notes
-1. No challenge ACK is sent.
+1. No challenge ACK is sent. The syn-cache code is missing the logic described in
+   [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3).
+   See [tcp_syncache.c](http://fxr.watson.org/fxr/source/netinet/tcp_syncache.c#L562).
