@@ -43,7 +43,23 @@ set testcases = ( rcv-rst-syn-rcvd-via-listen-outside-left-secure-ipv4 \
                   rcv-rst-syn-rcvd-via-listen-right-edge-insecure-ipv4 \
                   rcv-rst-syn-rcvd-via-listen-right-edge-insecure-ipv6 \
                   rcv-rst-syn-rcvd-via-listen-outside-right-insecure-ipv4 \
-                  rcv-rst-syn-rcvd-via-listen-outside-right-insecure-ipv6 )
+                  rcv-rst-syn-rcvd-via-listen-outside-right-insecure-ipv6 \
+                  rcv-rst-syn-rcvd-via-syn-sent-outside-left-secure-ipv4 \
+                  rcv-rst-syn-rcvd-via-syn-sent-outside-left-secure-ipv6 \
+                  rcv-rst-syn-rcvd-via-syn-sent-left-edge-secure-ipv4 \
+                  rcv-rst-syn-rcvd-via-syn-sent-left-edge-secure-ipv6 \
+                  rcv-rst-syn-rcvd-via-syn-sent-right-edge-secure-ipv4 \
+                  rcv-rst-syn-rcvd-via-syn-sent-right-edge-secure-ipv6 \
+                  rcv-rst-syn-rcvd-via-syn-sent-outside-right-secure-ipv4 \
+                  rcv-rst-syn-rcvd-via-syn-sent-outside-right-secure-ipv6 \
+                  rcv-rst-syn-rcvd-via-syn-sent-outside-left-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-via-syn-sent-outside-left-insecure-ipv6 \
+                  rcv-rst-syn-rcvd-via-syn-sent-left-edge-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-via-syn-sent-left-edge-insecure-ipv6 \
+                  rcv-rst-syn-rcvd-via-syn-sent-right-edge-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-via-syn-sent-right-edge-insecure-ipv6 \
+                  rcv-rst-syn-rcvd-via-syn-sent-outside-right-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-via-syn-sent-outside-right-insecure-ipv6 )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0
