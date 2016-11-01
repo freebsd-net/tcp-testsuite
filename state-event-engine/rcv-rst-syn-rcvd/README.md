@@ -15,8 +15,8 @@ select if procedures described in [RFC 0793](https://tools.ietf.org/html/rfc0793
 [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3) are followed.
 The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3).
 
-Since the code path for handling the `SYN-RCVD` state depends on the prior state,
-have two set of tests.
+Since the code path for handling RST-segments in the `SYN-RCVD` state depends on
+the prior state, have two sets of tests.
 
 ## Status
 
