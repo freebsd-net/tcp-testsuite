@@ -28,22 +28,22 @@
 set packetdrill = /usr/local/bin/packetdrill
 set delay = 1
 set limit = 5
-set testcases = ( rcv-rst-syn-rcvd-outside-left-secure-ipv4 \
-                  rcv-rst-syn-rcvd-outside-left-secure-ipv6 \
-                  rcv-rst-syn-rcvd-left-edge-secure-ipv4 \
-                  rcv-rst-syn-rcvd-left-edge-secure-ipv6 \
-                  rcv-rst-syn-rcvd-right-edge-secure-ipv4 \
-                  rcv-rst-syn-rcvd-right-edge-secure-ipv6 \
-                  rcv-rst-syn-rcvd-outside-right-secure-ipv4 \
-                  rcv-rst-syn-rcvd-outside-right-secure-ipv6 \
-                  rcv-rst-syn-rcvd-outside-left-insecure-ipv4 \
-                  rcv-rst-syn-rcvd-outside-left-insecure-ipv6 \
-                  rcv-rst-syn-rcvd-left-edge-insecure-ipv4 \
-                  rcv-rst-syn-rcvd-left-edge-insecure-ipv6 \
-                  rcv-rst-syn-rcvd-right-edge-insecure-ipv4 \
-                  rcv-rst-syn-rcvd-right-edge-insecure-ipv6 \
-                  rcv-rst-syn-rcvd-outside-right-insecure-ipv4 \
-                  rcv-rst-syn-rcvd-outside-right-insecure-ipv6 )
+set testcases = ( rcv-rst-syn-rcvd-via-listen-outside-left-secure-ipv4 \
+                  rcv-rst-syn-rcvd-via-listen-outside-left-secure-ipv6 \
+                  rcv-rst-syn-rcvd-via-listen-left-edge-secure-ipv4 \
+                  rcv-rst-syn-rcvd-via-listen-left-edge-secure-ipv6 \
+                  rcv-rst-syn-rcvd-via-listen-right-edge-secure-ipv4 \
+                  rcv-rst-syn-rcvd-via-listen-right-edge-secure-ipv6 \
+                  rcv-rst-syn-rcvd-via-listen-outside-right-secure-ipv4 \
+                  rcv-rst-syn-rcvd-via-listen-outside-right-secure-ipv6 \
+                  rcv-rst-syn-rcvd-via-listen-outside-left-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-via-listen-outside-left-insecure-ipv6 \
+                  rcv-rst-syn-rcvd-via-listen-left-edge-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-via-listen-left-edge-insecure-ipv6 \
+                  rcv-rst-syn-rcvd-via-listen-right-edge-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-via-listen-right-edge-insecure-ipv6 \
+                  rcv-rst-syn-rcvd-via-listen-outside-right-insecure-ipv4 \
+                  rcv-rst-syn-rcvd-via-listen-outside-right-insecure-ipv6 )
 
 set rootdir = `/usr/bin/dirname $0`
 set passed = 0
