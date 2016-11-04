@@ -6,7 +6,7 @@
 
 /*
  * Watch TCP connection state transitions in real time.
- * This script is taken from
+ * This script is based on
  * https://people.freebsd.org/~markj/dtrace/network-providers/tcp/tcpstate.d
  */
 
@@ -19,6 +19,7 @@ dtrace:::BEGIN
 }
 
 tcp:::state-change
+/execname == "packetdrill"/
 {
 	this->elapsed = (timestamp - last[args[1]->cs_cid]) / 1000;
 	printf(" %3d %12d %-18x %-20s -> %-20s %d\n",
@@ -32,7 +33,7 @@ tcp:::state-change
 }
 
 tcp:::state-change
-/last[args[1]->cs_cid] == 0/
+/last[args[1]->cs_cid] == 0 && execname == "packetdrill"/
 {
 	printf(" %3d %12s %-18x %-20s -> %-20s %d\n",
 	       cpu,
