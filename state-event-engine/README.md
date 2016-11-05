@@ -56,7 +56,7 @@ rcv ACK of FIN ||                           |  -------                    |  CLO
 ```
 [RFC 1337](https://tools.ietf.org/html/rfc1337) describes the handling of RST segments
 in the TIME-WAIT state.
-[RFC 5961](https://tools.ietf.org/html/rfc5961) improves the handling of SYN and RST segments.
+[RFC 5961](https://tools.ietf.org/html/rfc5961) specifies an alternate handling of SYN and RST segments for improved security.
 
 ## Structure
 
