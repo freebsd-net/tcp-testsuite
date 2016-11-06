@@ -82,7 +82,7 @@ The following table shows the number of tests for handling TCP segments in the v
    `(SEG.SEQ < RCV.NXT || SEG.SEQ >= RCV.NXT + RCV.WND)`
    instead of
    `(SEG.SEQ <= RCV.NXT || SEG.SEQ > RCV.NXT + RCV.WND)`.
-   This has been reported as [errata 4845](http://www.rfc-editor.org/errata_search.php?rfc=5961&eid=4845).
+   This has been reported as [Errata 4845](http://www.rfc-editor.org/errata_search.php?rfc=5961&eid=4845).
 
 ## Fixes
 * [r307727](https://svnweb.freebsd.org/changeset/base/307727) and [307746](https://svnweb.freebsd.org/changeset/base/307746).
