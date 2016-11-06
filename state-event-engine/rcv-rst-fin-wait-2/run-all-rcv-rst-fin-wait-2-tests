@@ -56,7 +56,7 @@ set first = 1
 printf "Name                                                                    Verdict\n"
 printf "===============================================================================\n"
 foreach testcase ($testcases)
-  printf "%68.68s " `/usr/bin/basename $testcase`
+  printf "%-68.68s " `/usr/bin/basename $testcase`
   if ($first == 0) then
     if ($delay != 0) then
       printf "\033[33m%10s\033[0m" "WAITING"
