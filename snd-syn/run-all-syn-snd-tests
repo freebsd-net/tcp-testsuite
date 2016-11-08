@@ -27,7 +27,7 @@
 
 packetdrill=/usr/local/bin/packetdrill
 delay=1
-timelimit=100
+timelimit=400
 testcases="snd-syn-with-default-options-ipv4 \
            snd-syn-with-default-options-ipv6 \
            snd-syn-without-options-ipv4 \
