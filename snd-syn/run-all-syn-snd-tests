@@ -65,6 +65,7 @@ failed=0
 run=0
 skipped=0
 timedout=0
+killed=0
 first=1
 
 printf "Name                                                                    Verdict\n"
@@ -100,25 +101,36 @@ do
   fi
   if [ $found -eq 1 ] ; then
     case $result in
-      0) passed=`expr $passed + 1`
+      0)
+         passed=`expr $passed + 1`
          if [ -t 1 ] ; then
            printf "\033[32m%10s\033[0m\n" "PASSED"
          else
            printf "%10s\n" "PASSED"
          fi
          ;;
-      1) failed=`expr $failed + 1`
+      1)
+         failed=`expr $failed + 1`
          if [ -t 1 ] ; then
            printf "\033[31m%10s\033[0m\n" "FAILED"
          else
            printf "%10s\n" "FAILED"
          fi
          ;;
-    124) timedout=`expr $timedout + 1`
+      124)
+         timedout=`expr $timedout + 1`
          if [ -t 1 ] ; then
            printf "\033[35m%10s\033[0m\n" "TIMEDOUT"
          else
            printf "%10s\n" "TIMEDOUT"
+         fi
+         ;;
+      129|1[345]?|16[01])
+         killed=`expr $killed + 1`
+         if [ -t 1 ] ; then
+           printf "\033[30m%10s\033[0m\n" "KILLED(`expr $result - 128`)"
+         else
+           printf "%10s\n" "KILLED(`expr $result - 128`)"
          fi
          ;;
       *)
@@ -145,3 +157,6 @@ printf "         Number of tests passed:    %3u\n" $passed
 printf "         Number of tests failed:    %3u\n" $failed
 printf "         Number of tests timed out: %3u\n" $timedout
 printf "         Number of tests skipped:   %3u\n" $skipped
+if [ $killed -gt 0 ] ; then
+  printf "         Number of tests killed:    %3u\n" $killed
+fi
