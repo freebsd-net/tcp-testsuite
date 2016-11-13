@@ -48,7 +48,7 @@
 // Make sure that the time limit for connection setup does not apply
 +  0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [363], 4) = 0
 // Try to establish a TCP connection
-   0.00...362.60 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
+   1.00...363.60 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
 +  0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
 +  3.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 3100 ecr 0>
 +  3.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 6300 ecr 0>
@@ -63,4 +63,4 @@
 + 64.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 234700 ecr 0>
 + 64.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 298700 ecr 0>
 // Finally cleanup
- 363.00 close(3) = 0
+ 365.00 close(3) = 0

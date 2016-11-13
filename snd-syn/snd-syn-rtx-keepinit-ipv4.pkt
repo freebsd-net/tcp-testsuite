@@ -49,11 +49,11 @@
 // Limit the retransmissions of the SYN segment to 15 seconds.
 + 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [15], 4) = 0
 // Try to establish a TCP connection.
-  0.00...15.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
+  1.00...16.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
 + 0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
 + 3.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 3100 ecr 0>
 + 3.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 6300 ecr 0>
 + 3.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 9500 ecr 0>
 + 3.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 12700 ecr 0>
 // Finally cleanup
- 16.00 close(3) = 0
+ 17.00 close(3) = 0
