@@ -72,69 +72,57 @@ printf "========================================================================
 for testcase in $testcases
 do
   printf "%-68.68s " `/usr/bin/basename $testcase`
-  if [ $first -eq 0 ]
-  then
-    if [ $delay -ne 0 ]
-    then
-      if [ -t 1 ]
-      then
+  if [ $first -eq 0 ] ; then
+    if [ $delay -ne 0 ] ; then
+      if [ -t 1 ] ; then
         printf "\033[33m%10s\033[0m" "WAITING"
       fi
       sleep $delay
-      if [ -t 1 ]
-      then
+      if [ -t 1 ] ; then
         printf "\b\b\b\b\b\b\b\b\b\b"
       fi
     fi
   else
     first=0
   fi
-  if [ -t 1 ]
-  then
+  if [ -t 1 ] ; then
     printf "\033[33m%10s\033[0m" "RUNNING"
   fi
-  if [ -f ${rootdir}/${testcase}.pkt ]
-  then
+  if [ -f ${rootdir}/${testcase}.pkt ] ; then
     timeout $timelimit $packetdrill ${rootdir}/${testcase}.pkt >/dev/null 2>&1
     result=$?
     found=1
   else
     found=0
   fi
-  if [ -t 1 ]
-  then
+  if [ -t 1 ] ; then
     printf "\b\b\b\b\b\b\b\b\b\b"
   fi
-  if [ $found -eq 1 ]
-  then
+  if [ $found -eq 1 ] ; then
     case $result in
       0) passed=`expr $passed + 1`
-         if [ -t 1 ]
-         then
+         if [ -t 1 ] ; then
            printf "\033[32m%10s\033[0m\n" "PASSED"
          else
            printf "%10s\n" "PASSED"
          fi
          ;;
       1) failed=`expr $failed + 1`
-         if [ -t 1 ]
-         then
+         if [ -t 1 ] ; then
            printf "\033[31m%10s\033[0m\n" "FAILED"
          else
            printf "%10s\n" "FAILED"
          fi
          ;;
     124) timedout=`expr $timedout + 1`
-         if [ -t 1 ]
-         then
+         if [ -t 1 ] ; then
            printf "\033[35m%10s\033[0m\n" "TIMEDOUT"
          else
            printf "%10s\n" "TIMEDOUT"
          fi
          ;;
       *)
-         if [ -t 1 ]
-         then
+         if [ -t 1 ] ; then
            printf "\033[36m%10s\033[0m\n" "UNKNOWN"
          else
            printf "%10s\n" "UNKNOWN"
@@ -143,8 +131,7 @@ do
     esac
     run=`expr $run + 1`
   else
-    if [ -t 1 ]
-    then
+    if [ -t 1 ] ; then
       printf "\033[34m%10s\033[0m\n" "SKIPPED"
     else
       printf "%10s\n" "SKIPPED"
