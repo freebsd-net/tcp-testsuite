@@ -28,7 +28,7 @@
 // without the TCP option indicating SACK support.
 
 --ip_version=ipv6
---tolerance_usecs=50000
+--tolerance_usecs=100000
 
 // Ensure that all relevant sysctl variables have their default variables.
   0.00 `sysctl -w net.inet.tcp.rfc1323=1`
