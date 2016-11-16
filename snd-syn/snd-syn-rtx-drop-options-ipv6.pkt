@@ -30,7 +30,7 @@
 // FIXME: There is still the MSS option.
 
 --ip_version=ipv6
---tolerance_usecs=100000
+--tolerance_usecs=150000
 
 // Ensure that all relevant sysctl variables have their default variables.
   0.00 `sysctl -w net.inet.tcp.rfc1323=1`
