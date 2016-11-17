@@ -14,9 +14,9 @@ This directory contains files with useful script fragments
 |[syn-sent-ipv4](syn-sent-ipv4.pkt "Move to SYN-SENT state")                                                 | Unknown             | Passed              |
 |[syn-sent-ipv6](syn-sent-ipv6.pkt "Move to SYN-SENT state")                                                 | Unknown             | Passed              |
 |[syn-rcvd-via-listen-ipv4](syn-rcvd-via-listen-ipv4.pkt "Move to SYN-RCVD state via LISTEN")                | Unknown             | Passed              |
-|[syn-rcvd-via-listen-ipv6](syn-rcvd-via-listen-ipv6.pkt "Move to SYN-RCVD state via LISTEN")                | Unknown             | Failed (Note 1)     |
+|[syn-rcvd-via-listen-ipv6](syn-rcvd-via-listen-ipv6.pkt "Move to SYN-RCVD state via LISTEN")                | Unknown             | Passed              |
 |[syn-rcvd-via-syn-sent-ipv4](syn-rcvd-via-syn-sent-ipv4.pkt "Move to SYN-RCVD state via SYN-SENT")          | Unknown             | Failed (Note 1)     |
-|[syn-rcvd-via-syn-sent-ipv6](syn-rcvd-via-syn-sent-ipv6.pkt "Move to SYN-RCVD state via SYN-SENT")          | Unknown             | Passed              |
+|[syn-rcvd-via-syn-sent-ipv6](syn-rcvd-via-syn-sent-ipv6.pkt "Move to SYN-RCVD state via SYN-SENT")          | Unknown             | Failed (Note 1)     |
 |[established-ipv4](established-ipv4.pkt "Move to ESTABLISHED state")                                        | Unknown             | Passed              |
 |[established-ipv6](established-ipv6.pkt "Move to ESTABLISHED state")                                        | Unknown             | Passed              |
 |[close-wait-ipv4](close-wait-ipv4.pkt "Move to CLOSE-WAIT state")                                           | Unknown             | Passed (Note 2)     |
