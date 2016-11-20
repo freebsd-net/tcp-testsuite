@@ -25,10 +25,10 @@
 //
 
 // Ensure that TCP SYN segments gets transmitted and retransmitted
-// indicating ECN support.
+// with the maximum WS value.
 
 --ip_version=ipv4
---tolerance_usecs=150000
+--tolerance_usecs=200000
 
 // Ensure that all relevant sysctl variables have their default variables.
   0.00 `sysctl -w net.inet.tcp.rfc1323=1`
