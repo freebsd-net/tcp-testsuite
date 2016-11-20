@@ -86,8 +86,8 @@ The following table shows the number of tests for handling TCP segments in the v
 
 ## Fixes
 * [r307727](https://svnweb.freebsd.org/changeset/base/307727) and [307746](https://svnweb.freebsd.org/changeset/base/307746).
-* [D8371](https://reviews.freebsd.org/D8371).
-* [D8443](https://reviews.freebsd.org/D8443).
+* [r308745](https://svnweb.freebsd.org/changeset/base/308745) ([D8371](https://reviews.freebsd.org/D8371)).
+* [r308832](https://svnweb.freebsd.org/changeset/base/308832) ([D8443](https://reviews.freebsd.org/D8443)).
 
 ## References
 * [RFC 793: *Transmission Control Protocol*](https://tools.ietf.org/html/rfc0793)

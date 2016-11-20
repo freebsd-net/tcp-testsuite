@@ -42,4 +42,4 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
    TCP/IP Illustrated, page 964, states that no error is signalled to the process, "since the process has closed the socket".
    This argument covers `CLOSING`, `LAST-ACK`, and `TIME-WAIT`. However, the state can be reached by calling `shutdown(..., SHUT_WR)`
    and therefore the appication can still be notified in `CLOSING` and `LAST-ACK` state.
-   A fix is under review in [D8371](https://reviews.freebsd.org/D8371).
+   Fixed in [r308745](https://svnweb.freebsd.org/changeset/base/308745) ([D8371](https://reviews.freebsd.org/D8371)).
