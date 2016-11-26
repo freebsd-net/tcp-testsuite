@@ -7,7 +7,7 @@ It it based on the packetdrill testtool.
 The original version is available from [Google's repository](https://github.com/google/packetdrill).
 However, this version does not really run on FreeBSD.
 An extended version is available from [NPLab's respository](https://github.com/nplab/packetdrill)
-and overcomes this limitation and adds support for SCTP and UDPLite.
+overcoming this limitation and adding support for SCTP and UDPLite.
 
 ## Installation
 You can get the testsuite by running
