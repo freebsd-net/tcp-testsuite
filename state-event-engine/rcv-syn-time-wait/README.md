@@ -6,11 +6,11 @@ This set of tests focuses on the handling of SYN-segments in the `TIME-WAIT` sta
 [RFC 0793](https://tools.ietf.org/html/rfc0793) requires the sending of
 a RST-segment in response to a received SYN-segment with
 `RCV.NXT <= SEG.SEQ < RCV.NXT + RCV.WND - 1`.
-If SEG.SEQ of the received SYN-segment is outside the window, a challenge ACK
+If SEG.SEQ of the received SYN-segment is outside this window, a challenge ACK
 has to be sent.
 
 For mitigating blind attacks, [RFC 5961](https://tools.ietf.org/html/rfc5961#section-4)
-requires that a challenge ACK has always to be sent on reception of a SYN-segment.
+requires that a challenge ACK has always to be sent in response to a SYN-segment.
 
 In FreeBSD, the `sysctl`-variable `net.inet.tcp.insecure_syn` can be used to
 select if procedures described in [RFC 0793](https://tools.ietf.org/html/rfc0793) or
