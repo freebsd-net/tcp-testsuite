@@ -15,4 +15,5 @@ The required behavior is described in [RFC 0793](https://tools.ietf.org/html/rfc
 
 ## Notes
 
-1. The FIN is not counted as 1 byte in the sequence number space.
+1. A FIN-segments occupy one byte in the sequence number space. Currently this is not accounted for when generating the RST-ACK segment.
+   A fix is under review [D8667](https://reviews.freebsd.org/D8667).
