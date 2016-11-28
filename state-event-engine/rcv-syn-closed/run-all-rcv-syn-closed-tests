@@ -28,10 +28,8 @@
 packetdrill=/usr/local/bin/packetdrill
 delay=1
 timelimit=10
-testcases="rcv-syn-closed-secure-ipv4 \
-           rcv-syn-closed-secure-ipv6 \
-           rcv-syn-closed-insecure-ipv4 \
-           rcv-syn-closed-insecure-ipv6"
+testcases="rcv-syn-closed-ipv4 \
+           rcv-syn-closed-ipv6"
 
 rootdir=`/usr/bin/dirname $0`
 passed=0
