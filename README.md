@@ -12,7 +12,7 @@ overcoming this limitation and adding support for SCTP and UDPLite.
 ## Installation
 You can get the testsuite by running
 ```
-git clone https://github.com/tuexen/tcp-testsuite.git
+git clone https://github.com/freebsd-net/tcp-testsuite.git
 ```
 ## Usage
 To run all test scripts, execute
