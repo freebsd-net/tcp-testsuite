@@ -24,8 +24,8 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of a TCP segments with the RST-bit set in the
-// CLOSED state does not result in a state change.
+// Ensure that the reception of a TCP segments with the RST-ACK-bits set in the
+// CLOSED state does not result in a state change and no response is sent.
 
 --ip_version=ipv4
 --tolerance_usecs=50000
@@ -35,7 +35,7 @@
 +0.00 bind(3, ..., ...) = 0
 +0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], [4]) = 0
 // Now it is in the CLOSED state.
-+0.10 < R  0:0(0) win 32767
++0.10 < R. 17:17(0) ack 34 win 32767
 // Check that no RST is sent.
 +0.00 listen(3, 1) = 0
 +0.00 < S  0:0(0) win 32767 <mss 1460>
