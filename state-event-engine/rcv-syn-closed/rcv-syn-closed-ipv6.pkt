@@ -24,8 +24,8 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of a TCP segments with the RST-bit set in the
-// CLOSED state does not result in a state change.
+// Ensure that the reception of a TCP segments with the SYN-bit set in the
+// CLOSED state does trigger the sending of a RST-ACK segment.
 
 --ip_version=ipv6
 --tolerance_usecs=50000
