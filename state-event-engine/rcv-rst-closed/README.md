@@ -10,7 +10,7 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
 
 ## Results
 
-| Name                                                                                                                                                     | Result FreeBSD 11.0 | Result FreeBSD Head |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------:|:-------------------:|
-|[rcv-rst-closed-ipv4](rcv-rst-closed-ipv4.pkt "Ensure that the reception of a TCP RST in the CLOSED state does not trigger the sending of a TCP RST")     | Unknown             | Passed              |
-|[rcv-rst-closed-ipv6](rcv-rst-closed-ipv6.pkt "Ensure that the reception of a TCP RST in the CLOSED state does not trigger the sending of a TCP RST")     | Unknown             | Passed              |
+| Name                                                                                                                                                             | Result FreeBSD 11.0 | Result FreeBSD Head |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------:|:-------------------:|
+|[rcv-rst-closed-ipv4](rcv-rst-closed-ipv4.pkt "Ensure that the reception of a RST-segment in the CLOSED state does not trigger the sending of a RST-segment")     | Unknown             | Passed              |
+|[rcv-rst-closed-ipv6](rcv-rst-closed-ipv6.pkt "Ensure that the reception of a RST-segment in the CLOSED state does not trigger the sending of a RST-segment")     | Unknown             | Passed              |
