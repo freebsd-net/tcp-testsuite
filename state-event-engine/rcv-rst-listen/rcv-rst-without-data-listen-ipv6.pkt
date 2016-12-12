@@ -25,20 +25,19 @@
 //
 
 // Ensure that the reception of a TCP segments with the RST-bit set in the
-// LISTEN state does not result in a state change.
+// CLOSED state does not result in a state change.
 
---ip_version=ipv4
+--ip_version=ipv6
 --tolerance_usecs=50000
 
- 0.00 `sysctl -w net.inet.tcp.insecure_rst=0`
-// Create a TCP endpoint in LISTEN state.
-+0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
+// Create a TCP endpoint in CLOSED state.
+ 0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 bind(3, ..., ...) = 0
-+0.00 listen(3, 1) = 0
 +0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], [4]) = 0
++0.00 listen(3, 1) = 0
 // Now it is in the LISTEN state.
 +0.10 < R  0:0(0) win 32767
-+0.10 `sockstat -4 -P tcp -s -l | grep packetdril | grep -c LISTEN | grep 2`
-// Can't use the python stuff on listening sockets.
-//+0.10 %{ assert tcpi_state == TCPI_LISTEN }%
+// Check that no RST is sent.
++0.00 < S  0:0(0) win 32767 <mss 1440>
++0.00 > S. 0:0(0) ack 1 win 65535 <mss 1440>
 +0.00 close(3) = 0
