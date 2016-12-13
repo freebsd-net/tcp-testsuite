@@ -24,7 +24,7 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of a TCP segments with the SYN-ACK bits set in the
+// Ensure that the reception of a TCP segments with the FIN-ACK bits set in the
 // CLOSED state does trigger the sending of a RST segment.
 
 --ip_version=ipv4
