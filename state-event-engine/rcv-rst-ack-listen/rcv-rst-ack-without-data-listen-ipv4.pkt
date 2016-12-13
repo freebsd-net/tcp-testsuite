@@ -25,7 +25,7 @@
 //
 
 // Ensure that the reception of a TCP segments with the RST-ACK-bits set in the
-// CLOSED state does not result in a state change and no response is sent.
+// LISTEN state does not result in a state change and no response is sent.
 
 --ip_version=ipv4
 --tolerance_usecs=50000

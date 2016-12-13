@@ -25,7 +25,7 @@
 //
 
 // Ensure that the reception of a TCP segments with the RST-bit set in the
-// CLOSED state does not result in a state change.
+// LISTEN state does not result in a state change.
 
 --ip_version=ipv4
 --tolerance_usecs=50000
