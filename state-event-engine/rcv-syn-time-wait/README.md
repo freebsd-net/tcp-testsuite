@@ -20,7 +20,7 @@ The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-
 FreeBSD currently implements a different strategy:
 If a SYN-segment is received with `SEG.SEQ <= RCV.NXT`, no response is sent and
 the TCP connection stays in the `TIME-WAIT` state.
-However, if `SEG.SEQ > RCV.NXT` holds, the TCP connection is move from the
+However, if `SEG.SEQ > RCV.NXT` holds, the TCP connection is moved from the
 `TIME-WAIT` state to the `CLOSED` state and the incoming SYN-segment is processed.
 
 ## Status
