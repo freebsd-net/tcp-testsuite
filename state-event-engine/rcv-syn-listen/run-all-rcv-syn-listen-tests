@@ -28,10 +28,10 @@
 packetdrill=/usr/local/bin/packetdrill
 delay=1
 timelimit=10
-testcases="rcv-syn-listen-secure-ipv4 \
-           rcv-syn-listen-secure-ipv6 \
-           rcv-syn-listen-insecure-ipv4 \
-           rcv-syn-listen-insecure-ipv6"
+testcases="rcv-syn-without-data-listen-ipv4 \
+           rcv-syn-without-data-listen-ipv6 \
+           rcv-syn-with-data-listen-ipv4 \
+           rcv-syn-with-data-listen-ipv6"
 
 rootdir=`/usr/bin/dirname $0`
 passed=0
