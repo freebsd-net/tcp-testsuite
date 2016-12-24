@@ -1,4 +1,4 @@
-# Handling of TCP Segments with the ACK-bit Set in the CLOSED state
+# Handling of TCP Segments with the ACK-bit Set in the LISTEN state
 
 ## Description
 This set of tests focuses on the handling of ACK-segments in the LISTEN state.
