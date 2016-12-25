@@ -25,7 +25,7 @@
 //
 
 // Ensure that the reception of a TCP segments with the FIN-ACK bits set in the
-// LISTEM state does trigger the sending of a RST segment.
+// LISTEN state does trigger the sending of a RST segment.
 
 --ip_version=ipv4
 --tolerance_usecs=50000
