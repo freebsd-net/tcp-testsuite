@@ -28,12 +28,18 @@
 packetdrill=/usr/local/bin/packetdrill
 delay=1
 timelimit=10
-testcases="rcv-rst-syn-sent-outside-left-ipv4 \
-           rcv-rst-syn-sent-outside-left-ipv6 \
-           rcv-rst-syn-sent-left-edge-ipv4 \
-           rcv-rst-syn-sent-left-edge-ipv6 \
-           rcv-rst-syn-sent-outside-right-ipv4 \
-           rcv-rst-syn-sent-outside-right-ipv6"
+testcases="rcv-rst-without-data-syn-sent-outside-left-ipv4 \
+           rcv-rst-without-data-syn-sent-outside-left-ipv6 \
+           rcv-rst-without-data-syn-sent-left-edge-ipv4 \
+           rcv-rst-without-data-syn-sent-left-edge-ipv6 \
+           rcv-rst-without-data-syn-sent-outside-right-ipv4 \
+           rcv-rst-without-data-syn-sent-outside-right-ipv6 \
+           rcv-rst-with-data-syn-sent-outside-left-ipv4 \
+           rcv-rst-with-data-syn-sent-outside-left-ipv6 \
+           rcv-rst-with-data-syn-sent-left-edge-ipv4 \
+           rcv-rst-with-data-syn-sent-left-edge-ipv6 \
+           rcv-rst-with-data-syn-sent-outside-right-ipv4 \
+           rcv-rst-with-data-syn-sent-outside-right-ipv6"
 
 rootdir=`/usr/bin/dirname $0`
 passed=0
