@@ -4,7 +4,8 @@
 This set of tests focuses on the handling of FIN-ACK-segments in the `SYN-SENT` state.
 
 [RFC 0793](https://tools.ietf.org/html/rfc0793) requires FIN-ACK-segments to be
-ignored.
+ignored if SND.UNA =< SEG.ACK =< SND.NXT holds and triggering the sending of
+a RST segment with SEG.SEQ = SEQ.ACK otherwise.
 
 ## Status
 
