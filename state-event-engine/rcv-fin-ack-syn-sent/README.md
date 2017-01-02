@@ -7,6 +7,9 @@ This set of tests focuses on the handling of FIN-ACK-segments in the `SYN-SENT` 
 ignored if SND.UNA =< SEG.ACK =< SND.NXT holds and triggering the sending of
 a RST segment with SEG.SEQ = SEQ.ACK otherwise.
 
+Please note that the reception of an acceptable ACK does not stop the retransmit
+timer for the SYN-segment.
+
 ## Status
 
 | Name                                                                                                                                                                                                                                                                                       | Result FreeBSD 11.0 | Result FreeBSD Head |
