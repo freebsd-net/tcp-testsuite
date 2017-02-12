@@ -27,6 +27,10 @@
 --ip_version=ipv4
 --tolerance_usecs=50000
 
+// Ensure that all relevant sysctl variables have their default variables.
+ 0.00 `sysctl -w net.inet.tcp.rfc1323=1`
++0.00 `sysctl -w net.inet.tcp.sack.enable=1`
++0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
 // Create a TCP endpoint in the LAST-ACK state.
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 fcntl(3, F_GETFL) = 0x02 (flags O_RDWR)
