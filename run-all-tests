@@ -25,7 +25,8 @@
 # SUCH DAMAGE.
 #
 
-./run-tests.sh rcv-icmp/all-rcv-icmp-tests \
+./run-tests.sh -t 400 \
+               rcv-icmp/all-rcv-icmp-tests \
                snd-syn/all-snd-syn-tests \
                socket-api/all-socket-api-tests \
                state-event-engine/rcv-syn-closed/all-rcv-syn-closed-tests \
