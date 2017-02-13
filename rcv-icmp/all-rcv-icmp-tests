@@ -1,0 +1,12 @@
+rcv-icmp/rcv-icmp-hard-error-proto-unreachable-ipv4
+rcv-icmp/rcv-icmp-hard-error-proto-unreachable-ipv6
+rcv-icmp/rcv-icmp-hard-error-port-unreachable-ipv4
+rcv-icmp/rcv-icmp-hard-error-port-unreachable-ipv6
+rcv-icmp/rcv-icmp-hard-error-net-prohibited-ipv4
+rcv-icmp/rcv-icmp-hard-error-host-prohibited-ipv4
+rcv-icmp/rcv-icmp-hard-error-comm-prohibited-ipv4
+rcv-icmp/rcv-icmp-hard-error-comm-prohibited-ipv6
+rcv-icmp/rcv-icmp-hard-error-ttl-exceeded-ipv4
+rcv-icmp/rcv-icmp-hard-error-ttl-exceeded-ipv6
+rcv-icmp/rcv-icmp-hard-error-ignored-ipv4
+rcv-icmp/rcv-icmp-hard-error-ignored-ipv6

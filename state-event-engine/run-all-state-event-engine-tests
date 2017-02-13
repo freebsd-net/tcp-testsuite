@@ -1,0 +1,63 @@
+#!/usr/bin/env sh
+#
+# Copyright (c) 2016 Michael Tuexen
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+
+../run-tests.sh rcv-syn-closed/all-rcv-syn-closed-tests \
+                rcv-syn-listen/all-rcv-syn-listen-tests \
+                rcv-syn-established/all-rcv-syn-established-tests \
+                rcv-syn-close-wait/all-rcv-syn-close-wait-tests \
+                rcv-syn-fin-wait-1/all-rcv-syn-fin-wait-1-tests \
+                rcv-syn-closing/all-rcv-syn-closing-tests \
+                rcv-syn-last-ack/all-rcv-syn-last-ack-tests \
+                rcv-syn-fin-wait-2/all-rcv-syn-fin-wait-2-tests \
+                rcv-syn-time-wait/all-rcv-syn-time-wait-tests \
+                rcv-syn-ack-closed/all-rcv-syn-ack-closed-tests \
+                rcv-syn-ack-listen/all-rcv-syn-ack-listen-tests \
+                rcv-syn-fin-closed/all-rcv-syn-fin-closed-tests \
+                rcv-syn-fin-listen/all-rcv-syn-fin-listen-tests \
+                rcv-ack-closed/all-rcv-ack-closed-tests \
+                rcv-ack-listen/all-rcv-ack-listen-tests \
+                rcv-fin-closed/all-rcv-fin-closed-tests \
+                rcv-fin-listen/all-rcv-fin-listen-tests \
+                rcv-fin-ack-closed/all-rcv-fin-ack-closed-tests \
+                rcv-fin-ack-listen/all-rcv-fin-ack-listen-tests \
+                rcv-fin-ack-syn-sent/all-rcv-fin-ack-syn-ack-tests \
+                rcv-rst-ack-closed/all-rcv-rst-ack-closed-tests \
+                rcv-rst-ack-listen/all-rcv-rst-ack-listen-tests \
+                rcv-rst-ack-syn-sent/all-rcv-rst-ack-syn-sent-tests \
+                rcv-rst-closed/all-rcv-rst-closed-tests \
+                rcv-rst-listen/all-rcv-rst-listen-tests \
+                rcv-rst-closed/all-rcv-rst-closed-tests \
+                rcv-rst-syn-sent/all-rcv-rst-syn-sent-tests \
+                rcv-rst-syn-rcvd/all-rcv-rst-syn-rcvd-tests \
+                rcv-rst-established/all-rcv-rst-established-tests \
+                rcv-rst-close-wait/all-rcv-rst-close-wait-tests \
+                rcv-rst-fin-wait-1/all-rcv-rst-fin-wait-1-tests \
+                rcv-rst-closing/all-rcv-rst-closing-tests \
+                rcv-rst-last-ack/all-rcv-rst-last-ack-tests \
+                rcv-rst-fin-wait-2/all-rcv-rst-fin-wait-2-tests \
+                rcv-rst-time-wait/all-rcv-rst-time-wait-tests
+

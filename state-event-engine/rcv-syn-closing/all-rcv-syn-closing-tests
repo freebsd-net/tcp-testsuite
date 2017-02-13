@@ -1,0 +1,16 @@
+state-event-engine/rcv-syn-closing/rcv-syn-closing-outside-left-secure-ipv4
+state-event-engine/rcv-syn-closing/rcv-syn-closing-outside-left-secure-ipv6
+state-event-engine/rcv-syn-closing/rcv-syn-closing-left-edge-secure-ipv4
+state-event-engine/rcv-syn-closing/rcv-syn-closing-left-edge-secure-ipv6
+state-event-engine/rcv-syn-closing/rcv-syn-closing-right-edge-secure-ipv4
+state-event-engine/rcv-syn-closing/rcv-syn-closing-right-edge-secure-ipv6
+state-event-engine/rcv-syn-closing/rcv-syn-closing-outside-right-secure-ipv4
+state-event-engine/rcv-syn-closing/rcv-syn-closing-outside-right-secure-ipv6
+state-event-engine/rcv-syn-closing/rcv-syn-closing-outside-left-insecure-ipv4
+state-event-engine/rcv-syn-closing/rcv-syn-closing-outside-left-insecure-ipv6
+state-event-engine/rcv-syn-closing/rcv-syn-closing-left-edge-insecure-ipv4
+state-event-engine/rcv-syn-closing/rcv-syn-closing-left-edge-insecure-ipv6
+state-event-engine/rcv-syn-closing/rcv-syn-closing-right-edge-insecure-ipv4
+state-event-engine/rcv-syn-closing/rcv-syn-closing-right-edge-insecure-ipv6
+state-event-engine/rcv-syn-closing/rcv-syn-closing-outside-right-insecure-ipv4
+state-event-engine/rcv-syn-closing/rcv-syn-closing-outside-right-insecure-ipv6

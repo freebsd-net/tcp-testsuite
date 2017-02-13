@@ -1,0 +1,16 @@
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-outside-left-secure-ipv4
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-outside-left-secure-ipv6
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-left-edge-secure-ipv4
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-left-edge-secure-ipv6
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-right-edge-secure-ipv4
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-right-edge-secure-ipv6
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-outside-right-secure-ipv4
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-outside-right-secure-ipv6
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-outside-left-insecure-ipv4
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-outside-left-insecure-ipv6
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-left-edge-insecure-ipv4
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-left-edge-insecure-ipv6
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-right-edge-insecure-ipv4
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-right-edge-insecure-ipv6
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-outside-right-insecure-ipv4
+state-event-engine/rcv-rst-last-ack/rcv-rst-last-ack-outside-right-insecure-ipv6

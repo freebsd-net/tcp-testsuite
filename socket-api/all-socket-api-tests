@@ -1,0 +1,8 @@
+socket-api/getsockopt/socket-api-getsockopt-keepcnt-inherited-from-sysctl-ipv4
+socket-api/getsockopt/socket-api-getsockopt-keepcnt-inherited-from-sysctl-ipv6
+socket-api/getsockopt/socket-api-getsockopt-keepidle-inherited-from-sysctl-ipv4
+socket-api/getsockopt/socket-api-getsockopt-keepidle-inherited-from-sysctl-ipv6
+socket-api/getsockopt/socket-api-getsockopt-keepinit-inherited-from-sysctl-ipv4
+socket-api/getsockopt/socket-api-getsockopt-keepinit-inherited-from-sysctl-ipv6
+socket-api/getsockopt/socket-api-getsockopt-keepintvl-inherited-from-sysctl-ipv4
+socket-api/getsockopt/socket-api-getsockopt-keepintvl-inherited-from-sysctl-ipv6

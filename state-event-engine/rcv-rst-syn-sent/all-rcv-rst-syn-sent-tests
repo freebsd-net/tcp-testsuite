@@ -1,0 +1,12 @@
+state-event-engine/rcv-rst-syn-sent/rcv-rst-without-data-syn-sent-outside-left-ipv4
+state-event-engine/rcv-rst-syn-sent/rcv-rst-without-data-syn-sent-outside-left-ipv6
+state-event-engine/rcv-rst-syn-sent/rcv-rst-without-data-syn-sent-left-edge-ipv4
+state-event-engine/rcv-rst-syn-sent/rcv-rst-without-data-syn-sent-left-edge-ipv6
+state-event-engine/rcv-rst-syn-sent/rcv-rst-without-data-syn-sent-outside-right-ipv4
+state-event-engine/rcv-rst-syn-sent/rcv-rst-without-data-syn-sent-outside-right-ipv6
+state-event-engine/rcv-rst-syn-sent/rcv-rst-with-data-syn-sent-outside-left-ipv4
+state-event-engine/rcv-rst-syn-sent/rcv-rst-with-data-syn-sent-outside-left-ipv6
+state-event-engine/rcv-rst-syn-sent/rcv-rst-with-data-syn-sent-left-edge-ipv4
+state-event-engine/rcv-rst-syn-sent/rcv-rst-with-data-syn-sent-left-edge-ipv6
+state-event-engine/rcv-rst-syn-sent/rcv-rst-with-data-syn-sent-outside-right-ipv4
+state-event-engine/rcv-rst-syn-sent/rcv-rst-with-data-syn-sent-outside-right-ipv6

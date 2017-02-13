@@ -1,0 +1,16 @@
+state-event-engine/rcv-rst-established/rcv-rst-established-outside-left-secure-ipv4
+state-event-engine/rcv-rst-established/rcv-rst-established-outside-left-secure-ipv6
+state-event-engine/rcv-rst-established/rcv-rst-established-left-edge-secure-ipv4
+state-event-engine/rcv-rst-established/rcv-rst-established-left-edge-secure-ipv6
+state-event-engine/rcv-rst-established/rcv-rst-established-right-edge-secure-ipv4
+state-event-engine/rcv-rst-established/rcv-rst-established-right-edge-secure-ipv6
+state-event-engine/rcv-rst-established/rcv-rst-established-outside-right-secure-ipv4
+state-event-engine/rcv-rst-established/rcv-rst-established-outside-right-secure-ipv6
+state-event-engine/rcv-rst-established/rcv-rst-established-outside-left-insecure-ipv4
+state-event-engine/rcv-rst-established/rcv-rst-established-outside-left-insecure-ipv6
+state-event-engine/rcv-rst-established/rcv-rst-established-left-edge-insecure-ipv4
+state-event-engine/rcv-rst-established/rcv-rst-established-left-edge-insecure-ipv6
+state-event-engine/rcv-rst-established/rcv-rst-established-right-edge-insecure-ipv4
+state-event-engine/rcv-rst-established/rcv-rst-established-right-edge-insecure-ipv6
+state-event-engine/rcv-rst-established/rcv-rst-established-outside-right-insecure-ipv4
+state-event-engine/rcv-rst-established/rcv-rst-established-outside-right-insecure-ipv6
