@@ -39,8 +39,6 @@ delay=1
 timelimit=10
 
 while getopts :d:p:t: opt; do
-echo $opt
-echo $OPTARG
   case $opt in
     p)
       packetdrill="$OPTARG"
