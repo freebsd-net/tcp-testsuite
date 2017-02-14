@@ -83,8 +83,11 @@ for file ; do
       printf "\033[33m%10s\033[0m" "RUNNING"
     fi
     if [ -f ${rootdir}/${testcase}.pkt ] ; then
-      timeout $timelimit $packetdrill ${rootdir}/${testcase}.pkt >/dev/null 2>&1
+      timeout $timelimit $packetdrill ${rootdir}/${testcase}.pkt >/dev/null 2>${rootdir}/${testcase}.out
       result=$?
+      if [ ! -s ${rootdir}/${testcase}.out ] ; then
+        rm ${rootdir}/${testcase}.out
+      fi
       found=1
     else
       found=0
