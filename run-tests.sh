@@ -37,17 +37,21 @@ first=1
 packetdrill=/usr/local/bin/packetdrill
 delay=1
 timelimit=10
+flags=''
 
-while getopts :d:p:t: opt; do
+while getopts :d:p:t:v opt; do
   case $opt in
-    p)
-      packetdrill="$OPTARG"
-      ;;
     d)
       delay="$OPTARG"
       ;;
+    p)
+      packetdrill="$OPTARG"
+      ;;
     t)
       timelimit="$OPTARG"
+      ;;
+    v)
+      flags="${flags} --verbose"
       ;;
     \?)
       echo "Unknown option: -$OPTARG" >&2
@@ -83,7 +87,7 @@ for file ; do
       printf "\033[33m%10s\033[0m" "RUNNING"
     fi
     if [ -f ${rootdir}/${testcase}.pkt ] ; then
-      timeout $timelimit $packetdrill ${rootdir}/${testcase}.pkt >/dev/null 2>${rootdir}/${testcase}.out
+      timeout $timelimit $packetdrill ${flags} ${rootdir}/${testcase}.pkt >${rootdir}/${testcase}.out 2>&1
       result=$?
       if [ ! -s ${rootdir}/${testcase}.out ] ; then
         rm ${rootdir}/${testcase}.out
