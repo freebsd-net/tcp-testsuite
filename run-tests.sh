@@ -89,7 +89,7 @@ for file ; do
     if [ -f ${rootdir}/${testcase}.pkt ] ; then
       timeout $timelimit $packetdrill ${flags} ${rootdir}/${testcase}.pkt >${rootdir}/${testcase}.out 2>&1
       result=$?
-      if [ ! -s ${rootdir}/${testcase}.out ] ; then
+      if [ $result -eq 0 ] ; then
         rm ${rootdir}/${testcase}.out
       fi
       found=1
