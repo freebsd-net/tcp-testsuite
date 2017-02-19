@@ -25,4 +25,4 @@
 # SUCH DAMAGE.
 #
 
-../run-tests.sh -t 400 all-syn-snd-tests
+../run-tests.sh -t 400 $* all-syn-snd-tests

@@ -25,7 +25,8 @@
 # SUCH DAMAGE.
 #
 
-../run-tests.sh rcv-syn-closed/all-rcv-syn-closed-tests \
+../run-tests.sh $* \
+                rcv-syn-closed/all-rcv-syn-closed-tests \
                 rcv-syn-listen/all-rcv-syn-listen-tests \
                 rcv-syn-established/all-rcv-syn-established-tests \
                 rcv-syn-close-wait/all-rcv-syn-close-wait-tests \

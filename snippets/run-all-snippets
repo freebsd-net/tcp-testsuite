@@ -25,4 +25,4 @@
 # SUCH DAMAGE.
 #
 
-../run-tests.sh all-snippets
+../run-tests.sh $* all-snippets

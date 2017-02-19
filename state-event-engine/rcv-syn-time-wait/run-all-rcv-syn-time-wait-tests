@@ -25,4 +25,4 @@
 # SUCH DAMAGE.
 #
 
-../../run-tests.sh all-rcv-syn-time-wait-tests
+../../run-tests.sh $* all-rcv-syn-time-wait-tests

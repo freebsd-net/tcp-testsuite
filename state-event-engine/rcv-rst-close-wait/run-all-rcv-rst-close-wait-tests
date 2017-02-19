@@ -25,4 +25,4 @@
 # SUCH DAMAGE.
 #
 
-../../run-tests.sh all-rcv-rst-close-wait-tests
+../../run-tests.sh $* all-rcv-rst-close-wait-tests

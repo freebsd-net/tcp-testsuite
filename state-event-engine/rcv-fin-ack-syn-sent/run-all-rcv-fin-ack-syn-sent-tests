@@ -25,4 +25,4 @@
 # SUCH DAMAGE.
 #
 
-../../run-tests.sh all-rcv-fin-ack-syn-sent-tests
+../../run-tests.sh $* all-rcv-fin-ack-syn-sent-tests

@@ -25,4 +25,4 @@
 # SUCH DAMAGE.
 #
 
-../run-tests.sh all-socket-api-tests
+../run-tests.sh $* all-socket-api-tests

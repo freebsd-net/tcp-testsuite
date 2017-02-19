@@ -25,7 +25,7 @@
 # SUCH DAMAGE.
 #
 
-./run-tests.sh -t 400 \
+./run-tests.sh -t 400 $* \
                rcv-icmp/all-rcv-icmp-tests \
                snd-syn/all-snd-syn-tests \
                socket-api/all-socket-api-tests \
