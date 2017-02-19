@@ -25,7 +25,7 @@ which runs the `tcsh` script `tcp-testsuite/run-all-tests` with root priviledges
 | Test Group                                                                     | Number of Test Scripts | Status
 |:-------------------------------------------------------------------------------|:----------------------:|:-----------:|
 | [Sending of SYN-Segments](snd-syn/README.md)                                   | 30                     | Done        |
-| [State Event Engine](state-event-engine/README.md)                             | 158                    | In Progress |
+| [State Event Engine](state-event-engine/README.md)                             | 360                    | In Progress |
 | [ICMP Handling](rcv-icmp/README.md)                                            | 12                     | In Progress |
 | [Socket API](socket-api/README.md)                                             | 10                     | In Progress |
 
