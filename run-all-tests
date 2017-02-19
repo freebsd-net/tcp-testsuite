@@ -49,12 +49,8 @@
                state-event-engine/rcv-fin-ack-closed/all-rcv-fin-ack-closed-tests \
                state-event-engine/rcv-fin-ack-listen/all-rcv-fin-ack-listen-tests \
                state-event-engine/rcv-fin-ack-syn-sent/all-rcv-fin-ack-syn-sent-tests \
-               state-event-engine/rcv-rst-ack-closed/all-rcv-rst-ack-closed-tests \
-               state-event-engine/rcv-rst-ack-listen/all-rcv-rst-ack-listen-tests \
-               state-event-engine/rcv-rst-ack-syn-sent/all-rcv-rst-ack-syn-sent-tests \
                state-event-engine/rcv-rst-closed/all-rcv-rst-closed-tests \
                state-event-engine/rcv-rst-listen/all-rcv-rst-listen-tests \
-               state-event-engine/rcv-rst-closed/all-rcv-rst-closed-tests \
                state-event-engine/rcv-rst-syn-sent/all-rcv-rst-syn-sent-tests \
                state-event-engine/rcv-rst-syn-rcvd/all-rcv-rst-syn-rcvd-tests \
                state-event-engine/rcv-rst-established/all-rcv-rst-established-tests \
@@ -63,5 +59,8 @@
                state-event-engine/rcv-rst-closing/all-rcv-rst-closing-tests \
                state-event-engine/rcv-rst-last-ack/all-rcv-rst-last-ack-tests \
                state-event-engine/rcv-rst-fin-wait-2/all-rcv-rst-fin-wait-2-tests \
-               state-event-engine/rcv-rst-time-wait/all-rcv-rst-time-wait-tests
+               state-event-engine/rcv-rst-time-wait/all-rcv-rst-time-wait-tests \
+               state-event-engine/rcv-rst-ack-closed/all-rcv-rst-ack-closed-tests \
+               state-event-engine/rcv-rst-ack-listen/all-rcv-rst-ack-listen-tests \
+               state-event-engine/rcv-rst-ack-syn-sent/all-rcv-rst-ack-syn-sent-tests
 
