@@ -33,6 +33,7 @@ skipped=0
 timedout=0
 killed=0
 first=1
+verbose=0
 
 packetdrill=/usr/local/bin/packetdrill
 delay=1
@@ -52,6 +53,7 @@ while getopts :d:p:t:v opt; do
       ;;
     v)
       flags="${flags} --verbose"
+      verbose=1
       ;;
     \?)
       echo "Unknown option: -$OPTARG" >&2
@@ -89,7 +91,7 @@ for file ; do
     if [ -f ${rootdir}/${testcase}.pkt ] ; then
       timeout $timelimit $packetdrill ${flags} ${rootdir}/${testcase}.pkt >${rootdir}/${testcase}.out 2>&1
       result=$?
-      if [ $result -eq 0 ] ; then
+      if [ $result -eq 0 -a $verbose -eq 0 ] ; then
         rm ${rootdir}/${testcase}.out
       fi
       found=1
