@@ -44,6 +44,7 @@
                state-event-engine/rcv-syn-fin-listen/all-rcv-syn-fin-listen-tests \
                state-event-engine/rcv-ack-closed/all-rcv-ack-closed-tests \
                state-event-engine/rcv-ack-listen/all-rcv-ack-listen-tests \
+               state-event-engine/rcv-ack-syn-sent/all-rcv-ack-syn-sent-tests \
                state-event-engine/rcv-fin-closed/all-rcv-fin-closed-tests \
                state-event-engine/rcv-fin-listen/all-rcv-fin-listen-tests \
                state-event-engine/rcv-fin-ack-closed/all-rcv-fin-ack-closed-tests \

@@ -41,6 +41,7 @@
                 rcv-syn-fin-listen/all-rcv-syn-fin-listen-tests \
                 rcv-ack-closed/all-rcv-ack-closed-tests \
                 rcv-ack-listen/all-rcv-ack-listen-tests \
+                rcv-ack-syn-sent/all-rcv-ack-syn-sent-tests \
                 rcv-fin-closed/all-rcv-fin-closed-tests \
                 rcv-fin-listen/all-rcv-fin-listen-tests \
                 rcv-fin-ack-closed/all-rcv-fin-ack-closed-tests \
