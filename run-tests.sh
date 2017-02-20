@@ -35,7 +35,11 @@ killed=0
 first=1
 verbose=0
 
-packetdrill=/usr/local/bin/packetdrill
+if [ `uname` = 'Linux' ] ; then
+  packetdrill=/usr/bin/packetdrill
+else
+  packetdrill=/usr/local/bin/packetdrill
+fi
 delay=1
 timelimit=10
 flags=''
