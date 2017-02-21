@@ -28,7 +28,7 @@
 // in the SYN-SENT state does not affect the TCP connection.
 
 --ip_version=ipv6
---tolerance_usecs=50000
+--tolerance_usecs=250000
 
 // Create a TCP socket in SYN-SENT state
  0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
@@ -39,7 +39,8 @@
 +0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 0>
 +0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], [4]) = 0
 // Now the connection is in SYN-SENT
-+0.10 < R. 0:0(0) ack 0 win 32767
++2.00 < R. 0:0(0) ack 0 win 32767
++1.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 3100 ecr 0>
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
 +0.00 < S. 0:0(0) ack 1 win 32767 <mss 1440>
 +0.00 >  . 1:1(0) ack 1 win 65535
