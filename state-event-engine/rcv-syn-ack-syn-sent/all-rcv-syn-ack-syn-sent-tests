@@ -1,0 +1,12 @@
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-without-data-syn-sent-ack-outside-left-ipv4
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-without-data-syn-sent-ack-outside-left-ipv6
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-without-data-syn-sent-ack-left-edge-ipv4
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-without-data-syn-sent-ack-left-edge-ipv6
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-without-data-syn-sent-ack-outside-right-ipv4
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-without-data-syn-sent-ack-outside-right-ipv6
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-with-data-syn-sent-ack-outside-left-ipv4
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-with-data-syn-sent-ack-outside-left-ipv6
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-with-data-syn-sent-ack-left-edge-ipv4
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-with-data-syn-sent-ack-left-edge-ipv6
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-with-data-syn-sent-ack-outside-right-ipv4
+state-event-engine/rcv-syn-ack-syn-sent/rcv-syn-ack-with-data-syn-sent-ack-outside-right-ipv6
