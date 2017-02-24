@@ -28,6 +28,7 @@
 ../run-tests.sh $* \
                 rcv-syn-closed/all-rcv-syn-closed-tests \
                 rcv-syn-listen/all-rcv-syn-listen-tests \
+                rcv-syn-syn-sent/all-rcv-syn-syn-sent-tests \
                 rcv-syn-established/all-rcv-syn-established-tests \
                 rcv-syn-close-wait/all-rcv-syn-close-wait-tests \
                 rcv-syn-fin-wait-1/all-rcv-syn-fin-wait-1-tests \
@@ -37,13 +38,16 @@
                 rcv-syn-time-wait/all-rcv-syn-time-wait-tests \
                 rcv-syn-ack-closed/all-rcv-syn-ack-closed-tests \
                 rcv-syn-ack-listen/all-rcv-syn-ack-listen-tests \
+                rcv-syn-ack-syn-sent/all-rcv-syn-ack-syn-sent-tests \
                 rcv-syn-fin-closed/all-rcv-syn-fin-closed-tests \
                 rcv-syn-fin-listen/all-rcv-syn-fin-listen-tests \
+                rcv-syn-fin-syn-sent/all-rcv-syn-fin-syn-sent-tests \
                 rcv-ack-closed/all-rcv-ack-closed-tests \
                 rcv-ack-listen/all-rcv-ack-listen-tests \
                 rcv-ack-syn-sent/all-rcv-ack-syn-sent-tests \
                 rcv-fin-closed/all-rcv-fin-closed-tests \
                 rcv-fin-listen/all-rcv-fin-listen-tests \
+                rcv-fin-syn-sent/all-rcv-fin-syn-sent-tests \
                 rcv-fin-ack-closed/all-rcv-fin-ack-closed-tests \
                 rcv-fin-ack-listen/all-rcv-fin-ack-listen-tests \
                 rcv-fin-ack-syn-sent/all-rcv-fin-ack-syn-sent-tests \

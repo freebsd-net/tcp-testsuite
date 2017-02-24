@@ -31,6 +31,7 @@
                socket-api/all-socket-api-tests \
                state-event-engine/rcv-syn-closed/all-rcv-syn-closed-tests \
                state-event-engine/rcv-syn-listen/all-rcv-syn-listen-tests \
+               state-event-engine/rcv-syn-syn-sent/all-rcv-syn-syn-sent-tests \
                state-event-engine/rcv-syn-established/all-rcv-syn-established-tests \
                state-event-engine/rcv-syn-close-wait/all-rcv-syn-close-wait-tests \
                state-event-engine/rcv-syn-fin-wait-1/all-rcv-syn-fin-wait-1-tests \
@@ -40,13 +41,16 @@
                state-event-engine/rcv-syn-time-wait/all-rcv-syn-time-wait-tests \
                state-event-engine/rcv-syn-ack-closed/all-rcv-syn-ack-closed-tests \
                state-event-engine/rcv-syn-ack-listen/all-rcv-syn-ack-listen-tests \
+               state-event-engine/rcv-syn-ack-syn-sent/all-rcv-syn-ack-syn-sent-tests \
                state-event-engine/rcv-syn-fin-closed/all-rcv-syn-fin-closed-tests \
                state-event-engine/rcv-syn-fin-listen/all-rcv-syn-fin-listen-tests \
+               state-event-engine/rcv-syn-fin-syn-sent/all-rcv-syn-fin-syn-sent-tests \
                state-event-engine/rcv-ack-closed/all-rcv-ack-closed-tests \
                state-event-engine/rcv-ack-listen/all-rcv-ack-listen-tests \
                state-event-engine/rcv-ack-syn-sent/all-rcv-ack-syn-sent-tests \
                state-event-engine/rcv-fin-closed/all-rcv-fin-closed-tests \
                state-event-engine/rcv-fin-listen/all-rcv-fin-listen-tests \
+               state-event-engine/rcv-fin-syn-sent/all-rcv-fin-syn-sent-tests \
                state-event-engine/rcv-fin-ack-closed/all-rcv-fin-ack-closed-tests \
                state-event-engine/rcv-fin-ack-listen/all-rcv-fin-ack-listen-tests \
                state-event-engine/rcv-fin-ack-syn-sent/all-rcv-fin-ack-syn-sent-tests \
