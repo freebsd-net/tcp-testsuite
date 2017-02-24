@@ -8,7 +8,7 @@ ignored if SND.UNA =< SEG.ACK =< SND.NXT holds and triggering the sending of
 a RST segment with SEG.SEQ = SEQ.ACK otherwise.
 
 If the ACK is acceptable, the SYN-ACK is processed and an ACK segment with
-SEG.ACK = SEG.SEQ + 1. (Note 1)
+SEG.ACK = SEG.SEQ + 1.
 
 ## Status
 
