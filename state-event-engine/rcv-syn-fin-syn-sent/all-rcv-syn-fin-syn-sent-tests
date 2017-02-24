@@ -1,0 +1,8 @@
+state-event-engine/rcv-syn-fin-syn-sent/rcv-syn-fin-without-data-syn-sent-dropping-disabled-ipv4
+state-event-engine/rcv-syn-fin-syn-sent/rcv-syn-fin-without-data-syn-sent-dropping-disabled-ipv6
+state-event-engine/rcv-syn-fin-syn-sent/rcv-syn-fin-with-data-syn-sent-dropping-disabled-ipv4
+state-event-engine/rcv-syn-fin-syn-sent/rcv-syn-fin-with-data-syn-sent-dropping-disabled-ipv6
+state-event-engine/rcv-syn-fin-syn-sent/rcv-syn-fin-without-data-syn-sent-dropping-enabled-ipv4
+state-event-engine/rcv-syn-fin-syn-sent/rcv-syn-fin-without-data-syn-sent-dropping-enabled-ipv6
+state-event-engine/rcv-syn-fin-syn-sent/rcv-syn-fin-with-data-syn-sent-dropping-enabled-ipv4
+state-event-engine/rcv-syn-fin-syn-sent/rcv-syn-fin-with-data-syn-sent-dropping-enabled-ipv6
