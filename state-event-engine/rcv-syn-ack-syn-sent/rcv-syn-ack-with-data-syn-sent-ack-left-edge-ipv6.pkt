@@ -24,8 +24,9 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of a TCP SYN-ACK with SEG.ACK = SND.NXT
-// in the SYN-SENT state does not affect the TCP connection.
+// Ensure that the reception of a TCP SYN-ACK with SEG.ACK=RCV.NXT
+// in the SYN-SENT state triggers the sending of anACK and changes the
+// TCP connection state to ESTABLISHED.
 
 --ip_version=ipv6
 --tolerance_usecs=250000
@@ -42,6 +43,7 @@
 +2.00 < S. 0:3(3) ack 1 win 32767 <mss 1440>
 +0.00 >  . 1:1(0) ack 4 win 65535
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 %{ assert tcpi_state == TCPI_ESTABLISHED }%
 +0.10 read(3, ..., 100) = 3
 +0.00 close(3) = 0
 +0.00 > F. 1:1(0) ack 4 win 65535

@@ -8,7 +8,7 @@ ignored if SND.UNA =< SEG.ACK =< SND.NXT holds and triggering the sending of
 a RST segment with SEG.SEQ = SEQ.ACK otherwise.
 
 If the ACK is acceptable, the SYN-ACK is processed and an ACK segment with
-SEG.ACK = SEG.SEQ + SEG.LEN + 1. (Note 1)
+SEG.ACK = SEG.SEQ + 1. (Note 1)
 
 ## Status
 
@@ -29,8 +29,8 @@ SEG.ACK = SEG.SEQ + SEG.LEN + 1. (Note 1)
 
 ## Notes
 
-1. It is assumed that `RCV.NXT is set to SEG.SEQ+SEG.LEN+1` is meant instead of `RCV.NXT is set to SEG.SEQ+1` in the fourth
-   point of the segment handling in the `SYN-SENT` state as described in [RFC 0793](https://tools.ietf.org/html/rfc793#section-3.9).
+1. FreeBSD doesn't set `RCV.NXT is set to SEG.SEQ+1`, send an ACK and then processes to data which
+   increments `RCV.NXT` by `SEG.LEN` and sends another ACK. Instead is single ACK is sent.
 2. When the SYN is retransmitted, the SACK-permitted option is dropped, since the received SYN-ACK does not contain it.
    However, [RFC 0793](https://tools.ietf.org/html/rfc793#section-3.9) requires the received SYN-ACK segment to be dropped,
    so the retransmitted SYN should have the same options as the initial one.
