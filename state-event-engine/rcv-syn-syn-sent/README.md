@@ -4,7 +4,7 @@
 This set of tests focuses on the handling of SYN-segments in the `SYN-SENT` state.
 
 [RFC 0793](https://tools.ietf.org/html/rfc0793) requires SYN-segments to trigger
-the sending of a SYN-ACK segment and change the TCP connection state to `SYN-RCVD`.
+the sending of a SYN-ACK segment and to change the TCP connection state to `SYN-RCVD`.
 
 ## Status
 
