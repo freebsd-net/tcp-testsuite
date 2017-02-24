@@ -24,9 +24,8 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of a TCP SYN in the SYN-SENT state
-// triggers the sending of a SYN-ACK and changes the TCP connection state to
-// SYN_RCVD.
+// Ensure that the reception of a TCP SYN-FIN in the SYN-SENT state
+// triggers does trigger any action if SYN-FIN segments should be dropped.
 
 --ip_version=ipv4
 --tolerance_usecs=250000
