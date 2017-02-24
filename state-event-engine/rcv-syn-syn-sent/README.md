@@ -13,7 +13,7 @@ the sending of a SYN-ACK segment and to change the TCP connection state to `SYN-
 |[rcv-syn-without-data-syn-sent-ipv4](rcv-syn-without-data-syn-sent-ipv4.pkt "Ensure that the reception of a TCP SYN in the SYN-SENT state triggers the sending of a SYN-ACK and changes the TCP connection state to SYN-RCVD") | Unknown             | Passed (Note 1)     |
 |[rcv-syn-without-data-syn-sent-ipv6](rcv-syn-without-data-syn-sent-ipv6.pkt "Ensure that the reception of a TCP SYN in the SYN-SENT state triggers the sending of a SYN-ACK and changes the TCP connection state to SYN-RCVD") | Unknown             | Passed (Note 1)     |
 |[rcv-syn-with-data-syn-sent-ipv4](rcv-syn-with-data-syn-sent-ipv4.pkt "Ensure that the reception of a TCP SYN in the SYN-SENT state triggers the sending of a SYN-ACK and changes the TCP connection state to SYN-RCVD")       | Unknown             | Passed (Note 1,2)   |
-|[rcv-syn-with-data-syn-sent-ipv4](rcv-syn-with-data-syn-sent-ipv6.pkt "Ensure that the reception of a TCP SYN in the SYN-SENT state triggers the sending of a SYN-ACK and changes the TCP connection state to SYN-RCVD")       | Unknown             | Passed (Note 1,2)   |
+|[rcv-syn-with-data-syn-sent-ipv6](rcv-syn-with-data-syn-sent-ipv6.pkt "Ensure that the reception of a TCP SYN in the SYN-SENT state triggers the sending of a SYN-ACK and changes the TCP connection state to SYN-RCVD")       | Unknown             | Passed (Note 1,2)   |
 
 ## Notes
 
