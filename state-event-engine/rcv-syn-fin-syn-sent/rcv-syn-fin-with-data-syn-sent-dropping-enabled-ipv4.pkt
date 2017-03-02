@@ -25,7 +25,7 @@
 //
 
 // Ensure that the reception of a TCP SYN-FIN in the SYN-SENT state
-// triggers does trigger any action if SYN-FIN segments should be dropped.
+// does not trigger any action if SYN-FIN segments should be dropped.
 
 --ip_version=ipv4
 --tolerance_usecs=250000
