@@ -26,7 +26,8 @@ The default is to not drop SYN-FIN-segments.
 ## Notes
 
 1. The SYN-ACK sent does not contain the SACK Permitted option anymore. Other options are still reported.
-2. The data on the SYN segment is buffered and delivered after the handshake is complete. It is also only acknowledged after the handshake.
-3. The received SYN-FIN segment is processed even if the `sysctl`-variable `net.inet.tcp.drop_synfin` is set to 1. Fixed in
-   [r316743](https://svnweb.freebsd.org/changeset/base/316743) ([D9894](https://reviews.freebsd.org/D9894)).
+2. The data on the SYN segment is buffered and delivered after the handshake is complete.
+   It is also only acknowledged after the handshake.
+3. The received SYN-FIN segment is processed even if the `sysctl`-variable `net.inet.tcp.drop_synfin` is set to 1.
+   Fixed in [r316743](https://svnweb.freebsd.org/changeset/base/316743) ([D9894](https://reviews.freebsd.org/D9894)).
 
