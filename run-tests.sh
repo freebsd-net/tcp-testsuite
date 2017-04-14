@@ -43,14 +43,18 @@ fi
 delay=1
 timelimit=10
 flags=''
+prefix=''
 
-while getopts :d:p:t:v opt; do
+while getopts :d:p:P:t:v opt; do
   case $opt in
     d)
       delay="$OPTARG"
       ;;
     p)
       packetdrill="$OPTARG"
+      ;;
+    P)
+      prefix="$OPTARG""-"
       ;;
     t)
       timelimit="$OPTARG"
@@ -75,7 +79,9 @@ printf "Name                                                                    
 printf "===============================================================================\n"
 for file ; do
   for testcase in $(cat $file) ; do
-    printf "%-68.68s " `/usr/bin/basename $testcase`
+    testdir=`/usr/bin/dirname $testcase`
+    testname=`/usr/bin/basename $testcase`
+    printf "%-68.68s " ${testname}
     if [ $first -eq 0 ] ; then
       if [ $delay -ne 0 ] ; then
         if [ -t 1 ] ; then
@@ -93,10 +99,10 @@ for file ; do
       printf "\033[33m%10s\033[0m" "RUNNING"
     fi
     if [ -f ${rootdir}/${testcase}.pkt ] ; then
-      timeout $timelimit $packetdrill ${flags} ${rootdir}/${testcase}.pkt >${rootdir}/${testcase}.out 2>&1
+      timeout $timelimit $packetdrill ${flags} ${rootdir}/${testdir}/${testname}.pkt >${rootdir}/${testdir}/${prefix}${testname}.out 2>&1
       result=$?
       if [ $result -eq 0 -a $verbose -eq 0 ] ; then
-        rm ${rootdir}/${testcase}.out
+        rm ${rootdir}/${testdir}/${prefix}${testname}.out
       fi
       found=1
     else
