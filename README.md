@@ -36,6 +36,8 @@ which runs the `tcsh` script `tcp-testsuite/run-all-tests` with root priviledges
 * [r308745](https://svnweb.freebsd.org/changeset/base/308745) ([D8371](https://reviews.freebsd.org/D8371)).
 * [r308832](https://svnweb.freebsd.org/changeset/base/308832) ([D8443](https://reviews.freebsd.org/D8443)).
 * [r309397](https://svnweb.freebsd.org/changeset/base/309397) ([D8667](https://reviews.freebsd.org/D8667)).
+* [r316743](https://svnweb.freebsd.org/changeset/base/316743) ([D9894](https://reviews.freebsd.org/D9894)).
+* [D10424](https://reviews.freebsd.org/D10424).
 
 ## Acknowledgement
 This work is sponsored by Netflix, Inc.
