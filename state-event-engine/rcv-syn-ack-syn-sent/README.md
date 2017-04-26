@@ -32,6 +32,6 @@ SEG.ACK = SEG.SEQ + 1.
 1. When the SYN is retransmitted, the SACK-permitted option is dropped, since the received SYN-ACK does not contain it.
    However, [RFC 0793](https://tools.ietf.org/html/rfc793#section-3.9) requires the received SYN-ACK segment to be dropped,
    so the retransmitted SYN should have the same options as the initial one.
-   A patch is under review: [D10424](https://reviews.freebsd.org/D10424).
+   Fixed in [r317435](https://svnweb.freebsd.org/changeset/base/317435) ([D10424](https://reviews.freebsd.org/D10424)).
 2. FreeBSD doesn't follow `RCV.NXT is set to SEG.SEQ+1`, send an ACK and then processes the data which
    increments `RCV.NXT` by `SEG.LEN` and sends another ACK. Instead a single ACK is sent.
