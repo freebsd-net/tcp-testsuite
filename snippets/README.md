@@ -31,8 +31,8 @@ This directory contains files with useful script fragments
 |[fin-wait-2-ipv6](fin-wait-2-ipv6.pkt "Move to FIN-WAIT-2 state")                                           | Unknown             | Passed              |
 |[closing-ipv4](closing-ipv4.pkt "Move to CLOSING state")                                                    | Unknown             | Passed (Note 2)     |
 |[closing-ipv6](closing-ipv6.pkt "Move to CLOSING state")                                                    | Unknown             | Passed (Note 2)     |
-|[time-wait-via-fin-wait-1-ipv4](time-wait-via-fin-wait-1-ipv4.pkt "Move to TIME-WAIT state via FIN-WAIT-1") | Unknown             | Passed (Note 3)     |
-|[time-wait-via-fin-wait-1-ipv6](time-wait-via-fin-wait-1-ipv6.pkt "Move to TIME-WAIT state via FIN-WAIT-1") | Unknown             | Passed (Note 3)     |
+|[time-wait-via-fin-wait-1-ipv4](time-wait-via-fin-wait-1-ipv4.pkt "Move to TIME-WAIT state via FIN-WAIT-1") | Unknown             | Passed (Note 3, 4)  |
+|[time-wait-via-fin-wait-1-ipv6](time-wait-via-fin-wait-1-ipv6.pkt "Move to TIME-WAIT state via FIN-WAIT-1") | Unknown             | Passed (Note 3, 4)  |
 |[time-wait-via-fin-wait-2-ipv4](time-wait-via-fin-wait-2-ipv4.pkt "Move to TIME-WAIT state via FIN-WAIT-2") | Unknown             | Passed (Note 3)     |
 |[time-wait-via-fin-wait-2-ipv6](time-wait-via-fin-wait-2-ipv6.pkt "Move to TIME-WAIT state via FIN-WAIT-2") | Unknown             | Passed (Note 3)     |
 |[time-wait-via-closing-ipv4](time-wait-via-closing-ipv4.pkt "Move to TIME-WAIT state via CLOSING")          | Unknown             | Passed (Note 2, 3)  |
@@ -42,3 +42,4 @@ This directory contains files with useful script fragments
 1. The SACK_OK option is dropped,  but not the others. This is inconsistent and seems to be a bug (see [tcp_input.c](http://fxr.watson.org/fxr/source/netinet/tcp_input.c#L1664)).
 2. A FIN-segment without the ACK bit being set is dropped. This seems to be normal behaviour, although not specified.
 3. TCP-level options can't be used for end points in the final CLOSED state or the TIME-WAIT state.
+4. FreeBSD doesn't do the state transition `FIN-WAIT-1 -> TIMEWAIT` directly, but does `FIN-WAIT-1 -> FIN-WAIT-2 -> TIMEWAIT`.
