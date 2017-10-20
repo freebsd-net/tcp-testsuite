@@ -51,7 +51,12 @@ while getopts :d:i:p:P:t:T:v opt; do
       delay="$OPTARG"
       ;;
     i)
-      flags="${flags} --persistent_tun_dev --tun_dev=$OPTARG"
+      if [ `uname` = 'FreeBSD' ] ; then
+        flags="${flags} --persistent_tun_dev --tun_dev=$OPTARG"
+      else
+        echo "Option not supported on this platform: -$OPTARG" >&2
+        exit 1
+      fi
       ;;
     p)
       packetdrill="$OPTARG"
