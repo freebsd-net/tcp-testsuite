@@ -45,10 +45,13 @@ timelimit=10
 flags=''
 prefix=''
 
-while getopts :d:p:P:t:v opt; do
+while getopts :d:i:p:P:t:T:v opt; do
   case $opt in
     d)
       delay="$OPTARG"
+      ;;
+    i)
+      flags="${flags} --persistent_tun_dev --tun_dev=$OPTARG"
       ;;
     p)
       packetdrill="$OPTARG"
@@ -58,6 +61,9 @@ while getopts :d:p:P:t:v opt; do
       ;;
     t)
       timelimit="$OPTARG"
+      ;;
+    T)
+      flags="${flags} --tolerance_usecs=$OPTARG"
       ;;
     v)
       flags="${flags} --verbose"
