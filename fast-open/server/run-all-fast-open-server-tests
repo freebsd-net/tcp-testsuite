@@ -25,4 +25,4 @@
 # SUCH DAMAGE.
 #
 
-../../run-tests.sh -t 400 $* all-fast-open-server-tests
+../../run-tests.sh $* all-fast-open-server-tests
