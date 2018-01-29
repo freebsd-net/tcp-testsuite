@@ -1,0 +1,74 @@
+//
+// Copyright (c) 2018 Michael Tuexen
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// 1. Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+// OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+// HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+// LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+// OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+// SUCH DAMAGE.
+//
+
+// Ensure that when a cookie of length 23 (invalid) is provided by the server,
+// it is ignored. The client should act as if there was no TFO option in
+// SYN-ACK.
+
+--tolerance_usecs=10000
+
+// Ensure that all relevant sysctl variables have their default values.
+ 0.00 `sysctl -w net.inet.tcp.rfc1323=1`
++0.00 `sysctl -w net.inet.tcp.sack.enable=1`
++0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
++0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
+
+// Reset the TCP fast open connection cache.
++0.00 `sysctl -w net.inet.tcp.fastopen.client_enable=0`
++0.00 `sysctl -w net.inet.tcp.fastopen.client_enable=1`
+
+// First setup a TCP connection to get a TFO cookie
++0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.00 bind(3, ..., ...) = 0
++0.00 setsockopt(3, IPPROTO_TCP, TCP_FASTOPEN, [1], 4) = 0
++0.00 sendto(3, ..., 100, 0, ..., ...) = 100
++0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 0 ecr 0,FO,eol,eol>
++0.05 < S. 0:0(0) ack 1 win 65535 <mss 1460,nop,nop,nop,FO 0102030405060708091011121314151617181920212223>
++0.00 > P. 1:101(100) ack 1 win 65535
++0.05 <  . 1:1(0) ack 101 win 65535
+// Tear it down. Let the server initiate the teardown to avoid the client
+// moving into TIMEWAIT state.
++0.00 < F. 1:1(0) ack 101 win 65535
++0.00 >  . 101:101(0) ack 2 win 65535
++0.00 close(3) = 0
++0.00 > F. 101:101(0) ack 2 win 65535
++0.05 <  . 2:2(0) ack 102 win 65534
+// Now setup a second TCP connection using the TFO cookie
++0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.00 bind(3, ..., ...) = 0
++0.00 setsockopt(3, IPPROTO_TCP, TCP_FASTOPEN, [1], 4) = 0
++0.00 sendto(3, ..., 100, 0, ..., ...) = 100
++0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 0 ecr 0>
++0.05 < S. 0:0(0) ack 1 win 65535 <mss 1460>
++0.00 > P. 1:101(100) ack 1 win 65535
++0.05 <  . 1:1(0) ack 101 win 65535
+// Tear it down. Let the server initiate the teardown to avoid the client
+// moving into TIMEWAIT state.
++0.00 < F. 1:1(0) ack 101 win 65535
++0.00 >  . 101:101(0) ack 2 win 65535
++0.00 close(3) = 0
++0.00 > F. 101:101(0) ack 2 win 65535
++0.05 <  . 2:2(0) ack 102 win 65534
