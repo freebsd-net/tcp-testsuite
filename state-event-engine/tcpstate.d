@@ -19,7 +19,7 @@ dtrace:::BEGIN
 }
 
 tcp:::state-change
-/execname == "packetdrill"/
+/last[args[1]->cs_cid]/
 {
 	this->elapsed = (timestamp - last[args[1]->cs_cid]) / 1000;
 	printf(" %3d %12d %-18x %-20s -> %-20s %d\n",
