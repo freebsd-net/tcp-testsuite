@@ -25,4 +25,4 @@
 # SUCH DAMAGE.
 #
 
-../run-tests.sh -T 10000 $* all-reordering-tests
+../run-tests.sh -T 10000 $* all-rcv-data-segments-tests
