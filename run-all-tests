@@ -26,6 +26,7 @@
 #
 
 ./run-tests.sh -t 400 $* \
+               rcv-data-segments/all-rcv-data-segments-tests \
                rcv-icmp/all-rcv-icmp-tests \
                snd-syn/all-snd-syn-tests \
                socket-api/all-socket-api-tests \
