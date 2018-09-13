@@ -55,7 +55,7 @@
 +0.00 >  . 101:101(0) ack 2 win 65535
 +0.00 close(3) = 0
 +0.00 > F. 101:101(0) ack 2 win 65535
-+0.05 <  . 2:2(0) ack 102 win 65534
++0.05 <  . 2:2(0) ack 102 win 65535
 // Now setup a second TCP connection using the TFO cookie and get a cookie update.
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 bind(3, ..., ...) = 0
@@ -70,7 +70,7 @@
 +0.00 >  . 101:101(0) ack 2 win 65535
 +0.00 close(3) = 0
 +0.00 > F. 101:101(0) ack 2 win 65535
-+0.05 <  . 2:2(0) ack 102 win 65534
++0.05 <  . 2:2(0) ack 102 win 65535
 // Finally setup a third TCP connection using the updated TFO cookie.
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 bind(3, ..., ...) = 0
@@ -85,4 +85,4 @@
 +0.00 >  . 101:101(0) ack 2 win 65535
 +0.00 close(3) = 0
 +0.00 > F. 101:101(0) ack 2 win 65535
-+0.05 <  . 2:2(0) ack 102 win 65534
++0.05 <  . 2:2(0) ack 102 win 65535
