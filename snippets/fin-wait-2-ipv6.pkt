@@ -52,5 +52,5 @@
 +0.00 %{ assert tcpi_state == TCPI_FIN_WAIT_2 }%
 // Tear it down.
 +0.00 < F. 1:1(0) ack 2 win 32767
-+0.00 >  . 2:2(0) ack 2 win 65534
++0.00 >  . 2:2(0) ack 2 win 65535
 +0.00 close(3) = 0

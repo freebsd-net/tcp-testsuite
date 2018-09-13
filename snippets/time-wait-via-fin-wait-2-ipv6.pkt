@@ -47,7 +47,7 @@
 +0.00 > F. 1:1(0) ack 1 win 65535
 +0.10 <  . 1:1(0) ack 2 win 32767
 +0.10 < F. 1:1(0) ack 2 win 32767
-+0.00 >  . 2:2(0) ack 2 win 65534
++0.00 >  . 2:2(0) ack 2 win 65535
 // Verify that there are no errors pending at the socket layer.
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
 // Verify the endpoint state.
