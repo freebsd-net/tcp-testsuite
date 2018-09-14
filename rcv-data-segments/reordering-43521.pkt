@@ -25,6 +25,7 @@
 //
 
 --ip_version=ipv4
+--tolerance_usecs=10000
 
 // Create a listening TCP socket
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
