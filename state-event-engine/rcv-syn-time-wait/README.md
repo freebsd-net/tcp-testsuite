@@ -5,7 +5,7 @@ This set of tests focuses on the handling of SYN-segments in the `TIME-WAIT` sta
 
 [RFC 0793](https://tools.ietf.org/html/rfc0793) requires the sending of
 a RST-segment in response to a received SYN-segment with
-`RCV.NXT <= SEG.SEQ < RCV.NXT + RCV.WND - 1`.
+`RCV.NXT <= SEG.SEQ < RCV.NXT+RCV.WND`.
 If SEG.SEQ of the received SYN-segment is outside this window, a challenge ACK
 has to be sent.
 
@@ -45,5 +45,5 @@ However, if `SEG.SEQ > RCV.NXT` holds, the TCP connection is moved from the
 |[rcv-syn-time-wait-outside-right-insecure-ipv6](rcv-syn-time-wait-outside-right-insecure-ipv6.pkt "Ensure that the reception of a TCP SYN with SEG.SEQ=RCV.NXT+RCV.WND in the TIME-WAIT state only triggers the sending of a challenge ACK") | Unknown             | Failed (Note 2)     |
 
 ## Notes
-1. If SEG.SEQ <= RCV.NXT, no response is sent and the TCP connection stays in the TIME-WAIT state.
-2. if SEG.SEQ > RCV.NXT, a RST segment with SEG.SEQ=0 is sent and the TCP connection moves to the CLOSED state.
+1. If `SEG.SEQ <= RCV.NXT`, no response is sent and the TCP connection stays in the `TIME-WAIT` state.
+2. if `SEG.SEQ > RCV.NXT`, a RST segment with SEG.SEQ=0 is sent and the TCP connection moves to the `CLOSED` state.

@@ -24,7 +24,7 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that the reception of a TCP SYN with SEG.SEQ  =RCV.NXT  +RCV.WND - 1
+// Ensure that the reception of a TCP SYN with SEG.SEQ = RCV.NXT + RCV.WND - 1
 // in the TIME-WAIT state does not affect the TCP connection.
 
 --ip_version=ipv4
