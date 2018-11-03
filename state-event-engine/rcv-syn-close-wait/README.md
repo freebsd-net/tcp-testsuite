@@ -8,12 +8,12 @@ TCP segment with the RST bit set in response to a SYN segment fullfiling
 `RCV.NXT <= SEG.SEQ < RCV.NXT+RCV.WND`.
 In all other cases, a challenge ACK has to be sent.
 
-For mitigating blind attacks, [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3)
+For mitigating blind attacks, [RFC 5961](https://tools.ietf.org/html/rfc5961#section-4)
 requires the sending of a challenge ACK in any case.
 
 In FreeBSD, the `sysctl`-variable `net.inet.tcp.insecure_syn` can be used to
 select if procedures described in [RFC 0793](https://tools.ietf.org/html/rfc0793) or
-[RFC 5961](https://tools.ietf.org/html/rfc5961#section-3) are followed.
+[RFC 5961](https://tools.ietf.org/html/rfc5961#section-4) are followed.
 The default is to follow [RFC 5961](https://tools.ietf.org/html/rfc5961#section-4).
 
 ## Status
