@@ -30,7 +30,13 @@
 --ip_version=ipv4
 --tolerance_usecs=50000
 
- 0.00 `sysctl -w net.inet.tcp.insecure_rst=1`
+// Ensure that all relevant sysctl variables have their default values.
+ 0.00 `sysctl -w net.inet.tcp.rfc1323=1`
++0.00 `sysctl -w net.inet.tcp.sack.enable=1`
++0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
++0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
+// Ensure that the relevant sysctl variables have their value.
++0.00 `sysctl -w net.inet.tcp.insecure_rst=1`
 // Create a TCP socket in TIME-WAIT state
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 fcntl(3, F_GETFL) = 0x02 (flags O_RDWR)

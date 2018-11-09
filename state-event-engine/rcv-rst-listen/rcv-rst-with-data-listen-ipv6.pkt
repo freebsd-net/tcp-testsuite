@@ -30,8 +30,12 @@
 --ip_version=ipv6
 --tolerance_usecs=50000
 
+// Ensure that all relevant sysctl variables have their default values.
+ 0.00 `sysctl -w net.inet.tcp.rfc1323=1`
++0.00 `sysctl -w net.inet.tcp.sack.enable=1`
++0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
 // Create a TCP endpoint in CLOSED state.
- 0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 bind(3, ..., ...) = 0
 +0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], [4]) = 0
 +0.00 listen(3, 1) = 0
