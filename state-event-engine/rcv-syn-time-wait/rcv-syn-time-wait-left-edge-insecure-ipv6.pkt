@@ -57,7 +57,7 @@
 +0.10 <  . 2:2(0) ack 2 win 32767
 // Now the connection is in TIME-WAIT
 +0.10 < S  2:2(0) win 32767
-+0.00 > R. 2:2(0) ack 2 win 65535
++0.00 > R. 2:2(0) ack 2 win 0
 // Double check that the connection is still in TIME-WAIT
 +0.10 `sockstat -6 -P tcp -s | grep packetdril | grep -c TIME_WAIT | grep 1`
 +0.00 close(3) = 0
