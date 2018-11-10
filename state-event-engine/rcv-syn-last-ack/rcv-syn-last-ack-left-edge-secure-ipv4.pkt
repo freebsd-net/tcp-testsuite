@@ -53,7 +53,7 @@
 +0.10 < F. 1:1(0) ack 1 win 32767
 +0.00 >  . 1:1(0) ack 2 win 65535
 +0.00 shutdown(3, SHUT_WR) = 0
-+0.00 > F. 1:1(0) ack 2
++0.00 > F. 1:1(0) ack 2 win 65535
 // Now the connection is in LAST-ACK
 +0.10 < S  2:2(0) win 32767
 +0.00 >  . 2:2(0) ack 2 win 65535
