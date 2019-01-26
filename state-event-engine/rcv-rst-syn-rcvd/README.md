@@ -58,5 +58,4 @@ the prior state, have two sets of tests.
 ## Notes
 1. No challenge ACK is sent. The syn-cache code is missing the logic described in
    [RFC 5961](https://tools.ietf.org/html/rfc5961#section-3).
-   See [tcp_syncache.c](http://fxr.watson.org/fxr/source/netinet/tcp_syncache.c#L562).
    Fixed in [r339430](https://svnweb.freebsd.org/changeset/base/339430) ([D17595](https://reviews.freebsd.org/D17595)).
