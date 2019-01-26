@@ -29,7 +29,7 @@
 // SEG.SEQ = SEG.ACK and does not affect the TCP connection.
 
 --ip_version=ipv4
---tolerance_usecs=50000
+--tolerance_usecs=75000
 
 // Ensure that all relevant sysctl variables have their default values.
  0.00 `sysctl -w net.inet.tcp.rfc1323=1`
