@@ -25,4 +25,4 @@
 # SUCH DAMAGE.
 #
 
-../run-tests.sh -t 400 $* all-snd-syn-tests
+../run-tests.sh -t $(cat timeout) $* all-snd-syn-tests
