@@ -57,6 +57,17 @@ while read Torig; do
 	else
 	    timeout=10
 	fi
+	exfail_file=${Torig}.pkt.exfail
+	if [ -r ${exfail_file} ]; then
+	    if [ -s ${exfail_file} ]; then
+		read reason < ${exfail_file}
+	    else
+		reason="${exfail_file} exists"
+	    fi
+	    exfail="atf_expect_fail \"$reason\""
+	else
+	    exfail=""
+	fi
 	Tunder=$(basename $Torig | tr - _)
 	cat <<-EOF
 	atf_test_case $Tunder cleanup
@@ -65,6 +76,7 @@ while read Torig; do
 	    atf_set require.config allow_sysctl_side_effects
 	}
 	${Tunder}_body() {
+	    ${exfail}
 	    save_sysctls ${tcptestsuite_path}/${Torig}.pkt
 	    atf_check -o ignore ${packetdrill_path} \
 	        ${tcptestsuite_path}/${Torig}.pkt
