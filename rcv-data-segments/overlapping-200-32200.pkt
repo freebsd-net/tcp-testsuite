@@ -56,11 +56,11 @@
 +0.00 recv(4, ..., 1024, MSG_PEEK) = 99
 // Inject overlapping segment
 +0.00 <  .  200:32200(32000) ack   1 win 65535
-+0.00 >  .   1:1(0)     ack 100 win 65535 <nop,nop,sack 200:32200>
++0.00 >  .   1:1(0)     ack 100 win 65535 <nop,nop,sack 200:300 200:32200>
 +0.00 recv(4, ..., 1024, MSG_PEEK) = 99
 // Finish
 +0.00 <  .  1:200(199) ack      1 win 65535
-+0.00 >  .   1:1(0)     ack 32200 win 33501
++0.00 >  .   1:1(0)     ack 32200 win 33501 <nop,nop,sack 1:100>
 +0.00 recv(4, ..., 32200, 0) = 32199
 // Teardown the connection
 +0.00 >  .   1:1(0)     ack 32200 win 65535
