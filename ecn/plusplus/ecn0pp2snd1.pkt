@@ -61,4 +61,7 @@
 +0 <[noecn] . 5002:5002(0) ack 5002 win 65535
 +0 >[noecn] F. 5001:5001(0) ack 5002
 
+// Restore default sysctls
+`sysctl net.inet.tcp.ecn.enable=2; \
+ sysctl net.inet.tcp.ecn.plusplus=0`
 
