@@ -1,0 +1,64 @@
+// A simple server-side test that sends exactly an initial window (IW10)
+// worth of packets.
+
+// Flush Hostcache
++0.00 `sysctl net.inet.tcp.ecn.enable=1`
++0.02 `sysctl net.inet.tcp.ecn.plusplus=0`
++0.02 `sysctl net.inet.tcp.hostcache.purgenow=1`
+
+// Create a connecting TCP socket.
++0.010 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.005 fcntl(3, F_SETFL, O_RDWR|O_NONBLOCK) = 0
++0.005 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
++0.005 setsockopt(3, SOL_SOCKET, SO_SNDBUF, [1048576], 4) = 0
++0     setsockopt(3, SOL_SOCKET, SO_DEBUG, [1], 4) = 0
+
+// Establish a TCP connection
++0.035 connect(3, ..., ...) = -1 // EINPROGRESS
+
++0 >[noecn] SEW  0:0(0) win 65535 <mss 1460, nop,wscale 6,sackOK,TS val ... ecr 0>
++0 <[noecn] SE. 0:0(0) ack 1 win 65535 <mss 1000, sackOK, wscale 10, eol, nop, nop>
++0 >[noecn]  .   1:1(0) ack 1 win 1031
+
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.01 fcntl(3, F_SETFL, O_RDWR) = 0   // set back to blocking
+
+// Send some data from server
++0.1 write(3, ..., 5000) = 5000
++0 >[ect0] .       1:1001(1000) ack 1  // we drop this packet
++0 >[ect0] .    1001:2001(1000) ack 1
++0 >[ect0] .    2001:3001(1000) ack 1
++0 >[ect0] .    3001:4001(1000) ack 1
++0 >[ect0] P.   4001:5001(1000) ack 1
+
++0 <[noecn] .       1:1(0) ack 1 win 65535 <sack 1001:2001, eol, nop>
++0 <[noecn] .       1:1(0) ack 1 win 65535 <sack 1001:3001, eol, nop>
++0 <[noecn] .       1:1(0) ack 1 win 65535 <sack 1001:4001, eol, nop>
+
+// the retransmission
++0 >[noecn] W.       1:1001(1000) ack 1
+
++0 <[noecn] .       1:1(0) ack 1 win 65535 <sack 1001:5001, eol, nop>
++0 <[noecn] .       1:1(0) ack 5001 win 65535
+
+// Send some data to server and check CE/ECE/CWR sequence
++0.1 <[ce] .     1001:2001(1000) ack 5001 win 65535
++0 >[noecn] E.       5001:5001(0) ack 1 <nop, nop, sack 1001:2001>
++0 <[ect0] .       2001:3001(1000) ack 5001 win 65535
++0 >[noecn] E.       5001:5001(0) ack 1 <nop, nop, sack 1001:3001>
++0 <[ect0] W.       3001:4001(1000) ack 5001 win 65535
++0 >[noecn] .       5001:5001(0) ack 1 <nop, nop, sack 1001:4001>
++0 <[ect0] P.      4001:5001(1000) ack 5001 win 65535
++0 >[noecn] .       5001:5001(0) ack 1 <nop, nop, sack 1001:5001>
+
+// the "re"transmission
++0 <[noecn] .          1:1001(1000) ack 5001 win 65535
++0 >[noecn] .       5001:5001(0) ack 5001
+
++0.100 close(3) = 0
++0 <[noecn] F. 5001:5001(0) ack 5001 win 65535
++0 >[noecn] F. 5001:5001(0) ack 5001
++0 <[noecn] . 5002:5002(0) ack 5002 win 65535
++0 >[noecn] F. 5001:5001(0) ack 5002
+
+
