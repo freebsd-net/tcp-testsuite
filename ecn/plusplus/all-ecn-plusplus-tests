@@ -1,7 +1,3 @@
-ecn/plusplus/ecn0pp0rcv0
-ecn/plusplus/ecn0pp0rcv1
-ecn/plusplus/ecn0pp0snd0
-ecn/plusplus/ecn0pp0snd1
 ecn/plusplus/ecn0pp1rcv0
 ecn/plusplus/ecn0pp1rcv1
 ecn/plusplus/ecn0pp1snd0
@@ -10,10 +6,6 @@ ecn/plusplus/ecn0pp2rcv0
 ecn/plusplus/ecn0pp2rcv1
 ecn/plusplus/ecn0pp2snd0
 ecn/plusplus/ecn0pp2snd1
-ecn/plusplus/ecn1pp0rcv0
-ecn/plusplus/ecn1pp0rcv1
-ecn/plusplus/ecn1pp0snd0
-ecn/plusplus/ecn1pp0snd1
 ecn/plusplus/ecn1pp1rcv0
 ecn/plusplus/ecn1pp1rcv1
 ecn/plusplus/ecn1pp1snd0
@@ -22,10 +14,6 @@ ecn/plusplus/ecn1pp2rcv0
 ecn/plusplus/ecn1pp2rcv1
 ecn/plusplus/ecn1pp2snd0
 ecn/plusplus/ecn1pp2snd1
-ecn/plusplus/ecn2pp0rcv0
-ecn/plusplus/ecn2pp0rcv1
-ecn/plusplus/ecn2pp0snd0
-ecn/plusplus/ecn2pp0snd1
 ecn/plusplus/ecn2pp1rcv0
 ecn/plusplus/ecn2pp1rcv1
 ecn/plusplus/ecn2pp1snd0

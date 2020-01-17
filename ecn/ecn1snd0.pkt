@@ -2,8 +2,7 @@
 // worth of packets.
 
 // Flush Hostcache
-+0.00 `sysctl net.inet.tcp.ecn.enable=0`
-+0.02 `sysctl net.inet.tcp.ecn.plusplus=0`
++0.00 `sysctl net.inet.tcp.ecn.enable=1`
 +0.02 `sysctl net.inet.tcp.hostcache.purgenow=1`
 
 // Create a connecting TCP socket.
@@ -16,7 +15,7 @@
 // Establish a TCP connection
 +0.035 connect(3, ..., ...) = -1 // EINPROGRESS
 
-+0 >[noecn] S   0:0(0) win 65535 <mss 1460, nop,wscale 6,sackOK,TS val ... ecr 0>
++0 >[noecn] SEW  0:0(0) win 65535 <mss 1460, nop,wscale 6,sackOK,TS val ... ecr 0>
 +0 <[noecn] S. 0:0(0) ack 1 win 65535 <mss 1000, sackOK, wscale 10, eol, nop, nop>
 +0 >[noecn]  .   1:1(0) ack 1 win 1031
 
@@ -61,4 +60,5 @@
 +0 <[noecn] . 5002:5002(0) ack 5002 win 65535
 +0 >[noecn] F. 5001:5001(0) ack 5002
 
-
+// Restore default sysctls
+`sysctl net.inet.tcp.ecn.enable=2`
