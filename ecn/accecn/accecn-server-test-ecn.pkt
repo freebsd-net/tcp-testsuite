@@ -1,0 +1,58 @@
+// A simple server-side test that sends exactly an initial window (IW10)
+// worth of packets.
+
+--tolerance_usecs=100000
+
+// Load and enable DCTCP module and flush hostcache
+0.0 `sysctl net.inet.tcp.initcwnd_segments=10`
++0.01 `sysctl net.inet.tcp.ecn.enable=3`
++0.01 `sysctl net.inet.tcp.hostcache.purgenow=1`
+
+ 0.06 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.005 fcntl(3, F_SETFL, O_RDWR|O_NONBLOCK) = 0
++0.005 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
++0.005 setsockopt(3, SOL_SOCKET, SO_SNDBUF, [1048576], 4) = 0
+
++0.005 bind(3, ..., ...) = 0
++0.005 listen(3, 1) = 0
+
+// Establish a TCP connection with ECN to explicitly track CWR
+
+0.1 <[noecn] SEW 0:0(0) win 65535 <mss 1460, nop, wscale 6, sackOK, eol, nop>
+
+// Response with TCP ECN header flags, session should be RFC3168 ECN
+
++0 >[noecn] SE. 0:0(0) ack 1 win 65535 <mss 1460, nop, wscale 6, sackOK, eol, eol>
++0 <[ect1] . 1:1(0) ack 1 win 65535
+
++0 accept(3, ..., ...) = 4
+
+0.12 write(4, ..., 17520) = 17520
+
++0    > [ect0]  .       1:1461(1460) ack 1
++0    > [ect0]  .    1461:2921(1460) ack 1
+
+// Pretend we received a CE mark
++0.01 < [noecn] E.      1:1(0)       ack 2921 win 65535
++0 > [ect0] .    2921:4381(1460) ack 1
++0 > [ect0] .    4381:5841(1460) ack 1
++0 > [ect0] .    5841:7301(1460) ack 1
++0 > [ect0] .    7301:8761(1460) ack 1
++0 > [ect0] .   8761:10221(1460) ack 1
++0 > [ect0] .  10221:11681(1460) ack 1
++0 > [ect0] .  11681:13141(1460) ack 1
++0 > [ect0] . 13141:14601(1460) ack 1
+
+// Even when we discontinue sending ECE, a CWR should be seen
++0.01 < [noecn] . 1:1(0) ack 14601 win 65535
++0 > [ect0] W. 14601:16061(1460) ack 1
++0 > [ect0] P. 16061:17521(1460) ack 1
++0.01 < [noecn] . 1:1(0) ack 17521 win 65535
+
++0.05 close(4) = 0
++0    > [noecn] F. 17521:17521(0) ack 1
++0    < [noecn] F. 1:1(0) ack 17522 win 65535
++0    > [noecn] . 17522:17522(0) ack 2
+
+// Restore defaults
+`sysctl net.inet.tcp.ecn.enable=2`
