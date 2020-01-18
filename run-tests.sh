@@ -93,8 +93,13 @@ for file ; do
     testdir=`/usr/bin/dirname $testcase`
     testname=`/usr/bin/basename $testcase`
     printf "%-68.68s " ${testname}
+    if [ -f ${rootdir}/${testcase}.pkt ] ; then
+      found=1
+    else
+      found=0
+    fi
     if [ $first -eq 0 ] ; then
-      if [ $delay -ne 0 ] ; then
+      if [ $delay -ne 0 -a $found -eq 1 ] ; then
         if [ -t 1 ] ; then
           printf "\033[33m%10s\033[0m" "WAITING"
         fi
@@ -106,20 +111,17 @@ for file ; do
     else
       first=0
     fi
-    if [ -t 1 ] ; then
+    if [ -t 1 -a $found -eq 1 ] ; then
       printf "\033[33m%10s\033[0m" "RUNNING"
     fi
-    if [ -f ${rootdir}/${testcase}.pkt ] ; then
+    if [ $found -eq 1 ] ; then
       timeout $timelimit $packetdrill ${flags} ${rootdir}/${testdir}/${testname}.pkt >${rootdir}/${testdir}/${prefix}${testname}.out 2>&1
       result=$?
       if [ $result -eq 0 -a $verbose -eq 0 ] ; then
         rm ${rootdir}/${testdir}/${prefix}${testname}.out
       fi
-      found=1
-    else
-      found=0
     fi
-    if [ -t 1 ] ; then
+    if [ -t 1 -a $found -eq 1 ] ; then
       printf "\b\b\b\b\b\b\b\b\b\b"
     fi
     if [ $found -eq 1 ] ; then
