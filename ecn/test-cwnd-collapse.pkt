@@ -1,0 +1,187 @@
+// A simple server-side test that sends exactly an initial window (IW10)
+// worth of packets.
+
+--tolerance_usecs=250000
+
+// Flush Hostcache
++0.00 `sysctl net.inet.tcp.ecn.enable=1`
+//+0.02 `kldload -n cc_cubic`
++0.02 `sysctl net.inet.tcp.cc.algorithm=cubic`
++0.02 `sysctl net.inet.tcp.hostcache.purgenow=1`
+
+// Create a listening TCP socket.
+ 0.100 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.005 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
++0.005 bind(3, ..., ...) = 0
++0.005 listen(3, 1) = 0
+
+// Establish a TCP connection without ECN
++0.035 <[noecn] SEW  0:0(0) win 65535 <mss 1000, sackOK, eol, eol>
++0.000 >[noecn] SE. 0:0(0) ack 1 win 65535 <...>
++0.000 <[noecn]  . 1:1(0) ack 1 win 65535
++0.000 accept(3, ..., ...) = 4
+
++0 %{ print "cwnd\twnd \tssthresh\tNXT" }%
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
+// simulate NFS request/response w/ ECN mark
++0.1 <[ce] P. 1:101(100) ack 1 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PE. 1:101(100) ack 101
++0 <[noecn] E. 101:101(0) ack 101 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 101:201(100) ack 101 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PEW. 101:201(100) ack 201
++0 <[noecn]  E. 201:201(0)   ack 201 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 201:301(100) ack 201 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PEW. 201:301(100) ack 301
++0 <[noecn]  E. 301:301(0)   ack 301 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 301:401(100) ack 301 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PEW. 301:401(100) ack 401
++0 <[noecn]  E. 401:401(0)   ack 401 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 401:501(100) ack 401 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PEW. 401:501(100) ack 501
++0 <[noecn]  E. 501:501(0)   ack 501 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 501:601(100) ack 501 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PEW. 501:601(100) ack 601
++0 <[noecn]  E. 601:601(0)   ack 601 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 601:701(100) ack 601 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PEW. 601:701(100) ack 701
++0 <[noecn]  E. 701:701(0)   ack 701 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 701:801(100) ack 701 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PEW. 701:801(100) ack 801
++0 <[noecn]  E. 801:801(0)   ack 801 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
+
++0.001 <[ce] PEW. 801:901(100) ack 801 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PEW. 801:901(100) ack 901
++0 <[noecn]  E. 901:901(0)   ack 901 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 901:1001(100) ack 901 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PEW. 901:1001(100) ack 1001
++0 <[noecn]  E. 1001:1001(0)   ack 1001 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 1001:1101(100) ack 1001 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0] PEW. 1001:1101(100) ack 1101
++0 <[noecn]  E. 1101:1101(0)   ack 1101 win 65535
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 1101:1201(100) ack 1101 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
+// Problematic behavior. MSS should always be at least 1000 bytes, a small RPC should never be
+// sent in more than a single packet.
++0 >[ect0]  EW. 1101:1197(96) ack 1201
++0 <[noecn]  E. 1201:1201(0)  ack 1197 win 65535
++0 >[ect0]  PE. 1197:1201(4)  ack 1201
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 1201:1301(100) ack 1201 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
++0 >[ect0]  EW. 1201:1268(67) ack 1301
++0 <[noecn]  E. 1301:1301(0)  ack 1268 win 65535
++0 >[ect0]  PEW. 1268:1301(33) ack 1301
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.001 <[ce] PEW. 1301:1401(100) ack 1301 win 65535
++0 read(4, ..., 100) = 100
++0 write (4, ..., 100) = 100
+
+// Checking if Cubic+ECN really collapses down to 1 byte
++0 >[ect0]  EW. 1301:1333(32) ack 1401
++0 <[noecn]  E. 1401:1401(0)  ack 1333 win 65535
++0~+5 >[ect0]  EW. 1333:1355(22) ack 1401
++0 <[noecn]     E. 1401:1401(0)  ack 1355 win 65535
++0~+5 >[ect0]  EW. 1355:1370(15) ack 1401
++0 <[noecn]     E. 1401:1401(0)  ack 1370 win 65535
++0~+5 >[ect0]  EW. 1370:1380(10) ack 1401
++0 <[noecn]     E. 1401:1401(0)  ack 1380 win 65535
++0~+5 >[ect0]  EW. 1380:1386(6)  ack 1401
++0 <[noecn]     E. 1401:1401(0)  ack 1386 win 65535
++0~+5 >[ect0]  EW. 1386:1390(4)  ack 1401
++0 <[noecn]     E. 1401:1401(0)  ack 1390 win 65535
++0~+5 >[ect0]  EW. 1390:1392(2)  ack 1401
++0 <[noecn]     E. 1401:1401(0)  ack 1392 win 65535
++0~+5 >[ect0]  EW. 1392:1393(1)  ack 1401
++0 <[noecn]     E. 1401:1401(0)  ack 1393 win 65535
++0~+5 >[ect0]  EW. 1393:1394(1)  ack 1401
++0 <[noecn]     E. 1401:1401(0)  ack 1394 win 65535
++0~+5 >[ect0]  EW. 1394:1395(1)  ack 1401
++0 <[noecn]     E. 1401:1401(0)  ack 1395 win 65535
+
++0 %{ print "{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.100 close(4) = 0
+//+0 <[noecn] F. 5001:5001(0) ack 5001 win 65535
+//+0 >[noecn] F. 5001:5001(0) ack 5001
+//+0 <[noecn] . 5002:5002(0) ack 5002 win 65535
+//+0 >[noecn] F. 5001:5001(0) ack 5002
+
+// Restore default sysctls
+`sysctl net.inet.tcp.ecn.enable=2; sysctl net.inet.tcp.cc.algorithm=newreno`

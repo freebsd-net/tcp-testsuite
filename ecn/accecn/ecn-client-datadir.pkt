@@ -1,0 +1,123 @@
+// Validate that the AccECN ACE field counts as expected.
+
+--tolerance_usecs=100000
+
+// Load and enable DCTCP module and flush hostcache
+0.0 `sysctl net.inet.tcp.initcwnd_segments=10`
++0.01 `sysctl net.inet.tcp.ecn.enable=1`
++0.01 `sysctl net.inet.tcp.hostcache.purgenow=1`
+
+ 0.06 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.005 fcntl(3, F_SETFL, O_RDWR|O_NONBLOCK) = 0
++0.005 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
++0.005 setsockopt(3, SOL_SOCKET, SO_SNDBUF, [1048576], 4) = 0
+
+// Establish a TCP connection with ECN to explicitly track CWR
+
+0.1 connect(3, ..., ...) = -1 // EINPROGRESS
+
++0 >[noecn] SEW 0:0(0) win 65535 <mss 1460, nop,wscale 6,sackOK,TS val ... ecr 0>
+
+// Pretend we got a [nonECT]SYN
+
++0 <[noecn] SE. 0:0(0) ack 1 win 65535 <mss 1460, sackOK, wscale 10, eol, nop, nop>
+
+// Check that AccECN handshake for [nonECT] SYN,ACK is received
+
++0 >[noecn] . 1:1(0) ack 1 win 1026
+
+0.12 write(3, ..., 2920) = 2920
+
++0 > [ect0]  .     1:1461(1460) ack 1
++0 > [ect0] P.  1461:2921(1460) ack 1
++0 < [noecn] .     1:1(0) ack 2921 win 65535
+
++0.01 write(3, ..., 2920) = 2920
++0 > [ect0]  .  2921:4381(1460) ack 1
++0 > [ect0] P.  4381:5841(1460) ack 1
++0 < [ce]    .     1:1(0) ack 5841 win 65535
+
++0.01 write(3, ..., 2920) = 2920
++0 > [ect0]  E.  5841:7301(1460) ack 1
++0 > [ect0] PE.  7301:8761(1460) ack 1
++0 < [noecn] W.     1:1(0) ack 8761 win 65535
+
++0.01 write(3, ..., 2920) = 2920
++0 > [ect0]  .  8761:10221(1460) ack 1
++0 > [ect0] P. 10221:11681(1460) ack 1
++0 < [ce]    .     1:1(0) ack 11681 win 65535
+
++0.01 write(3, ..., 2920) = 2920
++0 > [ect0]  E. 11681:13141(1460) ack 1
++0 > [ect0] PE. 13141:14601(1460) ack 1
++0 < [noecn] W.     1:1(0) ack 14601 win 65535
+
++0.01 write(3, ..., 2920) = 2920
++0 > [ect0]  . 14601:16061(1460) ack 1
++0 > [ect0] P. 16061:17521(1460) ack 1
++0 < [ce]    .     1:1(0) ack 17521 win 65535
+
++0.01 write(3, ..., 2920) = 2920
++0 > [ect0]  E. 17521:18981(1460) ack 1
++0 > [ect0] PE. 18981:20441(1460) ack 1
++0 < [noecn] W.     1:1(0) ack 20441 win 65535
+
++0.01 write(3, ..., 2920) = 2920
++0 > [ect0]  . 20441:21901(1460) ack 1
++0 > [ect0] P. 21901:23361(1460) ack 1
++0 < [ce]    .     1:1(0) ack 23361 win 65535
+
++0.01 write(3, ..., 2920) = 2920
++0 > [ect0]  E. 23361:24821(1460) ack 1
++0 > [ect0] PE. 24821:26281(1460) ack 1
++0 < [noecn] W.     1:1(0) ack 26281 win 65535
+
++0.01 write(3, ..., 2920) = 2920
++0 > [ect0]  . 26281:27741(1460) ack 1
++0 > [ect0] P. 27741:29201(1460) ack 1
++0 < [ce]    .     1:1(0) ack 29201 win 65535
+
++0.01 write(3, ..., 2920) = 2920
++0 > [ect0]  E. 29201:30661(1460) ack 1
++0 > [ect0] PE. 30661:32121(1460) ack 1
++0 < [noecn] W.     1:1(0) ack 32131 win 65535
+
++0 > [noecn] . 32121:32121(0) ack 1
+
+// reverse data direction
+
++0.01 < [noecn] .     1:1001(1000) ack 32121 win 65535
++0 < [ect0]     .  1001:2001(1000) ack 32121 win 65535
++0 recv(3, ..., 10240, MSG_PEEK) = 2000
++0 < [ect1]     .  2001:3001(1000) ack 32121 win 65535
++0 recv(3, ..., 10240, MSG_PEEK) = 3000
++0 < [ce]       .  3001:4001(1000) ack 32121 win 65535
++0 recv(3, ..., 10240, MSG_PEEK) = 4000
++0 < [noecn]    .  4001:5001(1000) ack 32121 win 65535
++0 < [ect0]     W.  5001:6001(1000) ack 32121 win 65535
++0 < [ect1]     .  6001:7001(1000) ack 32121 win 65535
++0 < [ce]       .  7001:8001(1000) ack 32121 win 65535
++0 < [noecn]    .  8001:9001(1000) ack 32121 win 65535
++0 < [ect0]     .  9001:10001(1000) ack 32121 win 65535
++0 < [ect1]     . 10001:11001(1000) ack 32121 win 65535
++0 < [ce]       W. 11001:12001(1000) ack 32121 win 65535
++0 < [noecn]    . 12001:13001(1000) ack 32121 win 65535
++0 < [ect0]     W. 13001:14001(1000) ack 32121 win 65535
++0 < [ect1]     . 14001:15001(1000) ack 32121 win 65535
++0 < [ce]       . 15001:16001(1000) ack 32121 win 65535
++0 > [noecn] . 32121:32121(0) ack 2001
++0 > [noecn] E. 32121:32121(0) ack 4001
++0 > [noecn] . 32121:32121(0) ack 6001
++0 > [noecn] E. 32121:32121(0) ack 8001
++0 > [noecn] E. 32121:32121(0) ack 10001
++0 > [noecn] E. 32121:32121(0) ack 12001
++0 > [noecn] . 32121:32121(0) ack 14001
++0 > [noecn] E. 32121:32121(0) ack 16001
+
++0.05 close(3) = 0
++0    > [noecn] FE. 32121:32121(0) ack 16001
++0    < [noecn] FW. 16001:16001(0) ack 32122 win 65535
++0    > [noecn] . 32122:32122(0) ack 16002
+
+// Restore defaults
+`sysctl net.inet.tcp.ecn.enable=2`

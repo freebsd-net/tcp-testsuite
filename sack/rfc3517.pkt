@@ -1,0 +1,78 @@
+// A simple server-side test that sends exactly an initial window (IW10)
+// worth of packets.
+
+// Flush Hostcache
+`sysctl net.inet.tcp.hostcache.purgenow=1`
+
+// Create a listening TCP socket.
+ 0.000 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.005 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
++0     setsockopt(3, SOL_SOCKET, SO_DEBUG, [1], 4) = 0
++0.005 bind(3, ..., ...) = 0
++0.005 listen(3, 1) = 0
+// Establish a TCP connection.
++0.035 < S  0:0(0) win 65535 <mss 1000, sackOK, eol, eol>
++0.000 > S. 0:0(0) ack 1 win 65535 <...>
++0.000 <  . 1:1(0) ack 1 win 65535
++0.000 accept(3, ..., ...) = 4
+0.200 write(4, ..., 33000) = 33000
++0 > .       1:1001(1000) ack 1
++0 > .    1001:2001(1000) ack 1  // we drop this packet
++0 > .    2001:3001(1000) ack 1
++0 > .    3001:4001(1000) ack 1
++0 > .    4001:5001(1000) ack 1
++0 > .    5001:6001(1000) ack 1
++0 > .    6001:7001(1000) ack 1
++0 > .    7001:8001(1000) ack 1
++0 > .    8001:9001(1000) ack 1
++0 > .   9001:10001(1000) ack 1
+0.21  < . 1:1(0) ack 1001 win 65535
++0 > .  10001:11001(1000) ack 1
++0 > .  11001:12001(1000) ack 1
+0.23  < . 1:1(0) ack 1001 win 65535 <sack 2001:3001, nop, nop>  // dupack #1
++0 > .  12001:13001(1000) ack 1
+0.24  < . 1:1(0) ack 1001 win 65535 <sack 2001:4001, nop, nop>  // dupack #2
++0 > .  13001:14001(1000) ack 1
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.25  < . 1:1(0) ack 1001 win 65535 <sack 2001:5001, nop, nop>  // dupack #3
++0 > .    1001:2001(1000) ack 1 // retransmission
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.26  < . 1:1(0) ack 1001 win 65535 <sack 2001:6001, nop, nop>  // rfc3517 typical
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.27  < . 1:1(0) ack 1001 win 65535 <sack 2001:7001, nop, nop>  // quiesce period
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.28  < . 1:1(0) ack 1001 win 65535 <sack 2001:8001, nop, nop>  // for 1/2 window
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.29  < . 1:1(0) ack 1001 win 65535 <sack 2001:9001, nop, nop>
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.30  < . 1:1(0) ack 1001 win 65535 <sack 2001:10001, nop, nop>
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.31  < . 1:1(0) ack 1001 win 65535 <sack 2001:11001, nop, nop>
++0 > .  14001:15001(1000) ack 1
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.32  < . 1:1(0) ack 1001 win 65535 <sack 2001:12001, nop, nop>
++0 > .  15001:16001(1000) ack 1
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.33  < . 1:1(0) ack 1001 win 65535 <sack 2001:13001, nop, nop>
++0 > .  16001:17001(1000) ack 1
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.34  < . 1:1(0) ack 1001 win 65535 <sack 2001:14001, nop, nop>
++0 > .  17001:18001(1000) ack 1
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.35  < . 1:1(0) ack 14001 win 65535  // cumulative ack
++0 > .  18001:19001(1000) ack 1  
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
+0.36  < . 1:1(0) ack 19001 win 65535  // full ack
+//+0 %{ print "cwnd: {}  ssthresh: {}".format(tcpi_snd_cwnd, tcpi_snd_ssthresh) }%
++0 > .  19001:20001(1000) ack 1       // check cwnd size
++0 > .  20001:21001(1000) ack 1
++0 > .  21001:22001(1000) ack 1
++0 > .  22001:23001(1000) ack 1
++0 > .  23001:24001(1000) ack 1
++0 > .  24001:25001(1000) ack 1
++0 > .  25001:26001(1000) ack 1
+
+0.60~0.65 > . 19001:20001(1000) ack 1
+0.700 close(4) = 0
+0.701 < F. 1:1(0) ack 28002 win 65535
+

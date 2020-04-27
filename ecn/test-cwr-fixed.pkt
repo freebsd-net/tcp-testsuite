@@ -1,0 +1,93 @@
+// A simple server-side test that sends exactly an initial window (IW10)
+// worth of packets.
+
+--tolerance_usecs=250000
+
+// Flush Hostcache
++0.00 `sysctl net.inet.tcp.ecn.enable=1`
+//+0.02 `kldload -n cc_cubic`
++0.02 `sysctl net.inet.tcp.cc.algorithm=cubic`
++0.02 `sysctl net.inet.tcp.hostcache.purgenow=1`
+
+// Create a listening TCP socket.
+ 0.100 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.005 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
++0.005 bind(3, ..., ...) = 0
++0.005 listen(3, 1) = 0
+
+// Establish a TCP connection with ECN
++0.035 <[noecn] SEW  0:0(0) win 65535 <mss 1000, sackOK, eol, eol>
++0.000 >[noecn] SE. 0:0(0) ack 1 win 65535 <...>
++0.000 <[noecn]  . 1:1(0) ack 1 win 65535
++0.000 accept(3, ..., ...) = 4
+
++0 %{ print "\tcwnd\twnd \tssthresh\tNXT" }%
++0 %{ print "\t{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
+// Write one Initial Window of Date
++0.1 write(4, ..., 10000) = 10000
++0 >[ect0]  .     1:1001(1000) ack 1
++0.01 <[noecn] E. 1:1(0) ack 1001 win 65535
++0 >[ect0]  .  1001:2001(1000) ack 1
++0.01 <[noecn] E. 1:1(0) ack 2001 win 65535
++0 >[ect0]  .  2001:3001(1000) ack 1
++0.01 <[noecn] E. 1:1(0) ack 3001 win 65535
++0 >[ect0]  .  3001:4001(1000) ack 1
++0.01 <[noecn] E. 1:1(0) ack 4001 win 65535
++0 >[ect0]  .  4001:5001(1000) ack 1
++0.01 <[noecn] E. 1:1(0) ack 5001 win 65535
++0 >[ect0]  .  5001:6001(1000) ack 1
++0.01 <[noecn] E. 1:1(0) ack 6001 win 65535
++0 >[ect0]  .  6001:7001(1000) ack 1
++0.01 <[noecn] E. 1:1(0) ack 7001 win 65535
++0 >[ect0]  .  7001:8001(1000) ack 1
++0.01 <[noecn] E. 1:1(0) ack 8001 win 65535
++0 >[ect0]  .  8001:9001(1000) ack 1
++0.01 <[noecn] E. 1:1(0) ack 9001 win 65535
++0 >[ect0] P.  9001:10001(1000) ack 1
++0 %{ print "IW\t{}\t{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt, tcpi_snd_rexmitpack) }%
+
++0.01 <[noecn] E. 1:1(0) ack 10001 win 65535
++0 %{ print "ece\t{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
++0.01 <[ect0]  .     1:1001(1000) ack 10001 win 65535
++0 %{ print "d1\t{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
++0 <[ect0]    PE.  1001:2001(1000) ack 10001 win 65535
++0 %{ print "d2\t{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
++0 >[noecn]    . 10001:10001(0) ack 2001
++0 read(4, ..., 2000) = 2000
+
++0.01 <[ce]    E.  2001:3001(1000) ack 10001 win 65535
++0 <[ect0]     PE.  3001:4001(1000) ack 10001 win 65535
+
++0 >[noecn]   E. 10001:10001(0) ack 4001
++0 %{ print "3\t{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+// Test if ECE becomes unlatched on PureACK with CWR
++0.01 <[noecn] WE. 4001:4001(0) ack 10001 win 65535
++0 >[noecn]   . 10001:10001(0) ack 4001
++0 %{ print "4\t{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
++0 <[ect0]  E. 4001:5001(1000) ack 10001 win 65535
++0 <[ect0]  E. 5001:6001(1000) ack 10001 win 65535
+
+// This pure ACK shouldn't have ECE set
++0 >[noecn]   . 10001:10001(0) ack 6001
++0 %{ print "5\t{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+// Write a single byte, validate CWR from IW Ack
++0.01 write(4, ..., 1) = 1
++0 >[ect0]  PW. 10001:10002(1) ack 6001
++0 %{ print "6\t{}\t{}\t{}\t{}".format(tcpi_snd_cwnd, tcpi_snd_wnd, tcpi_snd_ssthresh, tcpi_snd_nxt) }%
+
+
++0.100 close(4) = 0
++0 <[noecn] F. 6001:6001(0) ack 10002 win 65535
++0 >[noecn] F. 10002:10002(0) ack 6001
++0 <[noecn] . 6002:6002(0) ack 10003 win 65535
++0 >[noecn] F. 10002:10002(0) ack 6002
+
+// Restore default sysctls
+`sysctl net.inet.tcp.ecn.enable=2; sysctl net.inet.tcp.cc.algorithm=newreno`

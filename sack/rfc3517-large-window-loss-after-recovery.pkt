@@ -1,0 +1,137 @@
+//
+// A simple test to validate RFC6582 
+// (minimum cwnd after loss recovery >= 2 mss)
+//
+// First, cwnd is built up by acking every data segment
+//
+// Then we "drop" one packet, and sent
+// 4 dup ACKs with the appropriate SACK blocks.
+//
+// When the retransmission arrives, we do
+// a cumulative ACK. Depending on how many
+// Segements are received after that, we 
+// can infer the cwnd size and the behavior
+// of SACK loss recovery.
+
+--tolerance_usecs=50000
+
+// Flush Hostcache
+0.0 `sysctl net.inet.tcp.rfc6675_pipe=0`
+0.1 `sysctl net.inet.tcp.hostcache.purgenow=1`
+0.2 `sync` // in case of crash
+//+0 `tcpdump -i tun0 -w rfc3517-large-window.trc tcp &`
+
+// Create a listening TCP socket.
+ 0.50 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.005 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
++0.005 setsockopt(3, SOL_SOCKET, SO_DEBUG, [1], 4) = 0
++0.005 bind(3, ..., ...) = 0
++0.005 listen(3, 1) = 0
+
+// Establish a TCP connection.
+// Use ECN to check when cwnd is reduced by the sender
++0.035 < SEW  0:0(0) win 65535 <mss 1000, sackOK, wscale 9, nop, nop, nop >
++0.000 > SE. 0:0(0) ack 1 win 65535 <...>
++0.000 <  . 1:1(0) ack 1 win 65535
++0.000 accept(3, ..., ...) = 4
+
+// Write some data to be sent to the simulated 
+// packetdrill receiver.
+// Note: More than 33kB appears to get stuck on BSD
++0.10  write(4, ..., 33000) = 33000
+
++0     >  .     1:1001(1000) ack 1
++0     <  .     1:1(0) ack 1001 win 65535  // ACKing every packet
++0     >  .  1001:2001(1000) ack 1
++0     <  .     1:1(0) ack 2001 win 65535  // to built up cwnd fast
++0     >  .  2001:3001(1000) ack 1
++0     <  .     1:1(0) ack 3001 win 65535
++0     >  .  3001:4001(1000) ack 1
++0     <  .     1:1(0) ack 4001 win 65535
++0     >  .  4001:5001(1000) ack 1
++0     <  .     1:1(0) ack 5001 win 65535
++0     >  .  5001:6001(1000) ack 1
++0     <  .     1:1(0) ack 6001 win 65535
++0     >  .  6001:7001(1000) ack 1
++0     <  .     1:1(0) ack 7001 win 65535
++0     >  .  7001:8001(1000) ack 1
++0     <  .     1:1(0) ack 8001 win 65535
++0     >  .  8001:9001(1000) ack 1
++0     <  .     1:1(0) ack 9001 win 65535
++0     >  .  9001:10001(1000) ack 1
++0     <  .     1:1(0) ack 10001 win 65535
++0     >  . 10001:11001(1000) ack 1
++0     <  .     1:1(0) ack 11001 win 65535
++0     >  . 11001:12001(1000) ack 1
++0     <  .     1:1(0) ack 12001 win 65535
++0     >  . 12001:13001(1000) ack 1
++0     <  .     1:1(0) ack 13001 win 65535
++0     >  . 13001:14001(1000) ack 1
++0     <  .     1:1(0) ack 14001 win 65535
++0     >  . 14001:15001(1000) ack 1
++0     <  .     1:1(0) ack 15001 win 65535
++0     >  . 15001:16001(1000) ack 1
++0     <  .     1:1(0) ack 16001 win 65535
++0     >  . 16001:17001(1000) ack 1
++0     <  .     1:1(0) ack 17001 win 65535
++0     >  . 17001:18001(1000) ack 1
++0     <  .     1:1(0) ack 18001 win 65535
++0     >  . 18001:19001(1000) ack 1
++0     <  .     1:1(0) ack 19001 win 65535
++0     >  . 19001:20001(1000) ack 1
++0     >  . 20001:21001(1000) ack 1
++0     >  . 21001:22001(1000) ack 1
++0     >  . 22001:23001(1000) ack 1
++0     >  . 23001:24001(1000) ack 1
++0     >  . 24001:25001(1000) ack 1
++0     >  . 25001:26001(1000) ack 1
++0     >  . 26001:27001(1000) ack 1
++0     >  . 27001:28001(1000) ack 1
++0     >  . 28001:29001(1000) ack 1
++0     >  . 29001:30001(1000) ack 1
++0     >  . 30001:31001(1000) ack 1  
++0     >  . 31001:32001(1000) ack 1
++0     >  P. 32001:33001(1000) ack 1
++0.01  <  .     1:1(0) ack 20001 win 65535
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:22001, eol, nop>
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:23001, eol, nop>
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:24001, eol, nop>
++0     >  W. 20001:21001(1000) ack 1
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:25001, eol, nop>
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:26001, eol, nop>
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:27001, eol, nop>
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:28001, eol, nop>
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:29001, eol, nop>
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:30001, eol, nop>
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:31001, eol, nop>
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:32001, eol, nop>
++0  write(4, ..., 10000) = 10000          // Inject some additional data
++0.01  <  .     1:1(0) ack 20001 win 65535 <sack 21001:33001, eol, nop>
+// send data after recovery point here
++0     >  . 33001:34001(1000) ack 1
++0     >  . 34001:35001(1000) ack 1
++0     >  . 35001:36001(1000) ack 1
++0     >  . 36001:37001(1000) ack 1
++0     >  . 37001:38001(1000) ack 1
++0     >  . 38001:39001(1000) ack 1
++0     >  . 39001:40001(1000) ack 1
++0     >  . 40001:41001(1000) ack 1
++0     >  . 41001:42001(1000) ack 1
++0.01  <  .    1:1(0) ack 20001 win 65535 <sack 34001:35001 21001:33001, eol, nop>
++0     >  P. 42001:43001(1000) ack 1
++0.01  <  .    1:1(0) ack 20001 win 65535 <sack 34001:36001 21001:33001, eol, nop>
++0.01  <  .    1:1(0) ack 20001 win 65535 <sack 34001:37001 21001:33001, eol, nop>
++0.01  <  .    1:1(0) ack 20001 win 65535 <sack 34001:38001 21001:33001, eol, nop>
++0.01  <  .    1:1(0) ack 20001 win 65535 <sack 34001:39001 21001:33001, eol, nop>
++0.01  <  .    1:1(0) ack 20001 win 65535 <sack 34001:40001 21001:33001, eol, nop>
++0.01  <  .    1:1(0) ack 20001 win 65535 <sack 34001:41001 21001:33001, eol, nop>
++0     >  W. 33001:34001(1000) ack 1 // error - should have "W" flag
++0.01  <  .    1:1(0) ack 33001 win 65535 <sack 34001:42001, eol, nop>
++0.01  <  .    1:1(0) ack 33001 win 65535 <sack 34001:43001, eol, nop>
++0.01  <  .    1:1(0) ack 43001 win 65535
+
+//0.300 < . 1:1(0) ack 14601 win 65535
+1.500 close(4) = 0
+
++0 > F. 43001:43001(0) ack 1
+//+0.1 `pkill -SIGINT tcpdump`

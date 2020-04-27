@@ -1,0 +1,62 @@
+// Testing ECN - immediate ACK on CWR (D22670)
+
+--tolerance_usecs=20000
+
+// Load and enable DCTCP module and flush hostcache
+0.0 `sysctl net.inet.tcp.cc.algorithm=newreno`
++0.02 `sysctl net.inet.tcp.initcwnd_segments=10`
++0.02 `sysctl net.inet.tcp.ecn.enable=1`
++0.02 `sysctl net.inet.tcp.hostcache.purgenow=1`
+
+// Create a listening TCP socket.
+0.06 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.005 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
++0.005 setsockopt(3, SOL_SOCKET, SO_SNDBUF, [1048576], 4) = 0
++0.005 bind(3, ..., ...) = 0
++0.005 listen(3, 1) = 0
+
+// Establish a TCP connection.
+0.1 <[ect0] SEW 0:0(0) win 65535 <mss 1000, sackOK, wscale 10, eol, nop, nop >
++0.00 >[noecn] SE. 0:0(0) ack 1 win 65535 <...>
++0.00 <[ect0]  . 1:1(0) ack 1 win 65535
++0.00 accept(3, ..., ...) = 4
+
+// Send IW plus 1 segment, check ECN bits
+0.12  <[ect0]  .      1:1001(1000) ack 1 win 65535
++0    <[ect0]  .   1001:2001(1000) ack 1 win 65535
++0    >[noecn] .      1:1(0) ack 2001 <...>
+
++0 write(4, ..., 1) = 1
++0    >[ect0] P.      1:2(1) ack 2001 <...>
+
++0    <[ect0]  .   2001:3001(1000) ack 2 win 65535
++0 write(4, ..., 1) = 1
++0    >[ect0]  P. 2:3(1) ack 3001 <...>
+
++0    <[ect0]  .   3001:4001(1000) ack 3 win 65535
++0    <[ect0]  .   4001:5001(1000) ack 3 win 65535
++0    >[noecn] .      3:3(0) ack 5001 <...>
+
+// delayed ACK
++0.01  <[ce]  P.   5001:5501(500) ack 3 win 65535
++0.1    >[noecn] E.     3:3(0) ack 5501 <...>
+
++0.001 read(4, ..., 5500) = 5500
++0 write(4, ..., 1) = 1
++0 > [ect0] PE. 3:4(1) ack 5501 <...>
+
++0.01  <[ect0]  W.   5501:6501(1000) ack 4 win 65535
+// no delay ACK on CWR flag
++0    >[noecn] .      4:4(0) ack 6501 <...>
+
+
++0.31  <[ect0]    .   6501:7501(1000) ack 4 win 65535
++0.1    >[noecn] .      4:4(0) ack 7501 <...>
+
++0.05 close(4) = 0
++0    > [noecn] F. 14601:14601(0) ack 1
++0    < [noecn] F. 1:1(0) ack 14602 win 65535
++0    > [noecn] . 14602:14602(0) ack 2
+
+// Restore defaults
+`sysctl net.inet.tcp.ecn.enable=2`

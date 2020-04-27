@@ -1,0 +1,74 @@
+// A simple test that validates the transmission of
+// new window probe data with the ECT0 codepoint 
+// while repeated window probes are sent without ECT
+
+// Flush Hostcache
++0.00 `sysctl net.inet.tcp.ecn.enable=1`
++0.02 `sysctl net.inet.tcp.hostcache.purgenow=1`
+
+// Create a connecting TCP socket.
++0.010 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.005 fcntl(3, F_SETFL, O_RDWR|O_NONBLOCK) = 0
++0.005 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
++0.005 setsockopt(3, SOL_SOCKET, SO_SNDBUF, [1048576], 4) = 0
++0     setsockopt(3, SOL_SOCKET, SO_DEBUG, [1], 4) = 0
+
+// Establish a TCP connection
++0.035 connect(3, ..., ...) = -1 // EINPROGRESS
+
++0 >[noecn] SEW  0:0(0) win 65535 <mss 1460, nop,wscale 6,sackOK,TS val ... ecr 0>
++0 <[noecn] SE. 0:0(0) ack 1 win 65535 <mss 1000>
++0 >[noecn]  .   1:1(0) ack 1
+
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.01 fcntl(3, F_SETFL, O_RDWR) = 0   // set back to blocking
+
+// Send some data from server
++0.1 write(3, ..., 5000) = 5000
++0 >[ect0] .       1:1001(1000) ack 1  // we drop this packet
++0 >[ect0] .    1001:2001(1000) ack 1
++0 >[ect0] .    2001:3001(1000) ack 1
++0 >[ect0] .    3001:4001(1000) ack 1
++0 >[ect0] P.   4001:5001(1000) ack 1
+
+// Shrink receive window to zero
++0 <[noecn] .       1:1(0) ack 5001 win 0
+
+// and send more data
++0 write(3, ..., 1000) = 1000
+
+// check for window probe (persist timer)
+// as this is new data, ECT0 should be set
++5~+6 >[ect0] . 5001:5002(1) ack 1
+//+0 %{ print "{}\t{}".format(tcpi_last_data_recv,tcpi_rcv_space) }%
++0 <[noecn] .       1:1(0) ack 5001 win 0
+
+// check for repeated window probe
++5~+6 >[noecn] . 5001:5002(1) ack 1
++0 <[noecn] .       1:1(0) ack 5002 win 0
+
+//this probe should be ect0 marked again
++5~+6 >[ect0]  . 5002:5003(1) ack 1
++0 <[noecn] .       1:1(0) ack 5003 win 1
+
+// and a regular 1-byte data segment
++0~+6 >[ect0] .     5003:5004(1) ack 1
++0 <[noecn] .       1:1(0) ack 5004 win 10
++0~+6 >[ect0]  .    5004:5014(10) ack 1
++0 <[noecn] .       1:1(0) ack 5014 win 2000
++0 >[ect0]  P.    5014:6001(987) ack 1
++0 <[noecn] .       1:1(0) ack 6001 win 65535
+
++0.1 write(3, ..., 1) = 1
+
++0 >[ect0] P.     6001:6002(1) ack 1
++0 <[noecn] .     1:1(0) ack 6002 win 65535
+
++0.100 close(3) = 0
++0 <[noecn] F. 1:1(0) ack 6002 win 65535
++0 >[noecn] F. 6002:6002(0) ack 1
++0 <[noecn]  . 2:2(0) ack 6003 win 65535
++0 >[noecn] F. 6002:6002(0) ack 2
+
+// Restore default sysctls
+`sysctl net.inet.tcp.ecn.enable=2`
