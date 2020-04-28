@@ -32,7 +32,6 @@
 
 // Ensure that all relevant sysctl variables have their default values.
  0.00 `sysctl -w net.inet.tcp.rfc1323=1`
-+0 `tcpdump -i tun0 -w test.trc &`
 +0.00 `sysctl -w net.inet.tcp.sack.enable=1`
 +0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
 +0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
@@ -57,13 +56,9 @@
 +0.00 > F. 1:1(0) ack 2 win 65535
 +0.10 <  . 2:2(0) ack 2 win 32767
 // Now the connection is in TIME-WAIT
-+0.1 `netstat -nap tcp`
 +0.10 < S  2:2(0) win 32767
-+0.00 `sockstat -4 -P tcp -s | grep packetdril | grep -c TIME_WAIT | grep 1`
 +0.00 > R. 2:2(0) ack 2 win 0
 // Double check that the connection is still in TIME-WAIT
 +0.10 `sockstat -4 -P tcp -s | grep packetdril | grep -c TIME_WAIT | grep 1`
 +0.00 close(3) = 0
 +0.00 `sysctl -w net.inet.tcp.insecure_syn=0`
-
-`killall tcpdump`
