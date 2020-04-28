@@ -43,15 +43,15 @@
 + 0.00 `sysctl -w net.inet.tcp.rfc1323=0`
 // Create a blocking TCP/IPv6 socket
 + 0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
-// Limit the retransmissions of the SYN segment to 17 seconds.
-+ 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [17], 4) = 0
+// Limit the retransmissions of the SYN segment to 15 seconds.
++ 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [15], 4) = 0
 // Try to establish a TCP connection.
-  1.00...18.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
+  1.00...16.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
 + 0.00 > S  0:0(0) win 65535 <mss 1440,sackOK,eol,eol>
-+ 1.00 > S  0:0(0) win 65535 <mss 1440,sackOK,eol,eol>
-+ 2.20 > S  0:0(0) win 65535 <mss 1440,sackOK,eol,eol>
-+ 4.20 > S  0:0(0) win 65535 <mss 1440,sackOK,eol,eol>
-+ 8.20 > S  0:0(0) win 65535 <mss 1440,sackOK,eol,eol>
++ 3.00 > S  0:0(0) win 65535 <mss 1440,sackOK,eol,eol>
++ 3.20 > S  0:0(0) win 65535 <mss 1440,sackOK,eol,eol>
++ 3.20 > S  0:0(0) win 65535 <mss 1440,sackOK,eol,eol>
++ 3.20 > S  0:0(0) win 65535 <mss 1440,sackOK,eol,eol>
 // Finally cleanup
- 19.00 `sysctl -w net.inet.tcp.rfc1323=1`
+ 17.00 `sysctl -w net.inet.tcp.rfc1323=1`
 + 0.00 close(3) = 0
