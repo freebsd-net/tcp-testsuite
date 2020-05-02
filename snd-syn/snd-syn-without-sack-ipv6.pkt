@@ -43,15 +43,15 @@
 + 0.00 `sysctl -w net.inet.tcp.sack.enable=0`
 // Create a blocking TCP/IPv6 socket
 + 0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
-// Limit the retransmissions of the SYN segment to 15 seconds.
-+ 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [15], 4) = 0
+// Limit the retransmissions of the SYN segment to 17 seconds.
++ 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [17], 4) = 0
 // Try to establish a TCP connection.
-  1.00...16.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
+  1.00...18.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
 + 0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 100 ecr 0>
-+ 3.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 3100 ecr 0>
-+ 3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 6300 ecr 0>
-+ 3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 9500 ecr 0>
-+ 3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 12700 ecr 0>
++ 1.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 3100 ecr 0>
++ 2.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 6300 ecr 0>
++ 4.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 9500 ecr 0>
++ 8.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,nop,nop,TS val 12700 ecr 0>
 // Finally cleanup
- 17.00 `sysctl -w net.inet.tcp.sack.enable=1`
+ 19.00 `sysctl -w net.inet.tcp.sack.enable=1`
 + 0.00 close(3) = 0
