@@ -29,6 +29,7 @@
 
 // Ensure that all relevant sysctl variables have their default variables.
  0.00 `sysctl -w net.inet.tcp.sack.enable=1`
++0.00 `sysctl -w net.inet.tcp.delacktime=40`
 // Flush host cache.
 +0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
 // Create a listening TCP socket
@@ -56,12 +57,12 @@
 +0.00 recv(4, ..., 1024, MSG_PEEK) = 15
 +0.00 <  . 16:32(16) ack  1 win 65535 // Fifth segment
 +0.00 recv(4, ..., 1024, MSG_PEEK) = 31
-+0.10 >  .  1:1(0)   ack 32 win 65535
++0.04 >  .  1:1(0)   ack 32 win 65535
 // Teardown the connection
 +0.00 recv(4, ..., 1024, 0) = 31
 +0.10 < F. 32:32(0)  ack  1 win 65535
 +0.00 >  .  1:1(0)   ack 33 win 65535
-+0.00 recv(4, ..., 1024, 0) = 0 
++0.00 recv(4, ..., 1024, 0) = 0
 +0.00 close(4) = 0
 +0.00 > F.  1:1(0)   ack 33 win 65535
 +0.01 <  . 33:33(0)  ack  2 win 65535
