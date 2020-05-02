@@ -24,7 +24,7 @@
 // SUCH DAMAGE.
 //
 
-// Ensure that net.inet.tcp.rexmit_drop_options is honored. 
+// Ensure that net.inet.tcp.rexmit_drop_options is honored.
 // This means that TCP SYN segments get retransmitted and the third and further
 // retransmissions of the SYN segment have no options.
 // FIXME: There is still the MSS option.
@@ -36,6 +36,7 @@
   0.00 `sysctl -w net.inet.tcp.rfc1323=1`
 + 0.00 `sysctl -w net.inet.tcp.sack.enable=1`
 + 0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
++ 0.00 `sysctl -w net.inet.tcp.rexmit_initial=1000`
 + 0.00 `sysctl -w net.inet.tcp.rexmit_slop=200`
 + 0.00 `sysctl -w net.inet.tcp.rexmit_drop_options=0`
 + 0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
@@ -50,8 +51,8 @@
 // Try to establish a TCP connection.
   1.00...18.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
 + 0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 0>
-+ 1.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 3100 ecr 0>
-+ 2.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 6300 ecr 0>
++ 1.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 1100 ecr 0>
++ 2.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 3300 ecr 0>
 + 4.20 > S  0:0(0) win 65535 <mss 1440>
 + 8.20 > S  0:0(0) win 65535 <mss 1440>
 // Finally cleanup
