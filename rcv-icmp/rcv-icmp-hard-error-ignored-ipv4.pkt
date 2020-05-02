@@ -28,12 +28,13 @@
 // termination of the TCP connection, even if the TCP sequence number matches.
 
 --ip_version=ipv4
---tolerance_usecs=200000
+--tolerance_usecs=10000
 
 // Ensure that all relevant sysctl variables have their default variables.
  0.00 `sysctl -w net.inet.tcp.rfc1323=1`
 +0.00 `sysctl -w net.inet.tcp.sack.enable=1`
 +0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
++0.00 `sysctl -w net.inet.tcp.rexmit_initial=1000`
 +0.00 `sysctl -w net.inet.tcp.rexmit_slop=200`
 +0.00 `sysctl -w net.inet.tcp.rexmit_drop_options=0`
 +0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
@@ -49,54 +50,53 @@
 // Try to establish a TCP connection.
 +0.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
 +0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
-+0.00 < icmp unreachable net_unreachable
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable host_unreachable
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable protocol_unreachable
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable port_unreachable
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable source_route_failed
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable net_unknown
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable host_unknown
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable source_host_isolated
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable net_prohibited
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable host_prohibited
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable net_unreachable_for_tos
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable host_unreachable_for_tos
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable packet_filtered
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable precedence_violation
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp unreachable precedence_cutoff
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp redirect
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp source_quench
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp time_exceeded ttl_exceeded_in_transit
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp time_exceeded frag_reass_exceeded
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp parameter_problem code_0
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp parameter_problem code_1
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < icmp parameter_problem code_2
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.80 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 3100 ecr 0>
-+0.00 < icmp unreachable frag_needed mtu 1234
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+3.10 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 6300 ecr 0>
++0.00 < [0:0(0)]icmp unreachable net_unreachable
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable host_unreachable
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable protocol_unreachable
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable port_unreachable
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable source_route_failed
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable net_unknown
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable host_unknown
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable source_host_isolated
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable net_prohibited
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable host_prohibited
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable net_unreachable_for_tos
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable host_unreachable_for_tos
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable packet_filtered
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable precedence_violation
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable precedence_cutoff
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp redirect
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp source_quench
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp time_exceeded ttl_exceeded_in_transit
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp time_exceeded frag_reass_exceeded
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp parameter_problem code_0
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp parameter_problem code_1
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp parameter_problem code_2
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 < [0:0(0)]icmp unreachable frag_needed mtu 1234
++0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.77 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 1100 ecr 0>
 // Cleanup
 +0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
 +0.00 `sysctl -w net.inet.tcp.icmp_may_rst=1`
