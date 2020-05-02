@@ -51,17 +51,15 @@
 // Try to establish a TCP connection.
    1.00...363.60 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
 +  0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 0>
-+  3.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 3100 ecr 0>
-+  3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 6300 ecr 0>
-+  3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 9500 ecr 0>
-+  3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 12700 ecr 0>
-+  3.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 15900 ecr 0>
-+  6.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 22100 ecr 0>
-+ 12.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 34300 ecr 0>
-+ 24.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 58500 ecr 0>
-+ 48.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 106700 ecr 0>
-+ 64.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 170700 ecr 0>
-+ 64.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 234700 ecr 0>
++  1.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 3100 ecr 0>
++  2.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 6300 ecr 0>
++  4.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 9500 ecr 0>
++  8.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 12700 ecr 0>
++ 16.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 15900 ecr 0>
++ 32.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 22100 ecr 0>
++ 64.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 34300 ecr 0>
++ 64.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 58500 ecr 0>
++ 64.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 106700 ecr 0>
 + 64.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 298700 ecr 0>
 // Finally cleanup
  365.00 close(3) = 0
