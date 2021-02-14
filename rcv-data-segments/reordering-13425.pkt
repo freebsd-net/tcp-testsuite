@@ -55,7 +55,7 @@
 +0.00 >  .  1:1(0)   ack  16 win 65535
 +0.00 recv(4, ..., 1024, MSG_PEEK) = 15
 +0.00 <  . 16:32(16) ack  1 win 65535 // Fifth segment
-+0.10 >  .  1:1(0)   ack 32 win 65535
++0.04 >  .  1:1(0)   ack 32 win 65535
 +0.00 recv(4, ..., 1024, MSG_PEEK) = 31
 // Teardown the connection
 +0.00 recv(4, ..., 1024, 0) = 31
