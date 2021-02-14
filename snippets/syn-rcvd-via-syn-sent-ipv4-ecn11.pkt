@@ -49,12 +49,11 @@
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
 // Now it is in the SYN-RCVD state.
 +0.00 %{ assert tcpi_state == TCPI_SYN_RECEIVED }%
-
-+0.01 <[noecn] . 1:1(0) ack 1 win 65535
++0.01 <[noecn] . 1:1(0) ack 1 win 65535 <nop, nop, TS val 250 ecr 200>
 // Set Socket back to blocking state
 +0.00 fcntl(3, F_SETFL, O_RDWR) = 0
 //Verify that data segment is sent with ECT0
 +0.00 write (3, ..., 10) = 10
-+0.00 >[ect0] P. 1:11(10) ack 1 <nop, nop, TS val ... ecr 150>
++0.00 >[ect0] P. 1:11(10) ack 1 <nop, nop, TS val ... ecr 250>
 // Tear it down.
 +0.00 close(3) = 0
