@@ -24,13 +24,13 @@
 // SUCH DAMAGE.
 //
 
---ip_version=ipv6
+--ip_version=ipv4
 --tolerance_usecs=50000
 
 // Ensure that all relevant sysctl variables have their default variables.
  0.00 `sysctl -w net.inet.tcp.rfc1323=1`
 +0.00 `sysctl -w net.inet.tcp.sack.enable=1`
-+0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
++0.00 `sysctl -w net.inet.tcp.ecn.enable=1`
 +0.00 `sysctl -w net.inet.tcp.rexmit_slop=200`
 +0.00 `sysctl -w net.inet.tcp.rexmit_drop_options=0`
 +0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
@@ -42,12 +42,18 @@
 +0.00 fcntl(3, F_SETFL, O_RDWR | O_NONBLOCK) = 0
 +0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], [4]) = 0
 +0.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
-+0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 0>
-+0.10 < S  0:0(0) win 32767 <mss 1440>
-+0.00 > S. 0:0(0) ack 1 win 65535 <mss 1440>
++0.00 > SEW  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++0.10 < SEW  0:0(0) win 32767 <mss 1460,nop, nop, TS val 150 ecr 0>
++0.00 > SE. 0:0(0) ack 1 win 65535 <mss 1460, nop, nop, TS val 200 ecr 150>
 // Verify that there are no errors pending at the socket layer.
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
 // Now it is in the SYN-RCVD state.
 +0.00 %{ assert tcpi_state == TCPI_SYN_RECEIVED }%
++0.01 <[noecn] . 1:1(0) ack 1 win 65535 <nop, nop, TS val 250 ecr 200>
+// Set Socket back to blocking state
++0.00 fcntl(3, F_SETFL, O_RDWR) = 0
+//Verify that data segment is sent with ECT0
++0.00 write (3, ..., 10) = 10
++0.00 >[ect0] P. 1:11(10) ack 1 <nop, nop, TS val ... ecr 250>
 // Tear it down.
 +0.00 close(3) = 0

@@ -7,6 +7,9 @@ snippets/syn-sent-ipv6
 snippets/syn-rcvd-via-listen-ipv4
 snippets/syn-rcvd-via-listen-ipv6
 snippets/syn-rcvd-via-syn-sent-ipv4
+snippets/syn-rcvd-via-syn-sent-ipv4-ecn01
+snippets/syn-rcvd-via-syn-sent-ipv4-ecn10
+snippets/syn-rcvd-via-syn-sent-ipv4-ecn11
 snippets/syn-rcvd-via-syn-sent-ipv6
 snippets/established-ipv4
 snippets/established-ipv6
