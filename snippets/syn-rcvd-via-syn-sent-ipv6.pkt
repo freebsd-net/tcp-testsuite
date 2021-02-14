@@ -44,7 +44,7 @@
 +0.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
 +0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 0>
 +0.10 < S  0:0(0) win 32767 <mss 1440>
-+0.00 > S. 0:0(0) ack 1 win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 200 ecr 0>
++0.00 > S. 0:0(0) ack 1 win 65535 <mss 1440>
 // Verify that there are no errors pending at the socket layer.
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
 // Now it is in the SYN-RCVD state.
