@@ -28,3 +28,5 @@ snippets/time-wait-via-fin-wait-2-ipv4
 snippets/time-wait-via-fin-wait-2-ipv6
 snippets/time-wait-via-closing-ipv4
 snippets/time-wait-via-closing-ipv6
+snippets/noopt-syn-rcvd-via-syn-sent-ipv4
+snippets/noopt-strict-tsopt

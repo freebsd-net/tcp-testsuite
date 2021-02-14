@@ -15,8 +15,8 @@ This directory contains files with useful script fragments
 |[syn-sent-ipv6](syn-sent-ipv6.pkt "Move to SYN-SENT state")                                                 | Unknown             | Passed              |
 |[syn-rcvd-via-listen-ipv4](syn-rcvd-via-listen-ipv4.pkt "Move to SYN-RCVD state via LISTEN")                | Unknown             | Passed              |
 |[syn-rcvd-via-listen-ipv6](syn-rcvd-via-listen-ipv6.pkt "Move to SYN-RCVD state via LISTEN")                | Unknown             | Passed              |
-|[syn-rcvd-via-syn-sent-ipv4](syn-rcvd-via-syn-sent-ipv4.pkt "Move to SYN-RCVD state via SYN-SENT")          | Unknown             | Failed (Note 1)     |
-|[syn-rcvd-via-syn-sent-ipv6](syn-rcvd-via-syn-sent-ipv6.pkt "Move to SYN-RCVD state via SYN-SENT")          | Unknown             | Failed (Note 1)     |
+|[syn-rcvd-via-syn-sent-ipv4](syn-rcvd-via-syn-sent-ipv4.pkt "Move to SYN-RCVD state via SYN-SENT")          | Unknown             | Passed              |
+|[syn-rcvd-via-syn-sent-ipv6](syn-rcvd-via-syn-sent-ipv6.pkt "Move to SYN-RCVD state via SYN-SENT")          | Unknown             | Passed              |
 |[established-ipv4](established-ipv4.pkt "Move to ESTABLISHED state")                                        | Unknown             | Passed              |
 |[established-ipv6](established-ipv6.pkt "Move to ESTABLISHED state")                                        | Unknown             | Passed              |
 |[close-wait-ipv4](close-wait-ipv4.pkt "Move to CLOSE-WAIT state")                                           | Unknown             | Passed (Note 2)     |
@@ -37,7 +37,8 @@ This directory contains files with useful script fragments
 |[time-wait-via-fin-wait-2-ipv6](time-wait-via-fin-wait-2-ipv6.pkt "Move to TIME-WAIT state via FIN-WAIT-2") | Unknown             | Passed (Note 3)     |
 |[time-wait-via-closing-ipv4](time-wait-via-closing-ipv4.pkt "Move to TIME-WAIT state via CLOSING")          | Unknown             | Passed (Note 2, 3)  |
 |[time-wait-via-closing-ipv6](time-wait-via-closing-ipv6.pkt "Move to TIME-WAIT state via CLOSING")          | Unknown             | Passed (Note 2, 3)  |
-
+|[noopt-syn-rcvd-via-syn-sent-ipv4](noopt-syn-rcvd-via-syn-sent-ipv4.pkt "Move to ESTABLISHED via SYN-RCVD and SYN-SENT, with TCP_NOOPT") | Unknown | Passed |
+|[noopt-strict-tsopt](noopt-strict-tsopt.pkt "with TCP_NOOPT, accept segments without TSopt") | Unknown | Passed |
 ## Notes
 1. The SACK_OK option is dropped,  but not the others. This is inconsistent and seems to be a bug (see [tcp_input.c](http://fxr.watson.org/fxr/source/netinet/tcp_input.c#L1664)).
 2. A FIN-segment without the ACK bit being set is dropped. This seems to be normal behaviour, although not specified.
