@@ -1,0 +1,58 @@
+//
+// Copyright (c) 2016 Michael Tuexen
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// 1. Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+// OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+// HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+// LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+// OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+// SUCH DAMAGE.
+//
+
+--ip_version=ipv4
+--tolerance_usecs=50000
+
+// Ensure that all relevant sysctl variables have their default variables.
+ 0.00 `sysctl -w net.inet.tcp.rfc1323=0`
++0.00 `sysctl -w net.inet.tcp.sack.enable=0`
++0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
++0.00 `sysctl -w net.inet.tcp.rexmit_slop=200`
++0.00 `sysctl -w net.inet.tcp.rexmit_drop_options=0`
++0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
+// Flush host cache.
++0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
++0.00 `sysctl -w net.inet.tcp.syncookies_only=0`
++0.00 `sysctl -w net.inet.tcp.syncookies=1`
+
+// Create a TCP endpoint in the SYN-RCVD state.
++0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.00 fcntl(3, F_GETFL) = 0x02 (flags O_RDWR)
++0.00 fcntl(3, F_SETFL, O_RDWR | O_NONBLOCK) = 0
++0.00 setsockopt(3, IPPROTO_TCP, TCP_NOOPT, [1], 4) = 0
++0.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
++0.00 > S  0:0(0) win 65535
++0.05 < S  0:0(0) win 65535
++0.00 > S. 0:0(0) ack 1 win 65535
++0.00 <  . 1:1(0) ack 1 win 65535
+// Verify that there are no errors pending at the socket layer.
++0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+// Now it is in the SYN-RCVD state.
++0.00 %{ assert tcpi_state == TCPI_ESTABLISHED }%
++0.00 %{ assert tcpi_options == 0 }%
+// Tear it down.
++0.00 close(3) = 0
