@@ -1,0 +1,42 @@
+0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
++0.00 `sysctl -w net.inet.tcp.syncookies_only=0`
++0.00 `sysctl -w net.inet.tcp.syncookies=1`
++0.00 `sysctl -w net.inet.tcp.rfc1323=0`
++0.00 `sysctl -w net.inet.tcp.sack.enable=0`
++0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
+
++0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.00 fcntl(3, F_GETFL) = 0x02 (flags O_RDWR)
++0.00 fcntl(3, F_SETFL, O_RDWR | O_NONBLOCK) = 0
++0.00 setsockopt(3, IPPROTO_TCP, TCP_NOOPT, [1], 4) = 0
++0.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
++0.00 > S    0:0(0)       win 65535
++0.05 < S    0:0(0)       win 65535 <sackOK, TS val 100 ecr 0>
++0.00 > S.   0:0(0) ack 1 win 65535
++0.00 <  .   1:1(0) ack 1 win 65535
++0.00 %{ assert tcpi_state == TCPI_ESTABLISHED }%
++0.00 %{ assert tcpi_options == 0}%
++0.05 write(3, ..., 5360) = 5360
++0.00 >  .   1:537(536) ack 1 win 65535
++0.00 >  .   537:1073(536) ack 1 win 65535
++0.00 >  .   1073:1609(536) ack 1 win 65535
++0.00 >  .   1609:2145(536) ack 1 win 65535
++0.00 >  .   2145:2681(536) ack 1 win 65535
++0.00 >  .   2681:3217(536) ack 1 win 65535
++0.00 >  .   3217:3753(536) ack 1 win 65535
++0.00 >  .   3753:4289(536) ack 1 win 65535
++0.00 >  .   4289:4825(536) ack 1 win 65535
++0.00 > P.   4825:5361(536) ack 1 win 65535
+
+// Validate DupThresh loss recovery works
++0.01 <  .   1:1(0) ack 537 win 65535
++0.01 <  .   1:1(0) ack 537 win 65535
++0.01 <  .   1:1(0) ack 537 win 65535
++0.01 <  .   1:1(0) ack 537 win 65535
++0.00 >  .   537:1073(536) ack 1 win 65535
+
+// Verify that no SACK block is sent out
++0.00 <  .   10:20(10) ack 5361 win 65535
++0.00 >  .   5361:5361(0) ack 1 win 65535
+
++0.01 close(3)

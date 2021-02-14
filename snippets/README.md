@@ -42,6 +42,7 @@ This directory contains files with useful script fragments
 |[time-wait-via-closing-ipv6](time-wait-via-closing-ipv6.pkt "Move to TIME-WAIT state via CLOSING")          | Unknown             | Passed (Note 2, 3)  |
 |[noopt-syn-rcvd-via-syn-sent-ipv4](noopt-syn-rcvd-via-syn-sent-ipv4.pkt "Move to ESTABLISHED via SYN-RCVD and SYN-SENT, with TCP_NOOPT") | Unknown | Passed |
 |[noopt-strict-tsopt](noopt-strict-tsopt.pkt "with TCP_NOOPT, accept segments without TSopt")                | Unknown             | Passed              |
+|[noopt-parallel-syn-w-options-ipv4](noopt-parallel-syn-w-options-ipv4.pkt "validate that no client side options get used with TCP_NOOPT") | Unknown | Passed |
 ## Notes
 1. Addressed with rS361346. All options are consistently dropped.
 2. A FIN-segment without the ACK bit being set is dropped. This seems to be normal behaviour, although not specified.
