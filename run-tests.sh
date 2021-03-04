@@ -28,9 +28,11 @@
 rootdir=`/usr/bin/dirname $0`
 passed=0
 failed=0
+exfailed=0
 run=0
 skipped=0
 timedout=0
+extimedout=0
 killed=0
 first=1
 verbose=0
@@ -115,6 +117,12 @@ for file ; do
       if [ $result -eq 0 -a $verbose -eq 0 ] ; then
         rm ${rootdir}/${testdir}/${prefix}${testname}.out
       fi
+      if [ $result -eq 1 -a -f ${rootdir}/${testcase}.exfail -a $verbose -eq 0 ] ; then
+        rm ${rootdir}/${testdir}/${prefix}${testname}.out
+      fi
+      if [ $result -eq 124 -a -f ${rootdir}/${testcase}.exfail -a $verbose -eq 0 ] ; then
+        rm ${rootdir}/${testdir}/${prefix}${testname}.out
+      fi
       found=1
     else
       found=0
@@ -133,19 +141,37 @@ for file ; do
           fi
           ;;
         1)
-          failed=`expr $failed + 1`
-          if [ -t 1 ] ; then
-            printf "\033[31m%10s\033[0m\n" "FAILED"
+          if [ -f ${rootdir}/${testcase}.exfail ] ; then
+            exfailed=`expr $exfailed + 1`
+            if [ -t 1 ] ; then
+              printf "\033[32m%10s\033[0m\n" "FAILED"
+            else
+              printf "%10s\n" "FAILED"
+            fi
           else
-            printf "%10s\n" "FAILED"
+            failed=`expr $failed + 1`
+            if [ -t 1 ] ; then
+              printf "\033[31m%10s\033[0m\n" "FAILED"
+            else
+              printf "%10s\n" "FAILED"
+            fi
           fi
           ;;
         124)
-          timedout=`expr $timedout + 1`
-          if [ -t 1 ] ; then
-            printf "\033[35m%10s\033[0m\n" "TIMEDOUT"
+          if [ -f ${rootdir}/${testcase}.exfail ] ; then
+            extimedout=`expr $extimedout + 1`
+            if [ -t 1 ] ; then
+              printf "\033[32m%10s\033[0m\n" "TIMEDOUT"
+            else
+              printf "%10s\n" "TIMEDOUT"
+            fi
           else
-            printf "%10s\n" "TIMEDOUT"
+            timedout=`expr $timedout + 1`
+            if [ -t 1 ] ; then
+              printf "\033[35m%10s\033[0m\n" "TIMEDOUT"
+            else
+              printf "%10s\n" "TIMEDOUT"
+            fi
           fi
           ;;
         129|1[345]?|16[01])
@@ -176,11 +202,13 @@ for file ; do
   done
 done
 printf "===============================================================================\n"
-printf "Summary: Number of tests run:       %3u\n" $run
-printf "         Number of tests passed:    %3u\n" $passed
-printf "         Number of tests failed:    %3u\n" $failed
-printf "         Number of tests timed out: %3u\n" $timedout
-printf "         Number of tests skipped:   %3u\n" $skipped
+printf "Summary: Number of tests run:                    %3u\n" $run
+printf "         Number of tests passed:                 %3u\n" $passed
+printf "         Number of tests failed (expected):      %3u\n" $exfailed
+printf "         Number of tests failed (unexpected):    %3u\n" $failed
+printf "         Number of tests timed out (expected):   %3u\n" $extimedout
+printf "         Number of tests timed out (unexpected): %3u\n" $timedout
+printf "         Number of tests skipped:                %3u\n" $skipped
 if [ $killed -gt 0 ] ; then
-  printf "         Number of tests killed:    %3u\n" $killed
+  printf "         Number of tests killed:                 %3u\n" $killed
 fi

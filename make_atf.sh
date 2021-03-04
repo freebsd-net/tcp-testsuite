@@ -57,7 +57,7 @@ while read Torig; do
 	else
 	    timeout=10
 	fi
-	exfail_file=${Torig}.pkt.exfail
+	exfail_file=${Torig}.exfail
 	if [ -r ${exfail_file} ]; then
 	    if [ -s ${exfail_file} ]; then
 		read reason < ${exfail_file}
