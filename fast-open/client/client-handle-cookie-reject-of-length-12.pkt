@@ -44,43 +44,43 @@
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 setsockopt(3, IPPROTO_TCP, TCP_FASTOPEN, [1], 4) = 0
 +0.00 sendto(3, ..., 100, 0, ..., ...) = 100
-+0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 0 ecr 0,FO,eol,eol>
-+0.05 < S. 0:0(0) ack 1 win 65535 <mss 1460,nop,nop,FO 0102030405060708>
-+0.00 > P. 1:101(100) ack 1 win 65535
-+0.05 <  . 1:1(0) ack 101 win 65535
++0.00 > S    0:0(0)             win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 0 ecr 0,FO,eol,eol>
++0.05 < S.   0:0(0)     ack   1 win 65535 <mss 1460,sackOK,FO 0102030405060708>
++0.00 > P.   1:101(100) ack   1 win 65535
++0.05 <  .   1:1(0)     ack 101 win 65535
 // Tear it down. Let the server initiate the teardown to avoid the client
 // moving into TIMEWAIT state.
-+0.00 < F. 1:1(0) ack 101 win 65535
-+0.00 >  . 101:101(0) ack 2 win 65535
++0.00 < F.   1:1(0)     ack 101 win 65535
++0.00 >  . 101:101(0)   ack   2 win 65535
 +0.00 close(3) = 0
-+0.00 > F. 101:101(0) ack 2 win 65535
-+0.05 <  . 2:2(0) ack 102 win 65535
++0.00 > F. 101:101(0)   ack   2 win 65535
++0.05 <  .   2:2(0)     ack 102 win 65535
 // Now setup a second TCP connection using the TFO cookie and get a cookie update.
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 setsockopt(3, IPPROTO_TCP, TCP_FASTOPEN, [1], 4) = 0
 +0.00 sendto(3, ..., 100, 0, ..., ...) = 100
-+0.00 > S  0:100(100) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 0 ecr 0,FO 0102030405060708,eol,eol>
-+0.05 < S. 0:0(0) ack 1 win 65535 <mss 1460,nop,nop,FO 020304050607080910111213>
-+0.00 > P. 1:101(100) ack 1 win 65535
-+0.05 <  . 1:1(0) ack 101 win 65535
++0.00 > S    0:100(100)         win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 0 ecr 0,FO 0102030405060708,eol,eol>
++0.05 < S.   0:0(0)     ack   1 win 65535 <mss 1460,sackOK,FO 020304050607080910111213>
++0.00 > P.   1:101(100) ack   1 win 65535
++0.05 <  .   1:1(0)     ack 101 win 65535
 // Tear it down. Let the server initiate the teardown to avoid the client
 // moving into TIMEWAIT state.
-+0.00 < F. 1:1(0) ack 101 win 65535
-+0.00 >  . 101:101(0) ack 2 win 65535
++0.00 < F.   1:1(0)     ack 101 win 65535
++0.00 >  . 101:101(0)   ack   2 win 65535
 +0.00 close(3) = 0
-+0.00 > F. 101:101(0) ack 2 win 65535
-+0.05 <  . 2:2(0) ack 102 win 65535
++0.00 > F. 101:101(0)   ack   2 win 65535
++0.05 <  .   2:2(0)     ack 102 win 65535
 // Finally setup a third TCP connection using the updated TFO cookie.
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 setsockopt(3, IPPROTO_TCP, TCP_FASTOPEN, [1], 4) = 0
 +0.00 sendto(3, ..., 100, 0, ..., ...) = 100
-+0.00 > S  0:100(100) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 0 ecr 0,FO 020304050607080910111213,eol,eol>
-+0.05 < S. 0:0(0) ack 101 win 65535 <mss 1460>
-+0.00 >  . 101:101(0) ack 1 win 65535
++0.00 > S    0:100(100)         win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 0 ecr 0,FO 020304050607080910111213,eol,eol>
++0.05 < S.   0:0(0)     ack 101 win 65535 <mss 1460,sackOK,eol,eol>
++0.00 >  . 101:101(0)   ack   1 win 65535
 // Tear it down. Let the server initiate the teardown to avoid the client
 // moving into TIMEWAIT state.
-+0.00 < F. 1:1(0) ack 101 win 65535
-+0.00 >  . 101:101(0) ack 2 win 65535
++0.00 < F.   1:1(0)     ack 101 win 65535
++0.00 >  . 101:101(0)   ack   2 win 65535
 +0.00 close(3) = 0
-+0.00 > F. 101:101(0) ack 2 win 65535
-+0.05 <  . 2:2(0) ack 102 win 65535
++0.00 > F. 101:101(0)   ack   2 win 65535
++0.05 <  .   2:2(0)     ack 102 win 65535
