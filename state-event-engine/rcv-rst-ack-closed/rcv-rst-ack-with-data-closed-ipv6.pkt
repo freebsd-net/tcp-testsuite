@@ -45,6 +45,6 @@
 +0.10 < R. 17:20(3) ack 34 win 32767
 // Check that no RST is sent.
 +0.00 listen(3, 1) = 0
-+0.00 < S  0:0(0) win 32767 <mss 1440>
-+0.00 > S. 0:0(0) ack 1 win 65535 <mss 1440>
++0.00 < S   0:0(0)         win 32767 <mss 1440,sackOK,eol,eol>
++0.00 > S.  0:0(0)  ack  1 win 65535 <mss 1440,sackOK,eol,eol>
 +0.00 close(3) = 0

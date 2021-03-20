@@ -44,5 +44,5 @@
 +0.00 listen(3, 1) = 0
 // Now it is in the LISTEN state.
 +0.10 < S. 17:20(3) ack 34 win 32767
-+0.00 > R  34:34(0) win 0
++0.00 > R  34:34(0)        win 0
 +0.00 close(3) = 0
