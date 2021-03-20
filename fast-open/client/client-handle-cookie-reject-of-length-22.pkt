@@ -67,7 +67,7 @@
 // Tear it down. Let the server initiate the teardown to avoid the client
 // moving into TIMEWAIT state.
 +0.00 < F.   1:1(0)     ack 101 win 65535
-+0.00 >    101:101(0)   ack   2 win 65535
++0.00 >  . 101:101(0)   ack   2 win 65535
 +0.00 close(3) = 0
 +0.00 > F. 101:101(0)   ack   2 win 65535
 +0.05 <  .   2:2(0)     ack 102 win 65535
