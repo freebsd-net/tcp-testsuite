@@ -51,7 +51,7 @@
 // Now the connection is in SYN-SENT
 +0.10 < SF 0:3(3)       win 32767 <mss 1440,sackOK,eol,eol>
 +0.00 > S. 0:0(0) ack 1 win 65535 <mss 1440,sackOK,eol,eol>
-+0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
 +0.00 %{ assert tcpi_state == TCPI_SYN_RECEIVED }%
 +0.00 read(3, ..., 100) = -1 EWOULDBLOCK (Operation would block)
 +0.00 <  . 4:4(0) ack 1 win 65535
