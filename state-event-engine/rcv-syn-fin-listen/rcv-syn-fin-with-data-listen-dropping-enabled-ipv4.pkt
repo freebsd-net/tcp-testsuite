@@ -45,8 +45,8 @@
 +0.00 listen(3, 1) = 0
 +0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], [4]) = 0
 // Now it is in the LISTEN state.
-+0.10 < SF 17:20(3) win 32767 <mss 1460>
-+1.00 < S  27:30(3) win 32767 <mss 1460>
-+0.00 > S. 0:0(0) ack 28 win 65535 <mss 1460>
++0.10 < SF 17:20(3)        win 32767 <mss 1460,sackOK,eol,eol>
++1.00 < S  27:30(3)        win 32767 <mss 1460,sackOK,eol,eol>
++0.00 > S.  0:0(0)  ack 28 win 65535 <mss 1460,sackOK,eol,eol>
 +0.00 close(3) = 0
 +0.00 `sysctl -w net.inet.tcp.drop_synfin=0`

@@ -47,9 +47,9 @@
 +0.00 fcntl(3, F_SETFL, O_RDWR | O_NONBLOCK) = 0
 // Try to establish a TCP connection.
 +0.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
-+0.00 > SEW  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 0>
-+0.10 < SE. 0:0(0) ack 1 win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 100>
-+0.00 > . 1:1(0) ack 1 win 1035 <nop, nop, TS val 100 ecr 100>
++0.00 > SEW  0:0(0)       win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 0>
++0.10 <  SE. 0:0(0) ack 1 win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 100>
++0.00 >    . 1:1(0) ack 1 win 1035 <nop, nop, TS val 100 ecr 100>
 +0.10 %{ assert tcpi_options == (TCPI_OPT_TIMESTAMPS | TCPI_OPT_SACK | TCPI_OPT_WSCALE | TCPI_OPT_ECN) }%
 +0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
 +0.00 close(3) = 0
