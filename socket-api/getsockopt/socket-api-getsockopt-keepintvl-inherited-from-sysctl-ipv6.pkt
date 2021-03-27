@@ -31,7 +31,8 @@
 --tolerance_usecs=25000
 
 // Ensure the default is 75 seconds
- 0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
+ 0.00 `sysctl -w net.inet.tcp.keepintvl=75000`
++0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 getsockopt(3, IPPROTO_TCP, TCP_KEEPINTVL, [75], [4]) = 0
 +0.00 close(3) = 0
 // Ensure that changing the sysctl works

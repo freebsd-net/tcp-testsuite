@@ -34,6 +34,7 @@
  0.00 `sysctl -w net.inet.tcp.rfc1323=1`
 +0.00 `sysctl -w net.inet.tcp.sack.enable=1`
 +0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
++0.00 `sysctl -w net.inet.tcp.recvspace=65536`
 // Flush host cache.
 +0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
 // Create a TCP endpoint in CLOSED state.

@@ -29,6 +29,7 @@
 
 // Ensure that all relevant sysctl variables have their default variables.
  0.00 `sysctl -w net.inet.tcp.sack.enable=1`
++0.00 `sysctl -w net.inet.tcp.recvspace=65536`
 +0.00 `sysctl -w net.inet.tcp.delacktime=40`
 // Flush host cache.
 +0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
