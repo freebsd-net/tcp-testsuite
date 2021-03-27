@@ -44,6 +44,7 @@
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 fcntl(3, F_GETFL) = 0x02 (flags O_RDWR)
 +0.00 setsockopt(3, IPPROTO_TCP, TCP_NOOPT, [1], 4) = 0
++0.00 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
 +0.00 bind(3, ..., ...) = 0
 +0.00 listen(3, 1) = 0
 +0.00 < S  0:0(0) win 65535 <mss 1000, wscale 6, TS val 100 ecr 0, sackOK, eol>
