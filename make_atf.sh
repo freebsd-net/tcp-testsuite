@@ -29,6 +29,7 @@
 
 tcptestsuite_path=${PREFIX:=/usr/local}/share/tcptestsuite
 packetdrill_path=${LOCALBASE:=/usr/local}/bin/packetdrill
+packetdrill_options="--tun_dev=tun0 --persistent_tun_dev"
 
 find . -type f -and -name '*.pkt' | sort | \
     sed -e 's,^\./\(.*\)\.pkt$,\1,' > all_tests
@@ -78,7 +79,7 @@ while read Torig; do
 	${Tunder}_body() {
 	    ${exfail}
 	    save_sysctls ${tcptestsuite_path}/${Torig}.pkt
-	    atf_check -o ignore ${packetdrill_path} \
+	    atf_check -o ignore ${packetdrill_path} ${packetdrill_options}\
 	        ${tcptestsuite_path}/${Torig}.pkt
 	}
 	${Tunder}_cleanup() {
