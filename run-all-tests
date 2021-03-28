@@ -71,5 +71,6 @@
                state-event-engine/rcv-rst-time-wait/all-rcv-rst-time-wait-tests \
                state-event-engine/rcv-rst-ack-closed/all-rcv-rst-ack-closed-tests \
                state-event-engine/rcv-rst-ack-listen/all-rcv-rst-ack-listen-tests \
-               state-event-engine/rcv-rst-ack-syn-sent/all-rcv-rst-ack-syn-sent-tests
+               state-event-engine/rcv-rst-ack-syn-sent/all-rcv-rst-ack-syn-sent-tests \
+               tcp-over-udp/all-tcp-over-udp-tests
 
