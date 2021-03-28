@@ -1,0 +1,70 @@
+//
+// Copyright (c) 2017 Michael Tuexen
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// 1. Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+// OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+// HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+// LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+// OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+// SUCH DAMAGE.
+//
+
+--ip_version=ipv4
+--udp_encapsulation=tcp
+
+// Ensure that all relevant sysctl variables have their default values.
+ 0.00 `sysctl -w net.inet.tcp.syncookies_only=0`
++0.00 `sysctl -w net.inet.tcp.syncookies=1`
++0.00 `sysctl -w net.inet.tcp.rfc1323=1`
++0.00 `sysctl -w net.inet.tcp.sack.enable=1`
++0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
++0.00 `sysctl -w net.inet.tcp.recvspace=65536`
++0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
+// Flush host cache.
++0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
+// Ensure that the relevant sysctl variables have their value.
++0.00 `sysctl -w net.inet.tcp.udp_tunneling_port=9811`
++0.00 `sysctl -w net.inet.tcp.udp_tunneling_overhead=8`
+// Create a TCP endpoint in the ESTABLISHED state.
++0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.00 setsockopt(3, IPPROTO_TCP, TCP_REMOTE_UDP_ENCAPS_PORT, [1], 4) = 0
++0.00 fcntl(3, F_GETFL) = 0x02 (flags O_RDWR)
++0.00 fcntl(3, F_SETFL, O_RDWR | O_NONBLOCK) = 0
++0.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
++0.00 > S  0:0(0) win 65535 <mss 1452,nop,wscale 6,sackOK,TS val 100 ecr 0>/udp(9811 > 1)
++0.10 < S. 0:0(0) ack 1 win 32767 <mss 1452,sackOK,eol,eol>/udp(1 > 9811)
++0.00 >  . 1:1(0) ack 1 win 65535/udp(9811 > 1)
+// Verify that there are no errors pending at the socket layer.
++0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+// Now it is in the ESTABLISHED state.
++0.00 send(3, ..., 1452, 0) = 1452
++0.00 > P. 1:1453(1452) ack 1 win 65535/udp(9811 > 1)
++0.10 <  . 1:1(0) ack 1453 win 32767/udp(1 > 9811)
++0.00 send(3, ..., 1452, 0) = 1452
++0.00 > P. 1453:2905(1452) ack 1 win 65535/udp(9811 > 1)
++0.00 < [1453:2905(1452)/udp(9811 > 1)] icmp unreachable frag_needed mtu 1300
++0.00 >  . 1453:2705(1252) ack 1 win 65535/udp(9811 > 1)
+// The default stack and the RACK stack send the next segment immediately,
+//  whereas the BBR stack sends it after an RTT, which is 100 ms.
+*     > P. 2705:2905(200) ack 1 win 65535/udp(9811 > 1)
++0.10 <  . 1:1(0) ack 2905 win 32767/udp(1 > 9811)
+// Tear it down.
++0.00 close(3) = 0
++0.00 > F. 2905:2905(0) ack 1 win 65535/udp(9811 > 1)
++0.10 < F. 1:1(0) ack 2906 win 32767/udp(1 > 9811)
++0.00 >  . 2906:2906(0) ack 2 win 65535/udp(9811 > 1)
