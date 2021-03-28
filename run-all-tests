@@ -30,6 +30,7 @@
                rcv-icmp/all-rcv-icmp-tests \
                snd-syn/all-snd-syn-tests \
                socket-api/all-socket-api-tests \
+               tcp-over-udp/all-tcp-over-udp-tests \
                state-event-engine/rcv-syn-closed/all-rcv-syn-closed-tests \
                state-event-engine/rcv-syn-listen/all-rcv-syn-listen-tests \
                state-event-engine/rcv-syn-syn-sent/all-rcv-syn-syn-sent-tests \
