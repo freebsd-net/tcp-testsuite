@@ -26,7 +26,7 @@
 
 // Ensure that TCP SYN segments get retransmitted with the following properties:
 // * 12 retransmissions, as hard coded in TCP_MAXRXTSHIFT (tcp_timer.h)
-// * An initial retransmission timeout of 3 seconds as hard coded in
+// * An initial retransmission timeout of 1 second as hard coded in
 //   TCPTV_RTOBASE (tcp_timer.h)
 // * A maximum retransmission timer limit as hard coded in
 //   TCPTV_REXMTMAX (tcp_timer.h)

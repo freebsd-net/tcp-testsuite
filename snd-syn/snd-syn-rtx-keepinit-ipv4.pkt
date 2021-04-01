@@ -27,7 +27,7 @@
 // Ensure that TCP SYN segments get retransmitted with the following properties:
 // * The retransmissions are limited to the time specified in the TCP_KEEPINIT
 //   socket option.
-// * An initial retransmission timeout of 3 seconds as hard coded in
+// * An initial retransmission timeout of 1 second as hard coded in
 //   TCPTV_RTOBASE (tcp_timer.h)
 // * A maximum retransmission timer limit as hard coded in
 //   TCPTV_REXMTMAX (tcp_timer.h)
@@ -53,7 +53,7 @@
 + 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [15], 4) = 0
 // Try to establish a TCP connection.
   1.00...16.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
-+ 0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 100 ecr 0>
++ 0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val  100 ecr 0>
 + 1.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 1100 ecr 0>
 + 2.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 3300 ecr 0>
 + 4.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 7500 ecr 0>
