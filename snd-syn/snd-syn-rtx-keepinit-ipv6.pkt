@@ -34,28 +34,27 @@
 // * A backoff factor as hard coded in the array tcp_syn_backoff (tcp_timer.c)
 
 --ip_version=ipv6
---tolerance_usecs=200000
+--tolerance_usecs=50000
 
 // Ensure that all relevant sysctl variables have their default variables.
-  0.00 `sysctl -w net.inet.tcp.rfc1323=1`
-+ 0.00 `sysctl -w net.inet.tcp.sack.enable=1`
-+ 0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
-+ 0.00 `sysctl -w net.inet.tcp.rexmit_initial=1000`
-+ 0.00 `sysctl -w net.inet.tcp.rexmit_slop=200`
-+ 0.00 `sysctl -w net.inet.tcp.rexmit_drop_options=0`
-+ 0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
-+ 0.00 `sysctl -w net.inet.tcp.recvspace=65536`
+ 0.00 `sysctl -w net.inet.tcp.rfc1323=1`
++0.00 `sysctl -w net.inet.tcp.sack.enable=1`
++0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
++0.00 `sysctl -w net.inet.tcp.rexmit_initial=1000`
++0.00 `sysctl -w net.inet.tcp.rexmit_slop=200`
++0.00 `sysctl -w net.inet.tcp.rexmit_drop_options=0`
++0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
++0.00 `sysctl -w net.inet.tcp.recvspace=65536`
 // Flush host cache.
-+ 0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
++0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
 // Create a blocking TCP/IPv6 socket
-+ 0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
-// Limit the retransmissions of the SYN segment to 15 seconds.
-+ 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [15], 4) = 0
++0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
+// Limit the retransmissions of the SYN segment to 5 seconds.
++0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [5], 4) = 0
 // Try to establish a TCP connection.
-  1.00...16.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
-+ 0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val  100 ecr 0>
-+ 1.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 1100 ecr 0>
-+ 2.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 3300 ecr 0>
-+ 4.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 7500 ecr 0>
+ 1.00...6.00 connect(3, ..., ...) = -1 ETIMEDOUT (Operation timed out)
++0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val  100 ecr 0>
++1.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 1100 ecr 0>
++2.20 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 3300 ecr 0>
 // Finally cleanup
- 17.00 close(3) = 0
+ 6.00 close(3) = 0
