@@ -54,16 +54,16 @@
 + 0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPINIT, [363], 4) = 0
 // Try to establish a TCP connection
 + 1.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
-+ 0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val    100 ecr 0>
-+ 1.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val   1100 ecr 0>
-+ 2.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val   3300 ecr 0>
-+ 4.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val   7500 ecr 0>
-*      > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val  15700 ecr 0>
-*      > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val  31900 ecr 0>
-*      > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val  64100 ecr 0>
-*      > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 128300 ecr 0>
-*      > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 192500 ecr 0>
-*      > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 256700 ecr 0>
-*      > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 329700 ecr 0>
++ 0.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val  100 ecr 0>
++ 1.00 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 1100 ecr 0>
++ 2.20 > S  0:0(0) win 65535 <mss 1460,nop,wscale 6,sackOK,TS val 3300 ecr 0>
+*      > S  0:0(0) win 65535 <...>
+*      > S  0:0(0) win 65535 <...>
+*      > S  0:0(0) win 65535 <...>
+*      > S  0:0(0) win 65535 <...>
+*      > S  0:0(0) win 65535 <...>
+*      > S  0:0(0) win 65535 <...>
+*      > S  0:0(0) win 65535 <...>
+*      > S  0:0(0) win 65535 <...>
 +65.00 getsockopt(3, SOL_SOCKET, SO_ERROR, [ETIMEDOUT], [4]) = 0
 + 0.00 close(3) = 0
