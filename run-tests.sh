@@ -127,7 +127,7 @@ for file ; do
       if [ $result -eq 1 -a -f ${rootdir}/${testcase}.exfail -a $verbose -eq 0 ] ; then
         rm ${rootdir}/${testdir}/${prefix}${testname}.out
       fi
-      if [ $result -eq 124 -a -f ${rootdir}/${testcase}.exfail -a $verbose -eq 0 ] ; then
+      if [ $result -eq 124 -a -f ${rootdir}/${testcase}.extimeout -a $verbose -eq 0 ] ; then
         rm ${rootdir}/${testdir}/${prefix}${testname}.out
       fi
       if [ -t 1 ] ; then
@@ -162,7 +162,7 @@ for file ; do
           fi
           ;;
         124)
-          if [ -f ${rootdir}/${testcase}.exfail ] ; then
+          if [ -f ${rootdir}/${testcase}.extimeout ] ; then
             extimedout=`expr $extimedout + 1`
             if [ -t 1 ] ; then
               printf "\033[32m%10s\033[0m\n" "TIMEDOUT"
