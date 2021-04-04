@@ -71,6 +71,17 @@ while read Torig; do
 	else
 	    exfail=""
 	fi
+	extimeout_file=${Torig}.extimeout
+	if [ -r ${extimeout_file} ]; then
+	    if [ -s ${extimeout_file} ]; then
+		read reason < ${extimeout_file}
+	    else
+		reason="${extimeout_file} exists"
+	    fi
+	    extimeout="atf_expect_timeout \"$reason\""
+	else
+	    extimeout=""
+	fi
 	Tunder=$(basename $Torig | tr - _)
 	cat <<-EOF
 	atf_test_case $Tunder cleanup
@@ -80,6 +91,7 @@ while read Torig; do
 	}
 	${Tunder}_body() {
 	    ${exfail}
+	    ${extimeout}
 	    save_sysctls ${tcptestsuite_path}/${Torig}.pkt
 	    atf_check -o ignore ${packetdrill_path} ${packetdrill_options}\
 	        ${tcptestsuite_path}/${Torig}.pkt
