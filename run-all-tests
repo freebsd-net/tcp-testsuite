@@ -29,7 +29,7 @@
                rcv-data-segments/all-rcv-data-segments-tests \
                rcv-icmp/all-rcv-icmp-tests \
                snd-syn/all-snd-syn-tests \
-               socket-api/all-socket-api-tests \
+               socket-api/getsockopt/all-getsockopt-tests \
                state-event-engine/rcv-syn-closed/all-rcv-syn-closed-tests \
                state-event-engine/rcv-syn-listen/all-rcv-syn-listen-tests \
                state-event-engine/rcv-syn-syn-sent/all-rcv-syn-syn-sent-tests \
