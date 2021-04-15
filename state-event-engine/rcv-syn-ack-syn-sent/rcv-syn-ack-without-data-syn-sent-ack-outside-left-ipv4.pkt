@@ -37,6 +37,7 @@
 +0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
 +0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
 +0.00 `sysctl -w net.inet.tcp.recvspace=65536`
++0.00 `sysctl -w net.inet.tcp.sendspace=32768`
 +0.00 `sysctl -w net.inet.tcp.rexmit_initial=1000`
 // Flush host cache.
 +0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`

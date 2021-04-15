@@ -35,6 +35,7 @@
 +0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
 +0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
 +0.00 `sysctl -w net.inet.tcp.recvspace=65536`
++0.00 `sysctl -w net.inet.tcp.sendspace=32768`
 
 // Reset the TCP fast open connection cache.
 +0.00 `sysctl -w net.inet.tcp.fastopen.client_enable=0`
