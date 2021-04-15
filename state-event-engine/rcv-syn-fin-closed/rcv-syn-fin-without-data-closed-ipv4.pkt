@@ -46,5 +46,5 @@
 +0.00 getsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], [4]) = 0
 // Now it is in the CLOSED state.
 +0.10 < SF  17:17(0)        win 32767 <mss 1460,sackOK,eol,eol>
-+0.00 >  R.  0:0(0)  ack 19 win 0
++0.00 >  R.  0:0(0)  ack 19 win     0
 +0.00 close(3) = 0
