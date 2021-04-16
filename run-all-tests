@@ -26,9 +26,11 @@
 #
 
 ./run-tests.sh -t 400 $* \
+               fast-open/client/all-fast-open-client-tests \
                rcv-data-segments/all-rcv-data-segments-tests \
                rcv-icmp/all-rcv-icmp-tests \
                snd-syn/all-snd-syn-tests \
+               snippets/all-snippets \
                socket-api/getsockopt/all-getsockopt-tests \
                state-event-engine/rcv-syn-closed/all-rcv-syn-closed-tests \
                state-event-engine/rcv-syn-listen/all-rcv-syn-listen-tests \
