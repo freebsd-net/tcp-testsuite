@@ -93,7 +93,8 @@ while read Torig; do
 	    ${exfail}
 	    ${extimeout}
 	    save_sysctls ${tcptestsuite_path}/${Torig}.pkt
-	    atf_check -o ignore ${packetdrill_path} ${packetdrill_options}\
+	    atf_check -o ignore -e ignore ${tcptestsuite_path}/double-check.sh\
+	        ${packetdrill_path} ${packetdrill_options}\
 	        ${tcptestsuite_path}/${Torig}.pkt
 	}
 	${Tunder}_cleanup() {
