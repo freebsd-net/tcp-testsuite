@@ -133,8 +133,6 @@ for file ; do
       if [ -t 1 ] ; then
         printf "\b\b\b\b\b\b\b\b\b\b"
       fi
-    fi
-    if [ $found -eq 1 ] ; then
       case $result in
         0)
           passed=`expr $passed + 1`
