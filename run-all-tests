@@ -27,6 +27,7 @@
 
 ./run-tests.sh -t 400 $* \
                fast-open/client/all-fast-open-client-tests \
+               fast-open/server/all-fast-open-server-tests \
                rcv-data-segments/all-rcv-data-segments-tests \
                rcv-icmp/all-rcv-icmp-tests \
                snd-syn/all-snd-syn-tests \
