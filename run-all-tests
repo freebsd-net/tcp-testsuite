@@ -31,13 +31,8 @@
                rcv-data-segments/all-rcv-data-segments-tests \
                rcv-icmp/all-rcv-icmp-tests \
                snd-syn/all-snd-syn-tests \
-<<<<<<< HEAD
                snippets/all-snippets \
                socket-api/getsockopt/all-getsockopt-tests \
-=======
-               socket-api/all-socket-api-tests \
-               tcp-over-udp/all-tcp-over-udp-tests \
->>>>>>> d95f233fbb0fadb149f5f082d646c789eeef8872
                state-event-engine/rcv-syn-closed/all-rcv-syn-closed-tests \
                state-event-engine/rcv-syn-listen/all-rcv-syn-listen-tests \
                state-event-engine/rcv-syn-syn-sent/all-rcv-syn-syn-sent-tests \
