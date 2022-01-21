@@ -49,11 +49,11 @@
 // Try to establish a TCP connection.
 +0.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
 +0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 0>
-+0.10 < [4294967295:4294967295(0)] icmp time_exceeded exceeded_hop_limit
++0.10 < icmp time_exceeded exceeded_hop_limit [4294967295:4294967295(0)]
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.10 < [1:1(0)] icmp time_exceeded exceeded_hop_limit
++0.10 < icmp time_exceeded exceeded_hop_limit [1:1(0)]
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.10 < [0:0(0)] icmp time_exceeded exceeded_hop_limit
++0.10 < icmp time_exceeded exceeded_hop_limit [0:0(0)]
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [EHOSTUNREACH], [4]) = 0
 // Cleanup
 +0.00 close(3) = 0

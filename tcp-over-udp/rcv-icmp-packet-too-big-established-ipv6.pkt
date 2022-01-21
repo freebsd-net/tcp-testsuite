@@ -57,7 +57,7 @@
 +0.10 <  . 1:1(0) ack 1433 win 32767/udp(1 > 9811)
 +0.00 send(3, ..., 1432, 0) = 1432
 +0.00 > P. 1433:2865(1432) ack 1 win 65535/udp(9811 > 1)
-+0.00 < [1433:2865(1432)/udp(9811 > 1)] icmp packet_too_big mtu 1300
++0.00 <icmp packet_too_big mtu 1300 [1433:2865(1432)/udp(9811 > 1)]
 +0.00 >  . 1433:2665(1232) ack 1 win 65535/udp(9811 > 1)
 // The default stack and the RACK stack send the next segment immediately,
 //  whereas the BBR stack sends it after an RTT, which is 100 ms.

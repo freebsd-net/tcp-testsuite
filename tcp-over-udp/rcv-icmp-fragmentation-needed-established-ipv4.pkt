@@ -57,7 +57,7 @@
 +0.10 <  . 1:1(0) ack 1453 win 32767/udp(1 > 9811)
 +0.00 send(3, ..., 1452, 0) = 1452
 +0.00 > P. 1453:2905(1452) ack 1 win 65535/udp(9811 > 1)
-+0.00 < [1453:2905(1452)/udp(9811 > 1)] icmp unreachable frag_needed mtu 1300
++0.00 <icmp unreachable frag_needed mtu 1300 [1453:2905(1452)/udp(9811 > 1)]
 +0.00 >  . 1453:2705(1252) ack 1 win 65535/udp(9811 > 1)
 // The default stack and the RACK stack send the next segment immediately,
 //  whereas the BBR stack sends it after an RTT, which is 100 ms.

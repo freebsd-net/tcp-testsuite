@@ -52,27 +52,27 @@
 // Try to establish a TCP connection.
  1.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
 +0.00 > S  0:0(0) win 65535 <mss 1440,nop,wscale 6,sackOK,TS val  100 ecr 0>
-+0.00 < [0:0(0)]icmp unreachable no_route
++0.00 < icmp unreachable no_route [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < [0:0(0)]icmp unreachable admin_prohibited
++0.00 < icmp unreachable admin_prohibited [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < [0:0(0)]icmp unreachable not_neighbour
++0.00 < icmp unreachable not_neighbour [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < [0:0(0)]icmp unreachable address_unreachable
++0.00 < icmp unreachable address_unreachable [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < [0:0(0)]icmp unreachable port_unreachable
++0.00 < icmp unreachable port_unreachable [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < [0:0(0)]icmp time_exceeded exceeded_hop_limit
++0.00 < icmp time_exceeded exceeded_hop_limit [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < [0:0(0)]icmp time_exceeded exceeded_frag_time
++0.00 < icmp time_exceeded exceeded_frag_time [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < [0:0(0)]icmp parameter_problem header_field
++0.00 < icmp parameter_problem header_field [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < [0:0(0)]icmp parameter_problem unknown_next_header
++0.00 < icmp parameter_problem unknown_next_header [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < [0:0(0)]icmp parameter_problem unknown_option
++0.00 < icmp parameter_problem unknown_option [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-+0.00 < [0:0(0)]icmp packet_too_big mtu 1300
++0.00 < icmp packet_too_big mtu 1300 [0:0(0)]
 +0.01 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
  2.00 > S  0:0(0) win 65535 <mss 1240,nop,wscale 6,sackOK,TS val 1100 ecr 0>
 // Cleanup
