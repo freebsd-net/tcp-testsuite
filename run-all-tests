@@ -33,6 +33,7 @@
                snd-syn/all-snd-syn-tests \
                snippets/all-snippets \
                socket-api/getsockopt/all-getsockopt-tests \
+               socket-api/setsockopt/all-setsockopt-tests \
                state-event-engine/rcv-syn-closed/all-rcv-syn-closed-tests \
                state-event-engine/rcv-syn-listen/all-rcv-syn-listen-tests \
                state-event-engine/rcv-syn-syn-sent/all-rcv-syn-syn-sent-tests \

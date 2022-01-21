@@ -5,7 +5,7 @@
 |:-------------------------------------------------------------------------------|:----------------------:|:-----------:|
 | [socket()](socket/README.md)                                                   | 0                      | Not Started |
 | [getsockopt()](getsockopt/README.md)                                           | 10                     | In Progress |
-| [setsockopt()](setsockopt/README.md)                                           | 0                      | Not Started |
+| [setsockopt()](setsockopt/README.md)                                           | 8                      | In Progress |
 | [close()](close/README.md)                                                     | 0                      | Not Started |
 | [shutdown()](shutdown/README.md)                                               | 0                      | Not Started |
 | [listen()](listen/README.md)                                                   | 0                      | Not Started |

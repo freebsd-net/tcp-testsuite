@@ -25,5 +25,4 @@
 # SUCH DAMAGE.
 #
 
-../run-tests.sh $* getsockopt/all-getsockopt-tests
-../run-tests.sh $* setsockopt/all-setsockopt-tests
+../../run-tests.sh $* all-setsockopt-tests

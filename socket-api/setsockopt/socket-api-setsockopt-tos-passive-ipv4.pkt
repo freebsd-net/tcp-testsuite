@@ -1,0 +1,65 @@
+//
+// Copyright (c) 2022 Michael Tuexen
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// 1. Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+// OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+// HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+// LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+// OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+// SUCH DAMAGE.
+//
+
+--ip_version=ipv4
+--tolerance_usecs=50000
+
+// Ensure that all relevant sysctl variables have their default variables.
+ 0.00 `sysctl -w net.inet.tcp.rfc1323=1`
++0.00 `sysctl -w net.inet.tcp.sack.enable=1`
++0.00 `sysctl -w net.inet.tcp.ecn.enable=2`
++0.00 `sysctl -w net.inet.tcp.rexmit_slop=200`
++0.00 `sysctl -w net.inet.tcp.rexmit_drop_options=0`
++0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
++0.00 `sysctl -w net.inet.tcp.recvspace=65536`
++0.00 `sysctl -w net.inet.tcp.sendspace=32768`
+// Flush host cache.
++0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
+// Create a TCP endpoint in the SYN-RCVD state.
++0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0.00 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
++0.00 setsockopt(3, IPPROTO_IP, IP_TOS, [IPTOS_DSCP_CS1], 4) = 0
++0.00 bind(3, ..., ...) = 0
++0.00 listen(3, 1) = 0
++0.00 < (tos 0x28) S     0:0(0)       ack    1 win 32767 <mss 1460,sackOK,eol,eol>
++0.00 > (tos 0x20) S.    0:0(0)       ack    1 win 65535 <mss 1460,sackOK,eol,eol>
++0.10 < (tos 0x28)  .    1:1(0)       ack    1 win 32767
++0.00 accept(3, ..., ...) = 4
++0.00 close(3) = 0
+// Verify that there are no errors pending at the socket layer.
++0.10 getsockopt(4, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 send(4, ..., 1460, 0) = 1460
++0.00 > (tos 0x20) P.    1:1461(1460) ack    1 win 65535
++0.10 < (tos 0x28)  .    1:1(0)       ack 1461 win 32767
++0.00 setsockopt(4, IPPROTO_IP, IP_TOS, [IPTOS_DSCP_CS7], 4) = 0
++0.00 send(4, ..., 1460, 0) = 1460
++0.00 > (tos 0xe0) P. 1461:2921(1460) ack    1 win 65535
++0.10 < (tos 0x28)  .    1:1(0)       ack 2921 win 32767
+// Tear it down.
++0.00 close(4) = 0
++0.00 > (tos 0xe0) F. 2921:2921(0)    ack    1 win 65535
++0.10 < (tos 0x28) F.    1:1(0)       ack 2922 win 32767
++0.00 > (tos 0xe0)  . 2922:2922(0)    ack    2 win 65535

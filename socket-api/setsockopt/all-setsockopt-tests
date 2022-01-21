@@ -1,0 +1,8 @@
+socket-api/setsockopt/socket-api-setsockopt-ttl-active-ipv4
+socket-api/setsockopt/socket-api-setsockopt-ttl-passive-ipv4
+socket-api/setsockopt/socket-api-setsockopt-hoplimit-active-ipv6
+socket-api/setsockopt/socket-api-setsockopt-hoplimit-passive-ipv6
+socket-api/setsockopt/socket-api-setsockopt-tos-active-ipv4
+socket-api/setsockopt/socket-api-setsockopt-tos-passive-ipv4
+socket-api/setsockopt/socket-api-setsockopt-traffic-class-active-ipv6
+socket-api/setsockopt/socket-api-setsockopt-traffic-class-passive-ipv6
