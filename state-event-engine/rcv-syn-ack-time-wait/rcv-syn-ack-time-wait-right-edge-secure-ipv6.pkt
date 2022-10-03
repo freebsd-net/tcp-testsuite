@@ -67,7 +67,10 @@
 +0.10 `sockstat -6 -P tcp -s | grep packetdril | grep -c TIME_WAIT | grep 1`
 #endif
 #ifdef FreeBSD
-+0.00 > R      0:0(0)               win     0
++0.00 >  .     2:2(0)     ack     2 win 65535
+// Double check that the connection still is in TIME-WAIT.
++0.10 `sockstat -6 -P tcp -s | grep packetdril | grep -c TIME_WAIT | grep 1`
++0.00 `tcpdrop -s TIME_WAIT`
 #endif
 +0.00 close(4) = 0
 +0.00 close(3) = 0
