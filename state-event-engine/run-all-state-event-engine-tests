@@ -43,7 +43,7 @@
                 rcv-syn-fin-closed/all-rcv-syn-fin-closed-tests \
                 rcv-syn-fin-listen/all-rcv-syn-fin-listen-tests \
                 rcv-syn-fin-syn-sent/all-rcv-syn-fin-syn-sent-tests \
-                rcv-syn-fine-time-wait/all-rcv-syn-fin-time-wait-tests \
+                rcv-syn-fin-time-wait/all-rcv-syn-fin-time-wait-tests \
                 rcv-ack-closed/all-rcv-ack-closed-tests \
                 rcv-ack-listen/all-rcv-ack-listen-tests \
                 rcv-ack-time-wait/all-rcv-ack-time-wait-tests \
