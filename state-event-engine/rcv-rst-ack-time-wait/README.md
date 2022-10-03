@@ -10,7 +10,7 @@ One of the possible handlings, F1, is to ignore RST-segments in the
 `TIME-WAIT` state.
 FreeBSD implements this strategy also for RST-ACK segments.
 Since [RFC 0793](https://tools.ietf.org/html/rfc0793) specifies that `SEG.ACK` is
-checked after the RST bit, the value of SEG.ACK is irrelevant.
+checked after the RST bit, the value of `SEG.ACK` is irrelevant.
 
 ## Status
 
