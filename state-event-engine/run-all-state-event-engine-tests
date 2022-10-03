@@ -39,18 +39,23 @@
                 rcv-syn-ack-closed/all-rcv-syn-ack-closed-tests \
                 rcv-syn-ack-listen/all-rcv-syn-ack-listen-tests \
                 rcv-syn-ack-syn-sent/all-rcv-syn-ack-syn-sent-tests \
+                rcv-syn-ack-time-wait/all-rcv-syn-ack-time-wait-tests \
                 rcv-syn-fin-closed/all-rcv-syn-fin-closed-tests \
                 rcv-syn-fin-listen/all-rcv-syn-fin-listen-tests \
                 rcv-syn-fin-syn-sent/all-rcv-syn-fin-syn-sent-tests \
+                rcv-syn-fine-time-wait/all-rcv-syn-fin-time-wait-tests \
                 rcv-ack-closed/all-rcv-ack-closed-tests \
                 rcv-ack-listen/all-rcv-ack-listen-tests \
+                rcv-ack-time-wait/all-rcv-ack-time-wait-tests \
                 rcv-ack-syn-sent/all-rcv-ack-syn-sent-tests \
                 rcv-fin-closed/all-rcv-fin-closed-tests \
                 rcv-fin-listen/all-rcv-fin-listen-tests \
+                rcv-fin-time-wait/all-rcv-fin-time-wait-tests \
                 rcv-fin-syn-sent/all-rcv-fin-syn-sent-tests \
                 rcv-fin-ack-closed/all-rcv-fin-ack-closed-tests \
                 rcv-fin-ack-listen/all-rcv-fin-ack-listen-tests \
                 rcv-fin-ack-syn-sent/all-rcv-fin-ack-syn-sent-tests \
+                rcv-fin-ack-time-wait/all-rcv-fin-ack-time-wait-tests \
                 rcv-rst-closed/all-rcv-rst-closed-tests \
                 rcv-rst-listen/all-rcv-rst-listen-tests \
                 rcv-rst-syn-sent/all-rcv-rst-syn-sent-tests \
@@ -64,5 +69,5 @@
                 rcv-rst-time-wait/all-rcv-rst-time-wait-tests \
                 rcv-rst-ack-closed/all-rcv-rst-ack-closed-tests \
                 rcv-rst-ack-listen/all-rcv-rst-ack-listen-tests \
-                rcv-rst-ack-syn-sent/all-rcv-rst-ack-syn-sent-tests
-
+                rcv-rst-ack-syn-sent/all-rcv-rst-ack-syn-sent-tests \
+                rcv-rst-ack-time-wait/all-rcv-rst-ack-time-wait-tests
