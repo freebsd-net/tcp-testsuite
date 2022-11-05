@@ -25,6 +25,8 @@
 # SUCH DAMAGE.
 #
 
+#pwd=`pwd`
+#rootdir=`/usr/bin/dirname ${pwd}/$0`
 rootdir=`/usr/bin/dirname $0`
 passed=0
 failed=0
@@ -119,8 +121,11 @@ for file ; do
       if [ -t 1 ] ; then
         printf "\033[33m%10s\033[0m" "RUNNING"
       fi
-      timeout $timelimit $packetdrill ${flags} ${rootdir}/${testdir}/${testname}.pkt >${rootdir}/${testdir}/${prefix}${testname}.out 2>&1
+      pwd=`pwd`
+      cd `dirname  ${pwd}/${rootdir}/${testdir}/${testname}.pkt`
+      timeout $timelimit $packetdrill ${flags} ${testname}.pkt > ${prefix}${testname}.out 2>&1
       result=$?
+      cd ${pwd}
       if [ $result -eq 0 -a $verbose -eq 0 ] ; then
         rm ${rootdir}/${testdir}/${prefix}${testname}.out
       fi
@@ -203,6 +208,7 @@ for file ; do
     fi
   done
 done
+cd ${rootdir}
 printf "===============================================================================\n"
 printf "Summary: Number of tests run:                    %3u\n" $run
 printf "         Number of tests passed:                 %3u\n" $passed
