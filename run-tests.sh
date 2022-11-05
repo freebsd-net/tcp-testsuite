@@ -25,8 +25,6 @@
 # SUCH DAMAGE.
 #
 
-#pwd=`pwd`
-#rootdir=`/usr/bin/dirname ${pwd}/$0`
 rootdir=`/usr/bin/dirname $0`
 passed=0
 failed=0
