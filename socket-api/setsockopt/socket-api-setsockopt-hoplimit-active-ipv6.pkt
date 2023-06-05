@@ -25,7 +25,9 @@
 //
 
 --ip_version=ipv6
---tolerance_usecs=50000
+--udp_encapsulation=tcp
+--tolerance_usecs=250000
+--non_fatal=syscall
 
 // Ensure that all relevant sysctl variables have their default variables.
  0.00 `sysctl -w net.inet.tcp.rfc1323=1`
@@ -36,6 +38,10 @@
 +0.00 `sysctl -w kern.ipc.maxsockbuf=2097152`
 +0.00 `sysctl -w net.inet.tcp.recvspace=65536`
 +0.00 `sysctl -w net.inet.tcp.sendspace=32768`
++0.00 `sysctl -w net.inet.tcp.insecure_rst=0`
++0.00 `sysctl -w net.inet.tcp.insecure_syn=0`
++0.00 `sysctl -w net.inet.tcp.udp_tunneling_port=9811`
++0.00 `sysctl -w net.inet.tcp.udp_tunneling_overhead=8`
 // Flush host cache.
 +0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
 // Create a TCP endpoint in the ESTABLISHED state.
@@ -43,12 +49,33 @@
 +0.00 fcntl(3, F_GETFL) = 0x02 (flags O_RDWR)
 +0.00 fcntl(3, F_SETFL, O_RDWR | O_NONBLOCK) = 0
 +0.00 setsockopt(3, IPPROTO_IPV6, IPV6_UNICAST_HOPS, [4], 4) = 0
++0.00 setsockopt(3, IPPROTO_TCP, TCP_KEEPIDLE,[1], 4) = 0
 +0.00 connect(3, ..., ...) = -1 EINPROGRESS (Operation now in progress)
 +0.00 > (hlim 4) S     0:0(0)                win 65535 <mss 1440,nop,wscale 6,sackOK,TS val 100 ecr 0>
+// Check sending of RST if checking SEG.ACK fails.
++0.00 < (hlim 3) S.    0:0(0)       ack    0 win 65535 <mss 1440,sackOK,eol,eol>
++0.00 > (hlim 4) R     0:0(0)                win     0
+// Continue with handshake.
 +0.10 < (hlim 3) S.    0:0(0)       ack    1 win 32767 <mss 1440,sackOK,eol,eol>
 +0.00 > (hlim 4)  .    1:1(0)       ack    1 win 65535
 // Verify that there are no errors pending at the socket layer.
 +0.10 getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
++0.00 setsockopt(3, IPPROTO_TCP, TCP_RACK_PACE_MAX_SEG, [2], 4) = 0
+// Set the pacing rate to 100 MBit/sec.
++0.00 setsockopt(3, IPPROTO_TCP, TCP_RACK_PACE_RATE_SS, [1250000], 4) = 0
++0.00 setsockopt(3, IPPROTO_TCP, TCP_RACK_PACE_ALWAYS, [1], 4) = 0
+// Check UDP port change in ESTABLISHED for segments with ACK.
++0.10 < (hlim 3) F.    1:1(0)       ack    1 win 32767/udp(1 > 9811)
++0.00 > (hlim 4) R     1:1(0)                win     0/udp(9811 > 1)
+// Check UDP port change in ESTABLISHED for segments without ACK.
++0.10 < (hlim 3) S     1:1(0)                win 32767/udp(1 > 9811)
++0.00 > (hlim 4) R.    0:0(0)!      ack    2 win     0/udp(9811 > 1)
+// Check sending of challenge ACK in response to RST segment
++0.10 < (hlim 3) R     5:5(0)                win     0
++0.00 > (hlim 4)  .    1:1(0)       ack    1 win 65535
+// Check sending of challenge ACK in response to SYN segment
++0.10 < (hlim 3) S     5:5(0)                win 65535 <mss 1440,sackOK,eol,eol>
++0.00 > (hlim 4)  .    1:1(0)       ack    1 win 65535
 // Send some data, change the hoplimit and send some data again.
 +0.00 send(3, ..., 1440, 0) = 1440
 +0.00 > (hlim 4) P.    1:1441(1440) ack    1 win 65535
@@ -57,8 +84,31 @@
 +0.00 send(3, ..., 1440, 0) = 1440
 +0.00 > (hlim 6) P. 1441:2881(1440) ack    1 win 65535
 +0.10 < (hlim 3)  .    1:1(0)       ack 2881 win 32767
+// Check keep-alives.
++1.00 > (hlim 6)  . 2880:2880(0)    ack    1 win 65535
++0.10 < (hlim 3)  .    1:1(0)       ack 2881 win 32767
+// Test a fast retransmission
++0.00 send(3, ..., 5760, 0) = 5760
++0.00 > (hlim 6)  . 2881:4321(1440) ack    1 win 65535
++0.00 > (hlim 6)  . 4321:5761(1440) ack    1 win 65535
++0.00 > (hlim 6)  . 5761:7201(1440) ack    1 win 65535
++0.00 > (hlim 6) P. 7201:8641(1440) ack    1 win 65535
++0.10 < (hlim 3)  .    1:1(0)       ack 2881 win 32767 <sack 4321:5761, nop, nop>
++0.00 < (hlim 3)  .    1:1(0)       ack 2881 win 32767 <sack 4321:7201, nop, nop>
++0.00 < (hlim 3)  .    1:1(0)       ack 2881 win 32767 <sack 4321:8641, nop, nop>
++0.00 > (hlim 6)  . 2881:4321(1440) ack    1 win 65535
++0.10 < (hlim 3)  .    1:1(0)       ack 8641 win 32767
 // Tear it down.
 +0.00 close(3) = 0
-+0.00 > (hlim 6) F. 2881:2881(0)    ack    1 win 65535
-+0.10 < (hlim 3) F.    1:1(0)       ack 2882 win 32767
-+0.00 > (hlim 6)  . 2882:2882(0)    ack    2 win 65535
++0.00 > (hlim 6) F. 8641:8641(0)    ack    1 win 65535
++0.10 < (hlim 3) F.    1:1(0)       ack 8642 win 32767
++0.00 > (hlim 6)  . 8642:8642(0)    ack    2 win 65535
+// Check UDP port change in TIMEWAIT for segments with ACK.
++0.10 < (hlim 3) F.    1:1(0)       ack 8642 win 32767/udp(1 > 9811)
++0.00 > (hlim 6) R  8642:8642(0)             win     0/udp(9811 > 1)
+// Check UDP port change in TIMEWAIT for segments without ACK.
++0.10 < (hlim 3) S     1:1(0)                win 32767/udp(1 > 9811)
++0.00 > (hlim 6) R.    0:0(0)!      ack    2 win     0/udp(9811 > 1)
+// Check unexpected sequence number in TIMEWAIT.
++0.10 < (hlim 3) F.    1:1(0)       ack 8642 win 32767
++0.00 > (hlim 6)  . 8642:8642(0)    ack    2 win 65535

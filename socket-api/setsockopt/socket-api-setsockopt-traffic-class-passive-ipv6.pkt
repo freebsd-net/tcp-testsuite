@@ -43,6 +43,8 @@
 +0.00 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
 +0.00 setsockopt(3, IPPROTO_IPV6, IPV6_TCLASS, [IPTOS_DSCP_CS1], 4) = 0
 +0.00 bind(3, ..., ...) = 0
++0.00 < (class 0x28) S     0:0(0)       ack    1 win 32767 <mss 1440,sackOK,eol,eol>
++0.00 > (class 0x20) R.    0:0(0)!      ack    1 win     0
 +0.00 listen(3, 1) = 0
 +0.00 < (class 0x28) S     0:0(0)       ack    1 win 32767 <mss 1440,sackOK,eol,eol>
 +0.00 > (class 0x20) S.    0:0(0)       ack    1 win 65535 <mss 1440,sackOK,eol,eol>
@@ -51,7 +53,7 @@
 +0.00 close(3) = 0
 // Verify that there are no errors pending at the socket layer.
 +0.10 getsockopt(4, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
-// Send some data, change the hoplimit and send some data again.
+// Send some data, change the traffic class and send some data again.
 +0.00 send(4, ..., 1440, 0) = 1440
 +0.00 > (class 0x20) P.    1:1441(1440) ack    1 win 65535
 +0.10 < (class 0x28)  .    1:1(0)       ack 1441 win 32767
