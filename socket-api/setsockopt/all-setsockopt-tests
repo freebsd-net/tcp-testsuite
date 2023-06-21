@@ -6,3 +6,7 @@ socket-api/setsockopt/socket-api-setsockopt-tos-active-ipv4
 socket-api/setsockopt/socket-api-setsockopt-tos-passive-ipv4
 socket-api/setsockopt/socket-api-setsockopt-traffic-class-active-ipv6
 socket-api/setsockopt/socket-api-setsockopt-traffic-class-passive-ipv6
+socket-api/setsockopt/socket-api-setsockopt-md5-active-ipv4
+socket-api/setsockopt/socket-api-setsockopt-md5-passive-ipv4
+socket-api/setsockopt/socket-api-setsockopt-md5-active-ipv6
+socket-api/setsockopt/socket-api-setsockopt-md5-passive-ipv6
