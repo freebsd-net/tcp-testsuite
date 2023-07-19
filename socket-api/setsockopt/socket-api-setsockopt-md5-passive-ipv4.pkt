@@ -28,7 +28,7 @@
 --tolerance_usecs=50000
 --tcp_md5_secret=secret
 
-      `echo 'add 192.168.0.1 192.0.2.1 tcp 0x1000 -A tcp-md5 "secret" ;
+      `kldstat -q -m tcpmd5 || kldload tcpmd5; echo 'add 192.168.0.1 192.0.2.1 tcp 0x1000 -A tcp-md5 "secret" ;
              add 192.0.2.1 192.168.0.1 tcp 0x1001 -A tcp-md5 "secret" ;' | setkey -c`
 
 // Ensure that all relevant sysctl variables have their default variables.
