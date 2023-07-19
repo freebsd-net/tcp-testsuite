@@ -30,7 +30,7 @@
 --non_fatal=syscall
 --tcp_md5_secret=secret
 
-       `echo 'add fd3d:fa7b:d17d::1 2001:DB8::1 tcp 0x1000 -A tcp-md5 "secret" ;
+       `kldstat -q -m tcpmd5 || kldload tcpmd5; echo 'add fd3d:fa7b:d17d::1 2001:DB8::1 tcp 0x1000 -A tcp-md5 "secret" ;
               add 2001:DB8::1 fd3d:fa7b:d17d::1 tcp 0x1001 -A tcp-md5 "secret" ;' | setkey -c`
 
 // Ensure that all relevant sysctl variables have their default variables.
