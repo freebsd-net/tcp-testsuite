@@ -43,4 +43,4 @@ is being sent.
 |[rcv-syn-ack-time-wait-using-shutdown-outside-right-insecure-ipv6](rcv-syn-ack-time-wait-using-shutdown-outside-right-insecure-ipv6.pkt "Ensure that the reception of a TCP SYN-ACK with SEG.SEQ=RCV.NXT+RCV.WND in the TIME-WAIT state triggers the sending of an ACK segment") | Unknown             | Passed (Note 1)     |
 
 ## Notes
-1. This is fixed in [2515552e6216095c3fa61d93ee024bb8861e07c2]https://cgit.FreeBSD.org/src/commit/?id=2515552e6216095c3fa61d93ee024bb8861e07c2) ([D36864](https://reviews.freebsd.org/D36864)).
+1. This is fixed in [2515552e6216095c3fa61d93ee024bb8861e07c2](https://cgit.FreeBSD.org/src/commit/?id=2515552e6216095c3fa61d93ee024bb8861e07c2) ([D36864](https://reviews.freebsd.org/D36864)).
