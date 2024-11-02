@@ -25,7 +25,7 @@ tcp-over-udp/rcv-icmp-packet-too-big-established-ipv6
 tcp-over-udp/rcv-rst-plain-syn-sent-ipv4
 tcp-over-udp/rcv-rst-plain-syn-sent-ipv6
 tcp-over-udp/rcv-rst-encaps-syn-sent-ipv4
-tcp-over-udp/rcv-rst-encaps-syn-sent-ipv4
+tcp-over-udp/rcv-rst-encaps-syn-sent-ipv6
 tcp-over-udp/rcv-syn-ack-syn-sent-ipv4
 tcp-over-udp/rcv-syn-ack-syn-sent-ipv6
 tcp-over-udp/rcv-syn-closed-ipv4
