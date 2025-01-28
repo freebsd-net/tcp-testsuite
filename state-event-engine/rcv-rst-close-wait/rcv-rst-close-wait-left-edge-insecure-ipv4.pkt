@@ -40,7 +40,7 @@
 // Flush host cache.
 +0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
 // Ensure that the relevant sysctl variables have their value.
- 0.00 `sysctl -w net.inet.tcp.insecure_rst=1`
++0.00 `sysctl -w net.inet.tcp.insecure_rst=1`
 // Create a TCP socket in CLOSE-WAIT state
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 fcntl(3, F_GETFL) = 0x02 (flags O_RDWR)
