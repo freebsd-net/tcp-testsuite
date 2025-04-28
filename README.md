@@ -19,7 +19,7 @@ To run all test scripts, execute
 ```
 sudo tcp-testsuite/run-all-tests
 ```
-which runs the `tcsh` script `tcp-testsuite/run-all-tests` with root priviledges.
+which runs the `sh` script `tcp-testsuite/run-all-tests` with root priviledges.
 
 ## Structure of the Testsuite
 | Test Group                                                                     | Number of Test Scripts | Status
