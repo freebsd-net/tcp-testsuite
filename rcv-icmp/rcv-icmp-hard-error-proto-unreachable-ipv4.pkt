@@ -43,7 +43,7 @@
 // Flush host cache.
 +0.00 `sysctl -w net.inet.tcp.hostcache.purgenow=1`
 // Set sysctl variables relevant for this test.
- 0.00 `sysctl -w net.inet.tcp.icmp_may_rst=1`
++0.00 `sysctl -w net.inet.tcp.icmp_may_rst=1`
 // Create a non-blocking TCP/IPv4 socket
 +0.00 socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
 +0.00 fcntl(3, F_GETFL) = 0x02 (flags O_RDWR)
