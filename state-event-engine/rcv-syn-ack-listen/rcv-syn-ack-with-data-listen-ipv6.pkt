@@ -25,7 +25,7 @@
 //
 
 // Ensure that the reception of a TCP segments with the SYN-ACK bits set in the
-// LISTEN state does trigger the sending of a RST segment.
+// LISTEN state is dropped and does not trigger the sending of a RST segment.
 
 --ip_version=ipv6
 --tolerance_usecs=75000
@@ -48,5 +48,6 @@
 +0.00 listen(3, 1) = 0
 // Now it is in the LISTEN state.
 +0.10 < S. 17:20(3) ack 34 win 32767
-+0.00 > R  34:34(0)        win     0
++1.00 < S   0:0(0)         win 32767 <mss 1440>
++0.00 > S.  0:0(0)  ack  1 win 65535 <mss 1440>
 +0.00 close(3) = 0
